@@ -1,0 +1,119 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PublishWithAspNetCoreTargetManifest>false</PublishWithAspNetCoreTargetManifest>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+	<ProjectGuid>{9FF50E8A-F2FF-4CB3-BB99-A696F4859121}</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Base\CarouselPageModel.cs" />
+    <Compile Remove="Models\Base\DetailTabbedPageModel.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="config.json" />
+    <None Remove="platform.json" />
+    <None Remove="pluto.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="config.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="earth.png" />
+    <EmbeddedResource Include="jupiter.png" />
+    <EmbeddedResource Include="mars.png" />
+    <EmbeddedResource Include="mercury.png" />
+    <EmbeddedResource Include="moon.png" />
+    <EmbeddedResource Include="neptune.png" />
+    <EmbeddedResource Include="pluto.png" />
+    <EmbeddedResource Include="saturn.png" />
+    <EmbeddedResource Include="sun.png" />
+    <EmbeddedResource Include="uranus.png" />
+    <EmbeddedResource Include="venus.png" />
+    <EmbeddedResource Include="platform.json">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FreshMvvm" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="2.0.3" />
+    <PackageReference Include="Plugin.Permissions" Version="3.0.0.8" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.60.0" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.1.1" />
+    <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="3.0.0.446417" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="App.xaml.cs">
+      <DependentUpon>*.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Content\MoonComparePage.xaml.cs">
+      <DependentUpon>MoonComparePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Content\PlanetComparePage.xaml.cs">
+      <DependentUpon>PlanetComparePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Content\MoonDetailPage.xaml.cs">
+      <DependentUpon>MoonDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Content\PlanetDetailPage.xaml.cs">
+      <DependentUpon>PlanetDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Content\MoonImagePage.xaml.cs">
+      <DependentUpon>MoonImagePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\MainPage.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Tab\MoonNavigationPage.xaml.cs">
+      <DependentUpon>MoonNavigationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Tab\PlanetNavigationPage.xaml.cs">
+      <DependentUpon>PlanetNavigationPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\MyTelescope.App.DataLayer\MyTelescope.App.DataLayer.csproj" />
+    <ProjectReference Include="..\..\MyTelescope.App.Localisation\MyTelescope.App.Localisation.csproj" />
+    <ProjectReference Include="..\..\MyTelescope.App.Models\MyTelescope.App.Models.csproj" />
+    <ProjectReference Include="..\..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj" />
+    <ProjectReference Include="..\..\MyTelescope.App.ViewModels\MyTelescope.App.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Pages\Content\PlanetComparePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Content\PlanetMoonOverviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Content\PlanetOverviewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Tab\PlanetNavigationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Content\SolarSystemPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Enums\" />
+    <Folder Include="Images\" />
+  </ItemGroup>
+</Project>

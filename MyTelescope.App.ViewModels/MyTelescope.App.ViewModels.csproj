@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+	<ProjectGuid>{C5B8715B-320D-49DE-90B7-AB1A1D29A42A}</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Adapters\" />
+    <Folder Include="Factories\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyTelescope.App.Localisation\MyTelescope.App.Localisation.csproj" />
+    <ProjectReference Include="..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj" />
+    <ProjectReference Include="..\MyTelescope.SolarSystem\MyTelescope.SolarSystem.csproj" />
+    <ProjectReference Include="..\MyTelescope.Utilities\MyTelescope.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

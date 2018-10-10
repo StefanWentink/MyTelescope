@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extensions="clr-namespace:MyTelescope.App.Extensions;assembly=MyTelescope.App"
+             xmlns:converter="clr-namespace:MyTelescope.App.Converter;assembly=MyTelescope.App"
+             x:Class="MyTelescope.App.Pages.Content.PlanetOverviewPage"
+             Style="{DynamicResource BasePage}">
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <Label Text="{extensions:TranslateExtension Text=Planets}"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+
+            <ListView 
+                x:Name="ListViewPlanetOverview"
+                ItemsSource="{Binding Collection}" 
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                IsPullToRefreshEnabled="true" 
+                RefreshCommand="{Binding RefreshDataCommand}" 
+                IsRefreshing="{Binding IsBusy}"  
+                IsVisible="{Binding HasItems}" 
+                CachingStrategy="RecycleElement">
+
+                <ListView.ItemTemplate
+                    Style="{DynamicResource ListViewItem}">
+
+                    <DataTemplate>
+
+                        <ViewCell>
+                            <!--Style="{Binding Selected, DynamicResource={converter:ViewCellStyleConverter}}"-->
+
+                            <StackLayout 
+                                Orientation="Horizontal">
+
+                                <StackLayout>
+
+                                    <Image 
+                                        Source="{Binding ImageName, Converter={converter:ImageConverter}}" 
+                                        Style="{DynamicResource ImageSmall}"/>
+
+                                </StackLayout>
+
+                                <StackLayout 
+                                    Orientation="Vertical">
+
+                                    <Label 
+                                        Text="{Binding Code}"
+                                        Style="{DynamicResource LabelStyleBold}"/>
+
+                                    <Label 
+                                        Text="{Binding Description}"
+                                        Style="{DynamicResource LabelStyle}"/>
+
+                                </StackLayout>
+
+                            </StackLayout>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

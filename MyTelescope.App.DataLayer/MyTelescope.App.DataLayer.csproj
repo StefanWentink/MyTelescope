@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+	<ProjectGuid>{733CC650-0115-422C-A8E3-9DD0DB15663C}</ProjectGuid>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Adapters\**" />
+    <Compile Remove="Factories\**" />
+    <Compile Remove="Helpers\**" />
+    <EmbeddedResource Remove="Adapters\**" />
+    <EmbeddedResource Remove="Factories\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Adapters\**" />
+    <None Remove="Factories\**" />
+    <None Remove="Helpers\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="Models\PredictTheSky\" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj" />
+    <ProjectReference Include="..\MyTelescope.App.ViewModels\MyTelescope.App.ViewModels.csproj" />
+    <ProjectReference Include="..\MyTelescope.Core.Utilities\MyTelescope.Core.Utilities.csproj" />
+    <ProjectReference Include="..\MyTelescope.SolarSystem\MyTelescope.SolarSystem.csproj" />
+    <ProjectReference Include="..\MyTelescope.Utilities\MyTelescope.Utilities.csproj" />
+  </ItemGroup>
+
+</Project>

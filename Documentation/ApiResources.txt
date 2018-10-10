@@ -1,0 +1,18 @@
+http://predictthesky.org/developers.html
+http://aa.usno.navy.mil/data/docs/api.php
+
+
+
+http://api.usno.navy.mil/imagery/venus.png?date=today&time=now
+http://api.usno.navy.mil/imagery/jupiter.png?date=04/14/2018&time=now
+
+http://api.usno.navy.mil/rstt/oneday?date=1/5/2005&loc=Los Angeles, CA
+http://aa.usno.navy.mil/cgi-bin/aa_ssconf2.pl?form=1&year=2018&month=3&day=5&hr=0&min=0&sec=0.0&intv_mag=1.0&intv_unit=1&reps=5&state=DC&place=&height=
+
+http://reference.wolfram.com/language/ref/PlanetData.html
+
+https://ssd.jpl.nasa.gov/txt/aprx_pos_planets.pdf
+
+http://aa.quae.nl/en/reken/hemelpositie.html
+
+https://blog.xamarin.com/geolocation-for-ios-android-and-windows-made-easy/

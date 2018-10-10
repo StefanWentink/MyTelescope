@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:extensions="clr-namespace:MyTelescope.App.Extensions;assembly=MyTelescope.App"
+             xmlns:canvas="clr-namespace:MyTelescope.App.Models.Canvas;assembly=MyTelescope.App"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:converter="clr-namespace:MyTelescope.App.Converter;assembly=MyTelescope.App"
+             x:Class="MyTelescope.App.Pages.Content.SolarSystemPage"
+             Style="{DynamicResource BasePage}">
+    <ContentPage.Content>
+
+        <StackLayout VerticalOptions="FillAndExpand" >
+
+            <StackLayout Orientation="Horizontal">
+
+                <Picker 
+                    x:Name="ObjectCollectionLayoutPicker"
+                    Style="{DynamicResource Picker}"
+                    ItemsSource="{Binding ObjectCollectionLayouts}"
+                    SelectedIndex="{Binding ObjectCollectionLayoutSelectedIndex, Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding Description}"
+                    Title="{extensions:TranslateExtension Text=ObjectCollectionLayout}"
+                    HorizontalOptions="FillAndExpand">
+
+                </Picker>
+
+                <Picker 
+                    x:Name="ObjectCollectionOptionPicker"
+                    Style="{DynamicResource Picker}"
+                    ItemsSource="{Binding ObjectCollectionOptions}"
+                    SelectedIndex="{Binding ObjectCollectionOptionSelectedIndex, Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding Description}"
+                    Title="{extensions:TranslateExtension Text=ObjectCollectionOption}"
+                    HorizontalOptions="FillAndExpand">
+
+                </Picker>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+
+                <StackLayout Orientation="Horizontal" 
+                             HorizontalOptions="CenterAndExpand" 
+                             IsVisible="{Binding ObjectCollectionLayoutSelectedIndex, Converter={converter:TimeLapseVisibleConverter}}">
+
+                <Button
+                    HorizontalOptions="End"
+                    Text="{extensions:TranslateExtension Text=FastBackwards}" 
+                    Command="{Binding FastBackwardsCommand}"
+                    Style="{DynamicResource PlayButton}"/>
+                <Button
+                    HorizontalOptions="Start"
+                    Text="{extensions:TranslateExtension Text=Backwards}" 
+                    Command="{Binding BackwardsCommand}"
+                    Style="{DynamicResource PlayButton}"/>
+
+                <DatePicker x:Name="ReferenceDateDatePicker" 
+                            Format="dd-MM-YYYY" 
+                            
+                            Date="{Binding ReferenceDate, Mode=TwoWay}"
+                            Style="{DynamicResource DatePicker}">
+
+                    <DatePicker.MaximumDate>
+                        <system:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Dec 31 2050</x:String>
+                            </x:Arguments>
+                        </system:DateTime>
+                    </DatePicker.MaximumDate>
+
+                    <DatePicker.MinimumDate>
+                        <system:DateTime x:FactoryMethod="Parse">
+                            <x:Arguments>
+                                <x:String>Jan 1 1950</x:String>
+                            </x:Arguments>
+                        </system:DateTime>
+                    </DatePicker.MinimumDate>
+
+                </DatePicker>
+
+                <Button
+                    HorizontalOptions="End"
+                    Text="{extensions:TranslateExtension Text=Forwards}" 
+                    Command="{Binding ForwardsCommand}"
+                    Style="{DynamicResource PlayButton}"/>
+                <Button
+                    HorizontalOptions="End"
+                    Text="{extensions:TranslateExtension Text=FastForwards}" 
+                    Command="{Binding FastForwardsCommand}"
+                    Style="{DynamicResource PlayButton}"/>
+
+                </StackLayout>
+
+            </StackLayout>
+
+
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <canvas:BindableCanvasView
+                    Shapes="{Binding Shapes}"
+                    CanvasViewKey="{Binding CanvasViewKey}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    PaintSurface="OnPaintSurface"/>
+
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>

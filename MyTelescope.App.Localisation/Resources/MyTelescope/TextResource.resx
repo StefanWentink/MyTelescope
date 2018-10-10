@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Amalthea" xml:space="preserve">
+    <value>Amalthea</value>
+  </data>
+  <data name="ApparentDiameter" xml:space="preserve">
+    <value>Apparent diameter</value>
+  </data>
+  <data name="ArcMinutes" xml:space="preserve">
+    <value>Arc minutes</value>
+  </data>
+  <data name="ArcMinutesShort" xml:space="preserve">
+    <value>′</value>
+  </data>
+  <data name="ArcSecond" xml:space="preserve">
+    <value>Arc second</value>
+  </data>
+  <data name="ArcSecondShort" xml:space="preserve">
+    <value>″</value>
+  </data>
+  <data name="AstronomicalUnit" xml:space="preserve">
+    <value>Astronomical unit</value>
+  </data>
+  <data name="AstronomicalUnitShort" xml:space="preserve">
+    <value>A.U.</value>
+  </data>
+  <data name="BlackBodyTemperature" xml:space="preserve">
+    <value>Black-body temperature</value>
+  </data>
+  <data name="Callisto" xml:space="preserve">
+    <value>Callisto</value>
+  </data>
+  <data name="Celsius" xml:space="preserve">
+    <value>Celcius</value>
+  </data>
+  <data name="Degree" xml:space="preserve">
+    <value>Degree</value>
+  </data>
+  <data name="DegreeShort" xml:space="preserve">
+    <value>°</value>
+  </data>
+  <data name="Deimos" xml:space="preserve">
+    <value>Deimos</value>
+  </data>
+  <data name="Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="Earth" xml:space="preserve">
+    <value>Earth</value>
+  </data>
+  <data name="Ellipticity" xml:space="preserve">
+    <value>Flattening</value>
+  </data>
+  <data name="EquatorialRadius" xml:space="preserve">
+    <value>Equatorial radius</value>
+  </data>
+  <data name="Europa" xml:space="preserve">
+    <value>Europa</value>
+  </data>
+  <data name="Fahrenheit" xml:space="preserve">
+    <value>Fahrenheit</value>
+  </data>
+  <data name="Ganymede" xml:space="preserve">
+    <value>Ganymede</value>
+  </data>
+  <data name="InferiorOrbit" xml:space="preserve">
+    <value>Inferior orbit</value>
+  </data>
+  <data name="Io" xml:space="preserve">
+    <value>Io</value>
+  </data>
+  <data name="Jupiter" xml:space="preserve">
+    <value>Jupiter</value>
+  </data>
+  <data name="Kelvin" xml:space="preserve">
+    <value>Kelvin</value>
+  </data>
+  <data name="KgPerM3" xml:space="preserve">
+    <value>kg/m3</value>
+  </data>
+  <data name="Kilometer" xml:space="preserve">
+    <value>Kilometer</value>
+  </data>
+  <data name="KilometerShort" xml:space="preserve">
+    <value>km.</value>
+  </data>
+  <data name="MajorMoon" xml:space="preserve">
+    <value>Major moon</value>
+  </data>
+  <data name="Mars" xml:space="preserve">
+    <value>Mars</value>
+  </data>
+  <data name="Mass" xml:space="preserve">
+    <value>Mass</value>
+  </data>
+  <data name="Maximum" xml:space="preserve">
+    <value>Maximum</value>
+  </data>
+  <data name="MaximumShort" xml:space="preserve">
+    <value>max.</value>
+  </data>
+  <data name="MeanDensity" xml:space="preserve">
+    <value>Mean density</value>
+  </data>
+  <data name="Mercury" xml:space="preserve">
+    <value>Mercury</value>
+  </data>
+  <data name="Miles" xml:space="preserve">
+    <value>Miles</value>
+  </data>
+  <data name="MilesShort" xml:space="preserve">
+    <value>mi.</value>
+  </data>
+  <data name="Million" xml:space="preserve">
+    <value>Million</value>
+  </data>
+  <data name="Minimum" xml:space="preserve">
+    <value>Minimum</value>
+  </data>
+  <data name="MinimumShort" xml:space="preserve">
+    <value>min.</value>
+  </data>
+  <data name="MinrMoon" xml:space="preserve">
+    <value>Minor moon</value>
+  </data>
+  <data name="Moon" xml:space="preserve">
+    <value>Moon</value>
+  </data>
+  <data name="Moons" xml:space="preserve">
+    <value>Moons</value>
+  </data>
+  <data name="MS2" xml:space="preserve">
+    <value>m/s2</value>
+  </data>
+  <data name="Neptune" xml:space="preserve">
+    <value>Neptune</value>
+  </data>
+  <data name="Opposition" xml:space="preserve">
+    <value>Opposition</value>
+  </data>
+  <data name="Phobos" xml:space="preserve">
+    <value>Phobos</value>
+  </data>
+  <data name="Planet" xml:space="preserve">
+    <value>Planet</value>
+  </data>
+  <data name="Planets" xml:space="preserve">
+    <value>Planets</value>
+  </data>
+  <data name="Pluto" xml:space="preserve">
+    <value>Pluto</value>
+  </data>
+  <data name="PolarRadius" xml:space="preserve">
+    <value>Polar radius</value>
+  </data>
+  <data name="Pow10" xml:space="preserve">
+    <value>10 billion</value>
+  </data>
+  <data name="Pow10Number" xml:space="preserve">
+    <value>10^10</value>
+  </data>
+  <data name="Pow24" xml:space="preserve">
+    <value>Quadrillion</value>
+  </data>
+  <data name="Pow24Number" xml:space="preserve">
+    <value>10^24</value>
+  </data>
+  <data name="Pow6" xml:space="preserve">
+    <value>Million</value>
+  </data>
+  <data name="Pow6Number" xml:space="preserve">
+    <value>10^6</value>
+  </data>
+  <data name="RingSystem" xml:space="preserve">
+    <value>Planetary ring system</value>
+  </data>
+  <data name="Satellites" xml:space="preserve">
+    <value>Satellites</value>
+  </data>
+  <data name="Saturn" xml:space="preserve">
+    <value>Saturn</value>
+  </data>
+  <data name="SolarIrradiance" xml:space="preserve">
+    <value>Solar irradiance</value>
+  </data>
+  <data name="SolarSystem" xml:space="preserve">
+    <value>Solar sytem</value>
+  </data>
+  <data name="Star" xml:space="preserve">
+    <value>Star</value>
+  </data>
+  <data name="Sun" xml:space="preserve">
+    <value>Sun</value>
+  </data>
+  <data name="Titan" xml:space="preserve">
+    <value>Titan</value>
+  </data>
+  <data name="Uranus" xml:space="preserve">
+    <value>Uranus</value>
+  </data>
+  <data name="Venus" xml:space="preserve">
+    <value>Venus</value>
+  </data>
+  <data name="VisualMagnitude" xml:space="preserve">
+    <value>Visual magnitude</value>
+  </data>
+  <data name="VolumetricMeanRadius" xml:space="preserve">
+    <value>Radius</value>
+  </data>
+  <data name="Gravity" xml:space="preserve">
+    <value>Gravity</value>
+  </data>
+  <data name="Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Code" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="PageBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="Title" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="Unit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="MajorMoons" xml:space="preserve">
+    <value>Major moons</value>
+  </data>
+  <data name="MinorMoon" xml:space="preserve">
+    <value>Minor moon</value>
+  </data>
+  <data name="MinorMoons" xml:space="preserve">
+    <value>Minor moons</value>
+  </data>
+  <data name="Stars" xml:space="preserve">
+    <value>Stars</value>
+  </data>
+  <data name="GreatestElongation" xml:space="preserve">
+    <value>GreatestElongation</value>
+  </data>
+  <data name="Value" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="CubicKilometer" xml:space="preserve">
+    <value>Cubic kilometer</value>
+  </data>
+  <data name="CubicKilometerShort" xml:space="preserve">
+    <value>km3</value>
+  </data>
+  <data name="Kilogram" xml:space="preserve">
+    <value>Kilogram</value>
+  </data>
+  <data name="KilogramShort" xml:space="preserve">
+    <value>kg.</value>
+  </data>
+  <data name="Percentage" xml:space="preserve">
+    <value>Percentage</value>
+  </data>
+  <data name="PercentageShort" xml:space="preserve">
+    <value>%</value>
+  </data>
+  <data name="SquareKilometer" xml:space="preserve">
+    <value>km2</value>
+  </data>
+  <data name="SquareKilometerShort" xml:space="preserve">
+    <value>Square kilometer</value>
+  </data>
+  <data name="Ton" xml:space="preserve">
+    <value>Ton</value>
+  </data>
+  <data name="Acceleration" xml:space="preserve">
+    <value>Acceleration</value>
+  </data>
+  <data name="Pressure" xml:space="preserve">
+    <value>Pressure</value>
+  </data>
+  <data name="Average" xml:space="preserve">
+    <value>Average</value>
+  </data>
+  <data name="SynodicPeriod" xml:space="preserve">
+    <value>Synodic period</value>
+  </data>
+  <data name="Day" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="Days" xml:space="preserve">
+    <value>Days</value>
+  </data>
+  <data name="Hour" xml:space="preserve">
+    <value>Hour</value>
+  </data>
+  <data name="Hours" xml:space="preserve">
+    <value>Hours</value>
+  </data>
+  <data name="LengthOfDay" xml:space="preserve">
+    <value>Length of day</value>
+  </data>
+  <data name="Pow18" xml:space="preserve">
+    <value>Trillion</value>
+  </data>
+  <data name="Pow18Number" xml:space="preserve">
+    <value>10^18</value>
+  </data>
+  <data name="Aphelion" xml:space="preserve">
+    <value>Aphelion</value>
+  </data>
+  <data name="AphelionDescription" xml:space="preserve">
+    <value>Shortest centric orbit distance</value>
+  </data>
+  <data name="Perihelion" xml:space="preserve">
+    <value>Perihelion</value>
+  </data>
+  <data name="PerihelionDescription" xml:space="preserve">
+    <value>Longest centric orbit distance</value>
+  </data>
+  <data name="SiderealOrbitPeriod" xml:space="preserve">
+    <value>Orbit period</value>
+  </data>
+  <data name="SiderealRotationPeriod" xml:space="preserve">
+    <value>Rotation period</value>
+  </data>
+  <data name="Density" xml:space="preserve">
+    <value>Density</value>
+  </data>
+  <data name="Pow9" xml:space="preserve">
+    <value>Billion</value>
+  </data>
+  <data name="Pow9Number" xml:space="preserve">
+    <value>10^9</value>
+  </data>
+  <data name="Compare" xml:space="preserve">
+    <value>Compare</value>
+  </data>
+  <data name="Origin" xml:space="preserve">
+    <value>Origin</value>
+  </data>
+  <data name="LayoutOptionDistance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="LayoutOptionPosition" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="ObjectCollectionOptionAll" xml:space="preserve">
+    <value>All planets</value>
+  </data>
+  <data name="ObjectCollectionOptionInner" xml:space="preserve">
+    <value>Inner planets</value>
+  </data>
+  <data name="ObjectCollectionOptionOuter" xml:space="preserve">
+    <value>Outer planets</value>
+  </data>
+  <data name="ObjectCollectionLayout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="ObjectCollectionOption" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="Backwards" xml:space="preserve">
+    <value>&lt;</value>
+  </data>
+  <data name="FastBackwards" xml:space="preserve">
+    <value>&lt;&lt;</value>
+  </data>
+  <data name="FastForwards" xml:space="preserve">
+    <value>&gt;&gt;</value>
+  </data>
+  <data name="Forwards" xml:space="preserve">
+    <value>&gt;</value>
+  </data>
+</root>

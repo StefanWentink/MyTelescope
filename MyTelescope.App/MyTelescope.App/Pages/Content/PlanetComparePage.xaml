@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MyTelescope.App.Pages.Content.PlanetComparePage"
+             xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:extensions="clr-namespace:MyTelescope.App.Extensions;assembly=MyTelescope.App"
+             xmlns:canvas="clr-namespace:MyTelescope.App.Models.Canvas;assembly=MyTelescope.App"
+             Style="{DynamicResource BasePage}">
+
+    <ContentPage.Content>
+
+        <StackLayout VerticalOptions="FillAndExpand" >
+
+            <StackLayout Orientation="Horizontal">
+
+                <Picker 
+                    x:Name="PlanetOriginPicker"
+                    Style="{DynamicResource Picker}"
+                    ItemsSource="{Binding Collection}"
+                    SelectedIndex="{Binding OriginDrawSelectedIndex, Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding Description}"
+                    Title="{extensions:TranslateExtension Text=Origin}"
+                    HorizontalOptions="FillAndExpand">
+
+                </Picker>
+
+                <Picker 
+                    x:Name="PlanetComparePicker"
+                    Style="{DynamicResource Picker}"
+                    ItemsSource="{Binding Collection}"
+                    SelectedIndex="{Binding CompareDrawSelectedIndex, Mode=TwoWay}"
+                    ItemDisplayBinding="{Binding Description}"
+                    Title="{extensions:TranslateExtension Text=Compare}"
+                    HorizontalOptions="FillAndExpand">
+
+                </Picker>
+
+            </StackLayout>
+
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <canvas:BindableCanvasView
+                    Shapes="{Binding Shapes}"
+                    CanvasViewKey="{Binding CanvasViewKey}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    PaintSurface="OnPaintSurface"/>
+            </StackLayout>
+
+        </StackLayout>
+
+    </ContentPage.Content>
+
+</ContentPage>
