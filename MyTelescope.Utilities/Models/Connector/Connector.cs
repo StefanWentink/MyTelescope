@@ -4,6 +4,7 @@
     using Filter;
     using Interfaces.Connector;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     public abstract class Connector<TModel> : IConnector<TModel>

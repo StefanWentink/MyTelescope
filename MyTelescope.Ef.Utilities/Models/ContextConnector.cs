@@ -7,7 +7,6 @@
     using Microsoft.EntityFrameworkCore;
     using MyTelescope.Utilities.Enums;
     using MyTelescope.Utilities.Helpers.Filter;
-    using MyTelescope.Utilities.Helpers.Reflection;
     using MyTelescope.Utilities.Interfaces.Connector;
     using MyTelescope.Utilities.Models.Connector;
     using MyTelescope.Utilities.Models.Filter;
@@ -25,6 +24,10 @@
         where TModel : class
     {
         protected IContextContainer ContextContainer { get; }
+
+        public IQueryable<TModel> Queryable => ContextContainer.GetContext.GetNoTrackingQuery<TModel>();
+
+        public Task<IQueryable<TModel>> QueryableAsync => Task.FromResult(Queryable);
 
         public int RecordCount { get; protected set; }
 
