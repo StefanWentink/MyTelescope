@@ -6,6 +6,7 @@
     using SWE.Model.Interfaces;
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
 
     [Route("api/[controller]")]
     [ApiController]
@@ -19,12 +20,6 @@
             Connector = connector;
         }
 
-        [HttpGet]
-        public string Hello()
-        {
-            return $"Hello {nameof(T)} controller is here!";
-        }
-
         [EnableQuery]
         public IActionResult Get()
         {
@@ -35,6 +30,13 @@
         public IActionResult Get(Guid key)
         {
             return Ok(Connector.Queryable.SingleOrDefault(x => x.Id == key));
+        }
+
+        [EnableQuery]
+        public async Task<IActionResult> Post([FromBody]T item)
+        {
+            await Connector.CreateAsync(item).ConfigureAwait(false);
+            return Created(item);
         }
     }
 }

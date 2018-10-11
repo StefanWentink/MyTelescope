@@ -4,7 +4,6 @@
     using MyTelescope.SolarSystem.Models.CelestialObject;
     using MyTelescope.Utilities.Interfaces.Connector;
 
-    [Route("api/[controller]")]
     [ApiController]
     public class CelestialObjectController : DataController<CelestialObjectModel>
     {
