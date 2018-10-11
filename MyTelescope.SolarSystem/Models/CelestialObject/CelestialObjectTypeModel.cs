@@ -1,5 +1,6 @@
 ﻿namespace MyTelescope.SolarSystem.Models.CelestialObject
 {
+    using SWE.Model.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,7 @@
     using Utilities.Interfaces;
 
     [DebuggerDisplay("{" + nameof(Code) + "}")]
-    public class CelestialObjectTypeModel : IKeyModel
+    public class CelestialObjectTypeModel : IKey
     {
         [Obsolete("For serialisation")]
         public CelestialObjectTypeModel()

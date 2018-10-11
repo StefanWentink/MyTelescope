@@ -3,6 +3,7 @@ namespace MyTelescope.Test
     using Base;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models;
+    using SWE.BasicType.Utilities;
     using Xunit;
 
     public class LocationModelTest : IClassFixture<CustomFixture>
@@ -26,7 +27,7 @@ namespace MyTelescope.Test
             var model = new LocationModel(-4.87477, 0.97081, 0.10478);
             var actual = model.GetEclipticLongitude();
             const double expected = 168.737;
-            Assert.True(actual.EqualsWithinTolerance(expected, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(actual, expected, 3));
         }
 
         [Fact]
@@ -36,7 +37,7 @@ namespace MyTelescope.Test
             const double largeDelta = 4.97161;
             var actual = model.GetEclipticLatitude(largeDelta);
             const double expected = 1.208;
-            Assert.True(actual.EqualsWithinTolerance(expected, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(actual, expected, 3));
         }
 
         [Fact]
@@ -47,7 +48,7 @@ namespace MyTelescope.Test
             var angle = LocationHelper.GetAngle();
             var actual = LocationHelper.GetRightAscension(eclipticLatitude, eclipticLongitude, angle);
             const double expected = 170.120;
-            Assert.True(actual.EqualsWithinTolerance(expected, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(actual, expected, 3));
         }
 
         [Fact]
@@ -58,7 +59,7 @@ namespace MyTelescope.Test
             var angle = LocationHelper.GetAngle();
             var actual = LocationHelper.GetDeclination(eclipticLatitude, eclipticLongitude, angle);
             const double expected = 5.567;
-            Assert.True(actual.EqualsWithinTolerance(expected, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(actual, expected, 3));
         }
     }
 }

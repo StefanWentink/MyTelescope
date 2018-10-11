@@ -6,6 +6,7 @@ namespace MyTelescope.Test.SolarSystem.Extensions
     using MyTelescope.SolarSystem.Extensions;
     using MyTelescope.SolarSystem.Models.Keplerian;
     using MyTelescope.Utilities.Helpers;
+    using SWE.BasicType.Utilities;
     using System;
     using System.Linq;
     using Xunit;
@@ -26,8 +27,8 @@ namespace MyTelescope.Test.SolarSystem.Extensions
             var jupiterMeanAnomaly = jupiterDateModel.Values.GetMeanAnomaly360();
             var earthMeanAnomaly = earthDateModel.Values.GetMeanAnomaly360();
 
-            Assert.True(141.0518.EqualsWithinTolerance(jupiterMeanAnomaly.Degrees, 3));
-            Assert.True(357.5098.EqualsWithinTolerance(earthMeanAnomaly.Degrees, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(141.0518, jupiterMeanAnomaly.Degrees, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(357.5098, earthMeanAnomaly.Degrees, 3));
         }
 
         [Fact]
@@ -44,8 +45,8 @@ namespace MyTelescope.Test.SolarSystem.Extensions
             var jupiterMeanAnomaly = jupiterDateModel.Values.GetMeanAnomalyAroundZero();
             var earthMeanAnomaly = earthDateModel.Values.GetMeanAnomalyAroundZero();
 
-            Assert.True((-38.9482).EqualsWithinTolerance(jupiterMeanAnomaly.Degrees, 3));
-            Assert.True(177.5098.EqualsWithinTolerance(earthMeanAnomaly.Degrees, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance((-38.9482), jupiterMeanAnomaly.Degrees, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(177.5098, earthMeanAnomaly.Degrees, 3));
         }
 
         [Fact]
@@ -70,13 +71,13 @@ namespace MyTelescope.Test.SolarSystem.Extensions
             var earthY = earthCalculate.Location.Y;
             var earthZ = earthCalculate.Location.Z;
 
-            Assert.True(jupiterX.EqualsWithinTolerance(-4.9852, 4));
-            Assert.True(jupiterY.EqualsWithinTolerance(2.0689, 4));
-            Assert.True(jupiterZ.EqualsWithinTolerance(0.1030, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(jupiterX, -4.9852, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(jupiterY, 2.0689, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(jupiterZ, 0.1030, 4));
 
-            Assert.True(earthX.EqualsWithinTolerance(-0.1779, 4));
-            Assert.True(earthY.EqualsWithinTolerance(0.9670, 4));
-            Assert.True(earthZ.EqualsWithinTolerance(0, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(earthX, -0.1779, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(earthY, 0.9670, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(earthZ, 0, 4));
         }
 
         [Fact]
@@ -107,11 +108,11 @@ namespace MyTelescope.Test.SolarSystem.Extensions
             const double expectedDeclination = 6.2012;
             const double expectedRightAscension = 168.5924;
 
-            Assert.True(expectedLargeDelta.EqualsWithinTolerance(actualLargeDelta, 2));
-            Assert.True(expectedEclipticLongitude.EqualsWithinTolerance(actualEclipticLongitude, 2));
-            Assert.True(expectedEclipticLatitude.EqualsWithinTolerance(actualEclipticLatitude, 2));
-            Assert.True(expectedDeclination.EqualsWithinTolerance(actualDeclination, 2));
-            Assert.True(expectedRightAscension.EqualsWithinTolerance(actualRightAscension, 2));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expectedLargeDelta, actualLargeDelta, 2));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expectedEclipticLongitude, actualEclipticLongitude, 2));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expectedEclipticLatitude, actualEclipticLatitude, 2));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expectedDeclination, actualDeclination, 2));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expectedRightAscension, actualRightAscension, 2));
         }
     }
 }

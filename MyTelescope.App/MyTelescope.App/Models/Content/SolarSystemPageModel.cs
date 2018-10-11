@@ -22,6 +22,7 @@
     using ViewModels.Models;
     using ViewModels.Models.Item;
     using Xamarin.Forms;
+    using SWE.BasicType.Utilities;
 
     public class SolarSystemPageModel : CanvasPageModel<CelestialObjectPositionViewModel, CelestialObjectPositionModel>
     {
@@ -339,7 +340,8 @@
                     return x => x.Model.AverageCentricDistance < 2;
 
                 case ObjectCollectionOption.Outer:
-                    return x => x.Model.AverageCentricDistance >= 2 || x.Model.AverageCentricDistance.EqualsWithinTolerance(0, 6);
+                    return x => x.Model.AverageCentricDistance >= 2
+                    || CompareUtilities.EqualsWithinTolerance(x.Model.AverageCentricDistance, 0, 6);
 
                 case ObjectCollectionOption.All:
                     return x => x.Model.AverageCentricDistance >= 0;

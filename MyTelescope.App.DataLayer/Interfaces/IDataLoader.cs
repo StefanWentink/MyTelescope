@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.DataLayer.Interfaces
 {
     using Enums;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using System;
     using System.Threading.Tasks;
     using Utilities.EventArgs;
@@ -9,7 +9,7 @@
 
     public interface IDataLoader<TViewModel, in TModel>
         where TViewModel : class, IBaseViewModel
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         void Load(DataLoading dataLoading, TModel model);
 

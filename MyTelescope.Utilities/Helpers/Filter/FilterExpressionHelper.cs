@@ -1,6 +1,7 @@
 ﻿namespace MyTelescope.Utilities.Helpers.Filter
 {
     using Enums;
+    using SWE.BasicType.Utilities;
     using System;
     using System.Linq.Expressions;
 
@@ -53,10 +54,10 @@
             switch (filter)
             {
                 case FilterType.Equal:
-                    return x => x.EqualsWithinTolerance(value, 10);
+                    return x => CompareUtilities.EqualsWithinTolerance(x, value, 10);
 
                 case FilterType.NotEqual:
-                    return x => !x.EqualsWithinTolerance(value, 10);
+                    return x => !CompareUtilities.EqualsWithinTolerance(x, value, 10);
 
                 case FilterType.GreaterOrEqual:
                     return x => x >= value;
@@ -146,10 +147,10 @@
             switch (filter)
             {
                 case FilterType.Equal:
-                    return x => x.HasValue && x.Value.EqualsWithinTolerance(value, 10);
+                    return x => x.HasValue && CompareUtilities.EqualsWithinTolerance(x.Value, value, 10);
 
                 case FilterType.NotEqual:
-                    return x => !x.HasValue || !x.Value.EqualsWithinTolerance(value, 10);
+                    return x => !x.HasValue || !CompareUtilities.EqualsWithinTolerance(x.Value, value, 10);
 
                 case FilterType.GreaterOrEqual:
                     return x => x.HasValue && x.Value >= value;

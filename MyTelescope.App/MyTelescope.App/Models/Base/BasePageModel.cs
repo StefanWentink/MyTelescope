@@ -2,7 +2,7 @@
 {
     using FreshMvvm;
     using MyTelescope.Utilities.Helpers;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using System;
     using ViewModels.Interfaces;
     using Xamarin.Forms;
@@ -10,7 +10,7 @@
     public abstract class BasePageModel<TModel> :
         FreshBasePageModel,
         IModelContainer<TModel>
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         public TModel Model { get; protected set; }
 

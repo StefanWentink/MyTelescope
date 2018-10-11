@@ -1,13 +1,13 @@
 ﻿namespace MyTelescope.App.ViewModels.Models
 {
     using Interfaces;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using System;
     using System.Collections.Generic;
     using Utilities.EventArgs;
 
     public abstract class BaseKeyDetailViewModel<TModel> : BaseKeyViewModel<TModel>, IBaseKeyDetailViewModel<TModel>
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         public event EventHandler<CollectionFetchedEventArgs<IDetailViewModel>> CollectionFetched;
 

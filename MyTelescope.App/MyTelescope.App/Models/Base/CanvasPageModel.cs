@@ -2,7 +2,7 @@
 {
     using DataLayer.Interfaces;
     using Helpers;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
@@ -15,7 +15,7 @@
 
     public abstract class CanvasPageModel<TViewModel, TModel> : OverviewPageModel<TViewModel, TModel>
         where TViewModel : class, IBaseKeyViewModel<TModel>, new()
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         private readonly object _shapesCollectionLock = new object();
 

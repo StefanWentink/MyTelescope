@@ -57,7 +57,8 @@
             bool Expression(CelestialObject x) =>
                 x > solarSystemObject
                 && x < solarSystemObject + (int)CelestialObjectType.Planet
-                && x.GetSolarSystemObjectType().In(solarSolarSystemObjectTypes.ToArray());
+                && solarSolarSystemObjectTypes.ToArray().Contains(x.GetSolarSystemObjectType());
+            //&& x.GetSolarSystemObjectType().In(solarSolarSystemObjectTypes.ToArray());
 
             return EnumHelper.GetValues((Func<CelestialObject, bool>)Expression);
         }

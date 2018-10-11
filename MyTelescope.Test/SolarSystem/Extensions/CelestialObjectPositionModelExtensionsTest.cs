@@ -6,6 +6,7 @@
     using MyTelescope.SolarSystem.Models.CelestialObject;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models;
+    using SWE.BasicType.Utilities;
     using System;
     using System.Linq;
     using Xunit;
@@ -43,7 +44,7 @@
             var actualCount = hourRange * 2 * partsPerHour;
             Assert.Equal(actualCount, actual.Count);
             var actualValue = actual.ToList()[(hourRange + 1) * partsPerHour].SideRealTime;
-            Assert.True(expected.EqualsWithinTolerance(actualValue, 6));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expected, actualValue, 6));
         }
 
         [Fact]
@@ -84,8 +85,8 @@
             var actual = CelestialObjectPositionExtensions.GetSkyPosition(5.567, 52, siderealTime.DateTimeOffset, siderealTime.SideRealTime);
 
             Assert.Equal(actual.DateTimeOffset, siderealTime.DateTimeOffset);
-            Assert.True(19.495.EqualsWithinTolerance(actual.Heigth, 3));
-            Assert.True((-73.383).EqualsWithinTolerance(actual.Azimuth, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(19.495, actual.Heigth, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance((-73.383), actual.Azimuth, 3));
         }
     }
 }

@@ -3,6 +3,7 @@ namespace MyTelescope.Test
     using Base;
     using MyTelescope.Utilities.Exceptions;
     using MyTelescope.Utilities.Helpers;
+    using SWE.BasicType.Extensions;
     using Xunit;
 
     public class InternalProcessExceptionTest : IClassFixture<CustomFixture>

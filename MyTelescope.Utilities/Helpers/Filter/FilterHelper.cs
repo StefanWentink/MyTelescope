@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.Utilities.Helpers.Filter
 {
     using Models.Filter;
-    using Reflection;
+    using SWE.Expression.Extensions;
     using System;
     using System.Linq.Expressions;
 

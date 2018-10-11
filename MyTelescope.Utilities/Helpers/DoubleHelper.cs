@@ -1,10 +1,12 @@
-﻿namespace MyTelescope.Utilities.Helpers
+﻿using SWE.BasicType.Utilities;
+
+namespace MyTelescope.Utilities.Helpers
 {
     public static class DoubleHelper
     {
         public static bool DoubleIsNullOrEmpty(object value)
         {
-            return TypeHelper.ToType(value, TryParseDouble, default(double)).EqualsWithinTolerance(default(double), 6);
+            return CompareUtilities.EqualsWithinTolerance(TypeHelper.ToType(value, TryParseDouble, default(double)), default(double), 6);
         }
 
         public static double ToDouble(object value)

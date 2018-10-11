@@ -3,7 +3,7 @@
     using Enums;
     using Interfaces;
     using MyTelescope.Utilities.Helpers;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
     using SolarSystem.Models.CelestialObject;
@@ -18,7 +18,7 @@
 
     public abstract class BaseDataLoader<TViewModel, TModel> : IDataLoader<TViewModel, TModel>
         where TViewModel : class, IBaseViewModel
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         private readonly object _filterLock = new object();
 

@@ -2,14 +2,14 @@
 {
     using FreshMvvm;
     using MyTelescope.Utilities.Helpers;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using System;
     using ViewModels.Interfaces;
 
     public abstract class TabbedPageModel<TModel> :
         FreshTabbedNavigationContainer,
         IModelContainer<TModel>
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         public TModel Model { get; set; }
 

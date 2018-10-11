@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.App.ViewModels.Interfaces
 {
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
 
     public interface IModelContainer<TModel>
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         void SetModel(TModel model);
 

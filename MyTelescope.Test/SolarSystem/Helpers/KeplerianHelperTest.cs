@@ -4,6 +4,7 @@ namespace MyTelescope.Test.SolarSystem.Helpers
     using MyTelescope.SolarSystem.Helpers;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models;
+    using SWE.BasicType.Utilities;
     using System;
     using Xunit;
 
@@ -13,13 +14,13 @@ namespace MyTelescope.Test.SolarSystem.Helpers
         public void KeplerianHelperGetJ2000CenturyFactorTest()
         {
             var value = KeplerianHelper.GetJ2000CenturyFactor(new DateTimeOffset(1900, 1, 1, 0, 0, 0, TimeSpan.Zero));
-            Assert.True(value.EqualsWithinTolerance(-1, 5));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(value, -1, 5));
 
             value = KeplerianHelper.GetJ2000CenturyFactor(new DateTimeOffset(2000, 1, 1, 0, 0, 0, TimeSpan.Zero));
             Assert.Equal(0, value);
 
             value = KeplerianHelper.GetJ2000CenturyFactor(new DateTimeOffset(2100, 1, 1, 0, 0, 0, TimeSpan.Zero));
-            Assert.True(value.EqualsWithinTolerance(1, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(value, 1, 4));
         }
 
         [Fact]
@@ -37,9 +38,9 @@ namespace MyTelescope.Test.SolarSystem.Helpers
             var y = location.Y;
             var z = location.Z;
 
-            Assert.True(x.EqualsWithinTolerance(-5.04289, 4));
-            Assert.True(y.EqualsWithinTolerance(1.93965, 4));
-            Assert.True(z.EqualsWithinTolerance(0.10478, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(x, -5.04289, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(y, 1.93965, 4));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(z, 0.10478, 4));
         }
     }
 }

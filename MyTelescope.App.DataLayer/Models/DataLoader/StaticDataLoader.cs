@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.DataLoader
 {
     using Interfaces;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using MyTelescope.Utilities.Models.Filter;
     using System.Collections.Generic;
     using System.Threading.Tasks;
@@ -11,7 +11,7 @@
         BaseDataLoader<TViewModel, TModel>,
         IStaticDataLoader<TViewModel, TModel>
         where TViewModel : class, IBaseViewModel
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         protected override async Task<List<TViewModel>> GetTask(TModel model, FilterModel filter)
         {

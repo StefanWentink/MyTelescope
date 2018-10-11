@@ -1,12 +1,15 @@
 ﻿namespace MyTelescope.App.ViewModels.Interfaces
 {
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
+
+    using SWE.Model.Interfaces;
+
     using System;
 
     public interface IBaseKeyViewModel<TModel> : IBaseViewModel
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
-        Guid Id { get; set; }
+        Guid Id { get; } //set; }
 
         TModel Model { get; set; }
     }

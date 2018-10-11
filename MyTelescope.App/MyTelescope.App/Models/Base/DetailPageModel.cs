@@ -1,12 +1,12 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using System;
     using ViewModels.Interfaces;
 
     public abstract class DetailPageModel<TViewModel, TModel> : BasePageModel<TModel>
         where TViewModel : class, IBaseKeyViewModel<TModel>, new()
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         public TViewModel ViewModel { get; set; }
 

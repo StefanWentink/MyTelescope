@@ -2,7 +2,8 @@
 {
     using Enums;
     using Models.Filter;
-    using Reflection;
+    using MyTelescope.Utilities.Helpers.Reflection;
+    using SWE.Expression.Extensions;
     using System;
     using System.Linq;
     using System.Linq.Expressions;

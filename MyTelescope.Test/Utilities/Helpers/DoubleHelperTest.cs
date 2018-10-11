@@ -2,6 +2,7 @@
 {
     using Base;
     using MyTelescope.Utilities.Helpers;
+    using SWE.BasicType.Utilities;
     using Xunit;
 
     public class DoubleHelperTest : IClassFixture<CustomFixture>
@@ -17,12 +18,12 @@
         public void ToDoubleTest(object value, bool expected)
         {
             var actual = DoubleHelper.ToDouble(value);
-            var isDefaultResult = actual.EqualsWithinTolerance(default(double), 6);
+            var isDefaultResult = CompareUtilities.EqualsWithinTolerance(actual, default(double), 6);
 
             if (!isDefaultResult)
             {
                 actual = DoubleHelper.ToDouble(value);
-                isDefaultResult = actual.EqualsWithinTolerance(default(double), 6);
+                isDefaultResult = CompareUtilities.EqualsWithinTolerance(actual, default(double), 6);
             }
 
             Assert.Equal(expected, isDefaultResult);

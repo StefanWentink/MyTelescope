@@ -2,17 +2,17 @@
 {
     using Core.Utilities.Helpers;
     using MoreLinq;
+    using SWE.Model.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    using Utilities.Interfaces;
     using Utilities.Interfaces.Connector;
     using Utilities.Models.Sort;
 
     public abstract class BaseSeeder<TModel, TKey>
-        where TModel : class, IKeyModel<Guid>
+        where TModel : class, IKey
     {
         protected BaseSeeder(IContextConnector<TModel> connector)
         {
@@ -23,7 +23,7 @@
 
         private List<TModel> ExistingList(Expression<Func<TModel, bool>> batchExpression)
         {
-            return Task.Run(() => Connector.ReadAsync(batchExpression, new SortModel(nameof(IKeyModel<Guid>.Id)))).Result.ToList();
+            return Task.Run(() => Connector.ReadAsync(batchExpression, new SortModel(nameof(IKey<Guid>.Id)))).Result.ToList();
         }
 
         protected abstract List<Expression<Func<TModel, bool>>> GetBatchExpression();

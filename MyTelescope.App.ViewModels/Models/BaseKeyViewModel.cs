@@ -1,16 +1,19 @@
 ﻿namespace MyTelescope.App.ViewModels.Models
 {
     using Interfaces;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
+
+    using SWE.Model.Interfaces;
+
     using System;
 
-    public abstract class BaseKeyViewModel<TModel> : BaseViewModel, IBaseKeyViewModel<TModel>, IKeyModel
-        where TModel : class, IKeyModel, new()
+    public abstract class BaseKeyViewModel<TModel> : BaseViewModel, IBaseKeyViewModel<TModel>, IKey
+        where TModel : class, IKey, new()
     {
         public Guid Id
         {
             get => Model.Id;
-            set => Model.Id = value;
+            //set => Model.Id = value;
         }
 
         public TModel Model { get; set; }

@@ -3,7 +3,7 @@
     using DataLayer.Enums;
     using DataLayer.Interfaces;
     using Helpers;
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using System;
     using System.Collections.ObjectModel;
     using System.Linq;
@@ -16,7 +16,7 @@
         BasePageModel<TModel>,
         ICollectionPageModel<TViewModel, TModel>
         where TViewModel : class, IBaseViewModel
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         private object _collectionWriteLock = new object();
 

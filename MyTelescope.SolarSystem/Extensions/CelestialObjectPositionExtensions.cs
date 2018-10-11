@@ -5,6 +5,7 @@
     using Helpers;
     using Models.CelestialObject;
     using Models.Keplerian;
+    using SWE.BasicType.Utilities;
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -200,7 +201,7 @@
             double latitudeDegrees,
             double h0)
         {
-            if (h0.EqualsWithinTolerance(0, 6))
+            if (CompareUtilities.EqualsWithinTolerance(h0, 0, 6))
             {
                 return DegreeHelper.RadiansToDegrees(
                     Math.Acos(

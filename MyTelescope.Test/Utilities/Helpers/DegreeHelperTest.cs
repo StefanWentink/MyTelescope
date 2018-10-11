@@ -2,6 +2,7 @@
 {
     using Base;
     using MyTelescope.Utilities.Helpers;
+    using SWE.BasicType.Utilities;
     using System;
     using Xunit;
 
@@ -14,7 +15,7 @@
         public void DegreeToRadiansTest(double value, double expected)
         {
             var actual = DegreeHelper.DegreesToRadians(value);
-            Assert.True(expected.EqualsWithinTolerance(actual, 6), $"expected {expected} and actual {actual} are not equal.");
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expected, actual, 6), $"expected {expected} and actual {actual} are not equal.");
         }
 
         [Theory]
@@ -24,7 +25,7 @@
         public void RadiansToDegreesTest(double value, double expected)
         {
             var actual = DegreeHelper.RadiansToDegrees(value);
-            Assert.True(expected.EqualsWithinTolerance(actual, 6), $"expected {expected} and actual {actual} are not equal.");
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expected, actual, 6), $"expected {expected} and actual {actual} are not equal.");
         }
 
         [Theory]
@@ -37,7 +38,7 @@
         public void Modulo360AbsoluteTest(double value, double expected)
         {
             var actual = DegreeHelper.Modulo360Absolute(value);
-            Assert.True(expected.EqualsWithinTolerance(actual, 6), $"expected {expected} and actual {actual} are not equal.");
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expected, actual, 6), $"expected {expected} and actual {actual} are not equal.");
         }
 
         [Theory]
@@ -50,7 +51,7 @@
         public void Modulo360AroundZeroTest(double value, double expected)
         {
             var actual = DegreeHelper.Modulo360AroundZero(value);
-            Assert.True(expected.EqualsWithinTolerance(actual, 6), $"expected {expected} and actual {actual} are not equal.");
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expected, actual, 6), $"expected {expected} and actual {actual} are not equal.");
         }
 
         [Theory]

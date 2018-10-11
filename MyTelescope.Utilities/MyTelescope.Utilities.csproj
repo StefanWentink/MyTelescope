@@ -13,8 +13,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Helpers\ExceptionHelper.cs" />
+    <Compile Remove="Helpers\Reflection\ExpressionHelper.cs" />
+    <Compile Remove="Helpers\ToleranceHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Factories\" />
     <Folder Include="Adapters\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="SWE.BasicType" Version="1.0.2" />
+    <PackageReference Include="SWE.Expression" Version="1.0.2" />
+    <PackageReference Include="SWE.Model" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

@@ -1,6 +1,7 @@
 ﻿namespace MyTelescope.SolarSystem.Models.CelestialObject
 {
     using Keplerian;
+    using SWE.Model.Interfaces;
     using System;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
@@ -9,7 +10,7 @@
     using Utilities.Models;
 
     [DebuggerDisplay("{ReferenceDate.ToString()}")]
-    public class CelestialObjectPositionModel : IKeyModel, ICelestialObjectReferenceModel
+    public class CelestialObjectPositionModel : IKey, ICelestialObjectReferenceModel
     {
         [Obsolete("For serialisation")]
         public CelestialObjectPositionModel()

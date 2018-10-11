@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.App.ViewModels.Interfaces
 {
-    using MyTelescope.Utilities.Interfaces;
+    using SWE.Model.Interfaces;
     using System.Collections.Generic;
 
     public interface IBaseKeyDetailViewModel<TModel> : IBaseKeyViewModel<TModel>
-        where TModel : class, IKeyModel, new()
+        where TModel : class, IKey, new()
     {
         List<IDetailViewModel> GetDetails();
     }

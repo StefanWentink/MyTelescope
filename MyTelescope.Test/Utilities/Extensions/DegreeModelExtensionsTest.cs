@@ -4,6 +4,7 @@
     using MyTelescope.Utilities.Extensions;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models;
+    using SWE.BasicType.Utilities;
     using Xunit;
 
     public class DegreeModelExtensionsTest : IClassFixture<CustomFixture>
@@ -19,7 +20,7 @@
         {
             var model = new DegreeModel(value);
             var actual = model.Modulo360Absolute();
-            Assert.True(expected.EqualsWithinTolerance(actual.Degrees, 6), $"expected {expected} and actual {actual.Degrees} are not equal.");
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expected, actual.Degrees, 6), $"expected {expected} and actual {actual.Degrees} are not equal.");
         }
 
         [Theory]
@@ -33,7 +34,7 @@
         {
             var model = new DegreeModel(value);
             var actual = model.Modulo360AroundZero();
-            Assert.True(expected.EqualsWithinTolerance(actual.Degrees, 6), $"expected {expected} and actual {actual.Degrees} are not equal.");
+            Assert.True(CompareUtilities.EqualsWithinTolerance(expected, actual.Degrees, 6), $"expected {expected} and actual {actual.Degrees} are not equal.");
         }
     }
 }

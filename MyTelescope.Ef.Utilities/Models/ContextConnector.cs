@@ -12,6 +12,7 @@
     using MyTelescope.Utilities.Models.Connector;
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
+    using SWE.Expression.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;

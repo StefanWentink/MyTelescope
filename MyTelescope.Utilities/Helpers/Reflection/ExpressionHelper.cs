@@ -136,11 +136,12 @@
         {
             if (!(propertySelector.Body is MemberExpression memberExpression))
             {
-                throw new ArgumentException("propertySelector");
+                throw new ArgumentException($"{nameof(propertySelector)} is not of type {nameof(MemberExpression)}", nameof(propertySelector));
             }
 
             var expr = Expression.Lambda<Func<TModel, bool>>(propertyPredicate.Body, propertySelector.Parameters);
             var rebinder = new ParamExpressionToMemberExpressionRebinder(propertyPredicate.Parameters[0], memberExpression);
+
             return (Expression<Func<TModel, bool>>)rebinder.Visit(expr);
         }
     }

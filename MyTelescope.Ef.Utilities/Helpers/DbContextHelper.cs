@@ -4,6 +4,7 @@
     using Exceptions;
     using Microsoft.EntityFrameworkCore;
     using MyTelescope.Utilities.Helpers;
+    using SWE.BasicType.Extensions;
     using System;
     using System.Collections.Generic;
     using System.Data;
