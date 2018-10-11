@@ -5,6 +5,7 @@
 namespace MyTelescope.App.iOS.Components
 {
     using Foundation;
+
     using MyTelescope.App.Localisation.Models;
 
     public class Localise : LocaliseBase
@@ -22,44 +23,38 @@ namespace MyTelescope.App.iOS.Components
 
         protected override string ToDotnetFallbackLanguage(PlatformCultureInfo platformCultureInfo)
         {
-            var languageCode = platformCultureInfo.LanguageCode; // use the first part of the identifier (two chars, usually);
-
             switch (platformCultureInfo.LanguageCode)
             {
                 case "pt":
-                    languageCode = "pt-PT"; // fallback to Portuguese (Portugal)
-                    break;
+                    return "pt-PT"; // fallback to Portuguese (Portugal)
+
                 case "gsw":
-                    languageCode = "de-CH"; // equivalent to German (Switzerland) for this app
-                    break;
+                    return "de-CH"; // equivalent to German (Switzerland) for this app
 
                     // add more application-specific cases here (if required)
                     // ONLY use cultures that have been tested and known to work
             }
 
-            return languageCode;
+            return platformCultureInfo.LanguageCode;
         }
 
         private static string PlatformToDotnetLanguage(string platformLanguage)
         {
-            var netLanguage = platformLanguage;
-
             // certain languages need to be converted to CultureInfo equivalent
             switch (platformLanguage)
             {
                 case "ms-MY":   // "Malaysian (Malaysia)" not supported .NET culture
                 case "ms-SG":   // "Malaysian (Singapore)" not supported .NET culture
-                    netLanguage = "ms"; // closest supported
-                    break;
+                    return "ms"; // closest supported
+
                 case "gsw-CH":  // "Schwiizertüütsch (Swiss German)" not supported .NET culture
-                    netLanguage = "de-CH"; // closest supported
-                    break;
+                    return "de-CH"; // closest supported
 
                     // add more application-specific cases here (if required)
                     // ONLY use cultures that have been tested and known to work
             }
 
-            return netLanguage;
+            return platformLanguage;
         }
     }
 }

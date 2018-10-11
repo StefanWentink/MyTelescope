@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.App.Pages.Content
 {
-    using System;
     using Models.Base;
     using SolarSystem.Models.CelestialObject;
+    using System;
     using ViewModels.Models.Item;
 
     public class MoonImagePageModel : ImagePageModel<CelestialObjectViewModel, CelestialObjectModel>

@@ -5,7 +5,7 @@
     public class DetailViewModel : BaseViewModel, IDetailViewModel
     {
         public string Code { get; set; }
-        
+
         public string Description { get; set; }
 
         public DetailViewModel(

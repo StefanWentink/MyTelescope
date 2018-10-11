@@ -1,15 +1,15 @@
 ﻿namespace MyTelescope.App.Helpers
 {
-    using System;
-    using System.Threading.Tasks;
     using Plugin.Geolocator;
     using Plugin.Geolocator.Abstractions;
+    using System;
+    using System.Threading.Tasks;
     using Utilities.Helpers;
 
     public static class GeoLocationHelper
     {
         private static Position _position;
-        
+
         public static Position GetGeoLocation()
         {
             return _position ?? (_position = Task.Run(LoadGeoLocation).Result);

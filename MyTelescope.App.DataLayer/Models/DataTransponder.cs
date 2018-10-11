@@ -1,12 +1,12 @@
 ﻿namespace MyTelescope.App.DataLayer.Models
 {
-    using System.Collections.Generic;
     using Enums;
     using Http;
     using Interfaces;
-    using Newtonsoft.Json;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models.Filter;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class DataTransponder : IDataTransponder
     {

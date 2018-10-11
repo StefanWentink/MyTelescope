@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.Utilities.Helpers.Filter
 {
-    using System;
-    using System.Linq.Expressions;
     using Models.Filter;
     using Reflection;
+    using System;
+    using System.Linq.Expressions;
 
     public static class FilterHelper
     {

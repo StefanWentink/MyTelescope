@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Collections.ObjectModel;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Text;
@@ -17,7 +16,7 @@
         /// <returns></returns>
         public static bool IsNullOrEmpty<T>(this IEnumerable<T> value)
         {
-            return value == null || !value.Any();
+            return value?.Any() != true;
         }
 
         /// <summary>
@@ -29,7 +28,7 @@
         /// <returns></returns>
         public static bool IsNullOrEmpty<T>(this IList<T> value, Func<T, bool> expression)
         {
-            return value == null || !value.Any(expression);
+            return value?.Any(expression) != true;
         }
 
         /// <summary>
@@ -142,7 +141,6 @@
             return new List<TValue>();
         }
 
-
         /// <summary>
         /// Calculates available take
         /// </summary>
@@ -166,7 +164,6 @@
         {
             return CalculateTake(skip, take, -1, maxTake);
         }
-
 
         /// <summary>
         /// Calculates available and/or allowed take
@@ -231,7 +228,6 @@
             list.AddOrUpdateItem(model, function, firstMatchOnly, true);
         }
 
-
         /// <summary>
         /// Adds or updates an item to a list based on finding the item by an expression.
         /// </summary>
@@ -252,7 +248,7 @@
                 if (replacements < 1 || !replaceOnce)
                 {
                     list.Insert(index, model);
-                    replacements += 1;
+                    replacements++;
                 }
 
                 index = firstMatchOnly ? -1 : list.FindIndex(index, new Predicate<T>(function));

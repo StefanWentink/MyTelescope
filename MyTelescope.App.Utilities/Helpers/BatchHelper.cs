@@ -1,16 +1,16 @@
 ﻿namespace MyTelescope.App.Utilities.Helpers
 {
-    using System.Collections.Generic;
     using Constants;
     using MyTelescope.Utilities.Models.Sort;
+    using System.Collections.Generic;
 
     public static class BatchHelper
     {
         public static IEnumerable<SortModel> GetSortModels(int requestedRecordCount)
         {
-            var batchSize = 
-                requestedRecordCount == default(int) 
-                ? BatchConstants.InitialBatchSize 
+            var batchSize =
+                requestedRecordCount == default(int)
+                ? BatchConstants.InitialBatchSize
                 : BatchConstants.BatchSize;
 
             var toRequestedRecordCount = requestedRecordCount + batchSize;

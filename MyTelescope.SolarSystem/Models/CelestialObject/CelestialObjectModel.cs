@@ -1,11 +1,11 @@
 ﻿namespace MyTelescope.SolarSystem.Models.CelestialObject
 {
+    using Interfaces;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Diagnostics;
-    using Interfaces;
     using Utilities.Interfaces;
 
     [DebuggerDisplay("{" + nameof(Code) + "}")]
@@ -204,7 +204,7 @@
         /// Length of day(hours)
         /// </summary>
         public double LengthOfDay { get; set; }
-        
+
         /// <summary>
         /// Synodic period(days)
         /// </summary>
@@ -291,7 +291,7 @@
         public double MinimumApparentDiameter { get; set; }
 
         /// <summary>
-        /// Maximum visual magnitude  
+        /// Maximum visual magnitude
         /// </summary>
         public double MaximumVisualMagnitude { get; set; }
     }

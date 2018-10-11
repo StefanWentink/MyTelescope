@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.App.ViewModels.Models
 {
-    using System;
     using Interfaces;
     using MyTelescope.Utilities.Interfaces;
+    using System;
 
     public abstract class BaseKeyViewModel<TModel> : BaseViewModel, IBaseKeyViewModel<TModel>, IKeyModel
         where TModel : class, IKeyModel, new()

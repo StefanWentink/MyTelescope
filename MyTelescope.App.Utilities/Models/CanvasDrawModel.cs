@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.App.Utilities.Models
 {
-    using System;
-    using System.Drawing;
     using Interfaces;
     using MyTelescope.Utilities.Models;
+    using System;
+    using System.Drawing;
 
     public class CanvasDrawModel : BaseDrawModel<int>, ICanvasDrawModel
     {
@@ -51,7 +51,7 @@
                     color,
                     borderColor,
                     secondaryColor,
-                    strokeWidth, 
+                    strokeWidth,
                     50)
         {
             CentreX = centreX;

@@ -25,7 +25,7 @@ namespace MyTelescope.Test
         {
             var model = new LocationModel(-4.87477, 0.97081, 0.10478);
             var actual = model.GetEclipticLongitude();
-            var expected = 168.737;
+            const double expected = 168.737;
             Assert.True(actual.EqualsWithinTolerance(expected, 3));
         }
 
@@ -33,31 +33,31 @@ namespace MyTelescope.Test
         public void GetEclipticLatitudeTest()
         {
             var model = new LocationModel(-4.87477, 0.97081, 0.10478);
-            var largeDelta = 4.97161;
+            const double largeDelta = 4.97161;
             var actual = model.GetEclipticLatitude(largeDelta);
-            var expected = 1.208;
+            const double expected = 1.208;
             Assert.True(actual.EqualsWithinTolerance(expected, 3));
         }
 
         [Fact]
         public void GetRightAscensionTest()
         {
-            var eclipticLatitude = 1.208;
-            var eclipticLongitude = 168.737;
+            const double eclipticLatitude = 1.208;
+            const double eclipticLongitude = 168.737;
             var angle = LocationHelper.GetAngle();
             var actual = LocationHelper.GetRightAscension(eclipticLatitude, eclipticLongitude, angle);
-            var expected = 170.120;
+            const double expected = 170.120;
             Assert.True(actual.EqualsWithinTolerance(expected, 3));
         }
 
         [Fact]
         public void GetDeclinationTest()
         {
-            var eclipticLatitude = 1.208;
-            var eclipticLongitude = 168.737;
+            const double eclipticLatitude = 1.208;
+            const double eclipticLongitude = 168.737;
             var angle = LocationHelper.GetAngle();
             var actual = LocationHelper.GetDeclination(eclipticLatitude, eclipticLongitude, angle);
-            var expected = 5.567;
+            const double expected = 5.567;
             Assert.True(actual.EqualsWithinTolerance(expected, 3));
         }
     }

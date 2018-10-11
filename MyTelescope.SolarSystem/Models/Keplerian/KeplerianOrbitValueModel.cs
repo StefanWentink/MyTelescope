@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace MyTelescope.SolarSystem.Models.Keplerian
+﻿namespace MyTelescope.SolarSystem.Models.Keplerian
 {
     public class KeplerianOrbitValueModel
     {

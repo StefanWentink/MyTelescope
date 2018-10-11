@@ -1,13 +1,13 @@
 namespace MyTelescope.Test.SolarSystem.Extensions
 {
-    using System;
-    using System.Linq;
     using Base;
     using MyTelescope.SolarSystem.Constants;
     using MyTelescope.SolarSystem.Enums;
     using MyTelescope.SolarSystem.Extensions;
     using MyTelescope.SolarSystem.Models.Keplerian;
     using MyTelescope.Utilities.Helpers;
+    using System;
+    using System.Linq;
     using Xunit;
 
     public class KeplerianModelExtensionsTest : IClassFixture<CustomFixture>
@@ -100,12 +100,12 @@ namespace MyTelescope.Test.SolarSystem.Extensions
             var actualEclipticLatitude = jupiterCalculate.EclipticLatitude;
             var actualDeclination = jupiterCalculate.Declination;
             var actualRightAscension = jupiterCalculate.RightAscension;
-            
-            var expectedLargeDelta = 4.933;
-            var expectedEclipticLongitude = 167.0899;
-            var expectedEclipticLatitude = 1.1969;
-            var expectedDeclination = 6.2012;
-            var expectedRightAscension = 168.5924;
+
+            const double expectedLargeDelta = 4.933;
+            const double expectedEclipticLongitude = 167.0899;
+            const double expectedEclipticLatitude = 1.1969;
+            const double expectedDeclination = 6.2012;
+            const double expectedRightAscension = 168.5924;
 
             Assert.True(expectedLargeDelta.EqualsWithinTolerance(actualLargeDelta, 2));
             Assert.True(expectedEclipticLongitude.EqualsWithinTolerance(actualEclipticLongitude, 2));

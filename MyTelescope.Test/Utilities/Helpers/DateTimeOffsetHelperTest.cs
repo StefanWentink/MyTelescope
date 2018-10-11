@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System;
     using Base;
     using MyTelescope.Utilities.Helpers;
+    using System;
     using Xunit;
 
     public class DateTimeOffsetHelperTest : IClassFixture<CustomFixture>
@@ -71,7 +71,7 @@
         {
             var dateTimeOffset = DateTimeOffsetHelper.ToDateTimeOffset(value);
 
-            var actual = DateTimeOffsetHelper.GetClosestUtcZeroTime(dateTimeOffset.DateTime);
+            var actual = dateTimeOffset.DateTime.GetClosestUtcZeroTime();
 
             Assert.Equal(dateTimeOffset.Year, actual.Year);
             Assert.Equal(dateTimeOffset.Month, actual.Month);

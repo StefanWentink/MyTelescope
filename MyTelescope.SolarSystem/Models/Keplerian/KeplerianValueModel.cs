@@ -34,7 +34,7 @@
         /// 'Ω' - AscendingNodeLongitude
         /// </summary>
         public DegreeModel AscendingNodeLongitude { get; }
-        
+
         public KeplerianValueModel(
             double semiMajorAxis,
             double eccentricity,
@@ -61,7 +61,7 @@
         }
 
         /// <summary>
-        /// Get the argument of Perihelion 'M' = 'L' - 'ϖ' or 'L' - 'ω'' - 'Ω' 
+        /// Get the argument of Perihelion 'M' = 'L' - 'ϖ' or 'L' - 'ω'' - 'Ω'
         /// </summary>
         /// <returns></returns>
         public DegreeModel GetMeanAnomaly360()
@@ -70,7 +70,7 @@
         }
 
         /// <summary>
-        /// Get the argument of Perihelion 'M' = 'L' - 'ϖ' or 'L' - 'ω'' - 'Ω' 
+        /// Get the argument of Perihelion 'M' = 'L' - 'ϖ' or 'L' - 'ω'' - 'Ω'
         /// </summary>
         /// <returns></returns>
         public DegreeModel GetMeanAnomalyAroundZero()

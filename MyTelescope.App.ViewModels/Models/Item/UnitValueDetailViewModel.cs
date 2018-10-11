@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.App.ViewModels.Models.Item
 {
-    using System.Collections.Generic;
     using Enums;
     using Interfaces;
+    using System.Collections.Generic;
 
     public class UnitValueDetailViewModel<TValue> : IUnitValueDetailViewModel
     {
@@ -36,7 +36,7 @@
             string unit,
             List<DisplayType> displayTypes)
         {
-            Title  = title;
+            Title = title;
             Value = value;
             StringValue = value.ToString();
             Unit = unit;

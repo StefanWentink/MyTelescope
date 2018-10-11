@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.Ef.Utilities.Models
 {
-    using System;
     using Helpers;
     using Interfaces;
     using Microsoft.EntityFrameworkCore;
+    using System;
 
     public class ContextContainer : IContextContainer
     {

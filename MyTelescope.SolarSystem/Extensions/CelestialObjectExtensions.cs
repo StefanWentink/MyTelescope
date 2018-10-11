@@ -1,12 +1,10 @@
 ﻿namespace MyTelescope.SolarSystem.Extensions
 {
-    using System;
-    using Constants;
     using Enums;
+    using System;
 
     public static class CelestialObjectExtensions
     {
-
         public static string ToConstant(this CelestialObject value)
         {
             return value.ToString();

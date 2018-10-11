@@ -19,7 +19,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="column"></param>
         public SortModel(string column)
@@ -28,7 +28,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="column"></param>
         /// <param name="ascending"></param>
@@ -38,7 +38,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="filterItem">
         /// </param>
@@ -48,7 +48,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="filterItems"></param>
         public SortModel(List<SortItemModel> filterItems)
@@ -57,7 +57,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="skip"></param>
         /// <param name="take"></param>
@@ -67,7 +67,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="column"></param>
         /// <param name="skip"></param>
@@ -78,7 +78,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="column"></param>
         /// <param name="ascending"></param>
@@ -90,7 +90,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="filterItem">
         /// </param>
@@ -104,7 +104,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortModel"/> class.
         /// </summary>
         /// <param name="filterItems"></param>
         /// <param name="skip"></param>

@@ -1,10 +1,5 @@
 namespace MyTelescope.Test.Integration
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Net.Http;
-    using System.Text;
     using App.DataLayer.Models;
     using App.DataLayer.Models.Http;
     using App.Test.Base;
@@ -15,6 +10,11 @@ namespace MyTelescope.Test.Integration
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Net.Http;
+    using System.Text;
     using Xunit;
 
     public class ApiTest : IClassFixture<CustomFixture>
@@ -74,7 +74,7 @@ namespace MyTelescope.Test.Integration
             contentResult = ExecuteExchangerRequest(modelName);
             result = JsonConvert.DeserializeObject<List<T>>(contentResult);
             Assert.Equal(3, result.Count);
-            
+
             result = ExecuteDataTransponderRequest<T>().ToList();
             Assert.Equal(3, result.Count);
         }
@@ -119,7 +119,7 @@ namespace MyTelescope.Test.Integration
 
                 string contentResult;
 
-                var actionName = "Get";
+                const string actionName = "Get";
                 var url = $"api/{modelName}/{actionName}";
                 var uri = new Uri(ConfigHelper.ApiMyTelescope + url);
 

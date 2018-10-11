@@ -7,16 +7,16 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SolarSystemPage : ContentPage
-	{
-		public SolarSystemPage ()
-		{
-			InitializeComponent ();
-	    }
+    public partial class SolarSystemPage : ContentPage
+    {
+        public SolarSystemPage()
+        {
+            InitializeComponent();
+        }
 
-	    public void OnPaintSurface(object sender, SKPaintSurfaceEventArgs args)
-	    {
-	        args.OnPaintSurface(ModelHelper.GetName(GetType().Name));
-	    }
+        public void OnPaintSurface(object sender, SKPaintSurfaceEventArgs args)
+        {
+            args.OnPaintSurface(ModelHelper.GetName(GetType().Name));
+        }
     }
 }

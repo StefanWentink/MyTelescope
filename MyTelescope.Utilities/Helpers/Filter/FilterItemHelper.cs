@@ -1,11 +1,11 @@
 ﻿namespace MyTelescope.Utilities.Helpers.Filter
 {
-    using System;
-    using System.Linq;
-    using System.Linq.Expressions;
     using Enums;
     using Models.Filter;
     using Reflection;
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
 
     public static class FilterItemHelper
     {
@@ -23,16 +23,22 @@
             {
                 case ColumnType.StringColumn:
                     return ToStringValueExpression<TModel>(filterItem);
+
                 case ColumnType.GuidColumn:
                     return ToGuidValueExpression<TModel>(filterItem, isNullable);
+
                 case ColumnType.BoolColumn:
                     return ToBoolValueExpression<TModel>(filterItem, isNullable);
+
                 case ColumnType.DateTimeOffsetColumn:
                     return ToDateTimeOffsetValueExpression<TModel>(filterItem, isNullable);
+
                 case ColumnType.IntColumn:
                     return ToIntValueExpression<TModel>(filterItem, isNullable);
+
                 case ColumnType.DoubleColumn:
                     return ToDoubleValueExpression<TModel>(filterItem, isNullable);
+
                 default:
                     throw new ArgumentOutOfRangeException($"{nameof(ColumnType)} {filterItem.Type} is not supported.", nameof(filterItem));
             }
@@ -61,7 +67,7 @@
 
             var collection = CollectionHelper.EnumerableObjectToList(filterItem.Value, datatypeFunc);
 
-            if (!collection.Any())
+            if (collection.Count == 0)
             {
                 throw new ArgumentException("'In' filter needs a collection as a value.");
             }

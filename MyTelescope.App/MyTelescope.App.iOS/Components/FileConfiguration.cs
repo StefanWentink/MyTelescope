@@ -1,4 +1,5 @@
 ﻿using MyTelescope.App.iOS.Components;
+
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(FileConfiguration))]
@@ -7,6 +8,7 @@ namespace MyTelescope.App.iOS.Components
 {
     using System.IO;
     using System.Threading.Tasks;
+
     using Utilities.Helpers;
     using Utilities.Interfaces;
 
@@ -23,7 +25,7 @@ namespace MyTelescope.App.iOS.Components
 
         public async Task<string> ReadAsString(string fileName)
         {
-            var data = await ReadAsBytes(fileName);
+            var data = await ReadAsBytes(fileName).ConfigureAwait(false);
 
             if (data == null)
             {

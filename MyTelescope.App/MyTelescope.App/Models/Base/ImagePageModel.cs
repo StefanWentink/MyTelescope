@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using System;
     using MyTelescope.Utilities.Interfaces;
+    using System;
     using ViewModels.Interfaces;
 
     public abstract class ImagePageModel<TViewModel, TModel> : DetailPageModel<TViewModel, TModel>

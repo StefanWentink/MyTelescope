@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.ViewModels.Interfaces
 {
-    using System.Collections.Generic;
     using Enums;
+    using System.Collections.Generic;
 
     public interface IUnitValueDetailViewModel
     {

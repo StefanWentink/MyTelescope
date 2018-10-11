@@ -1,6 +1,5 @@
 ﻿namespace MyTelescope.App.Helpers.Di
 {
-    using System.ComponentModel;
     using Localisation.Interfaces;
     using Localisation.Resources.MyTelescope;
     using Xamarin.Forms;

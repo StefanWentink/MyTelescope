@@ -1,8 +1,5 @@
 ﻿namespace MyTelescope.Seeder
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using Api.DataLayer.Connectors;
     using Api.DataLayer.Context;
     using Core.Utilities.Helpers;
@@ -12,6 +9,9 @@
     using Microsoft.Extensions.Logging;
     using SolarSystem.Constants;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Utilities.Enums;
     using Utilities.Helpers;
     using Utilities.Interfaces.Connector;
@@ -64,14 +64,14 @@
                 var celestialObjectTypeConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectTypeModel>>();
                 celestialObjectTypeResult = new CelestialObjectTypeSeeder(celestialObjectTypeConnector).Seed();
 
-                if (celestialObjectTypeResult == null || !celestialObjectTypeResult.Any())
+                if (celestialObjectTypeResult == null || celestialObjectTypeResult.Count == 0)
                 {
                     celestialObjectTypeResult = celestialObjectTypeConnector.Read(new FilterModel());
                 }
 
                 celestialObjectSunResult = new CelestialObjectSunSeeder(celestialObjectConnector).Seed();
 
-                if (celestialObjectSunResult == null || !celestialObjectSunResult.Any())
+                if (celestialObjectSunResult == null || celestialObjectSunResult.Count == 0)
                 {
                     var filter = new FilterModel(
                         new FilterItemModel(
@@ -92,7 +92,7 @@
 
             if (input.In(2, 9))
             {
-                if (celestialObjectTypeResult == null || !celestialObjectTypeResult.Any())
+                if (celestialObjectTypeResult == null || celestialObjectTypeResult.Count == 0)
                 {
                     var celestialObjectTypeConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectTypeModel>>();
                     celestialObjectTypeResult = celestialObjectTypeConnector.Read(new FilterModel());
@@ -103,8 +103,8 @@
                 {
                     var filter = new FilterModel(
                         new FilterItemModel(
-                            nameof(CelestialObjectModel.CelestialObjectTypeId), 
-                            ColumnType.GuidColumn, 
+                            nameof(CelestialObjectModel.CelestialObjectTypeId),
+                            ColumnType.GuidColumn,
                             FilterType.Equal,
                         celestialObjectTypeResult.Single(x => x.Code == CelestialObjectTypeConstants.Planet).Id));
 
@@ -115,8 +115,8 @@
                 {
                     var filter = new FilterModel(
                         new FilterItemModel(
-                            nameof(CelestialObjectModel.CelestialObjectTypeId), 
-                            ColumnType.GuidColumn, 
+                            nameof(CelestialObjectModel.CelestialObjectTypeId),
+                            ColumnType.GuidColumn,
                             FilterType.Equal,
                         celestialObjectTypeResult.Single(x => x.Code == CelestialObjectTypeConstants.Planet).Id));
 

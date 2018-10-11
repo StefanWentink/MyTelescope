@@ -1,14 +1,14 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.Connectors
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Http;
     using Interfaces;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Interfaces.Connector;
     using MyTelescope.Utilities.Models.Filter;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
     using Utilities.Helpers;
 
     public abstract class MyTelescopeConnector<TModel> : IConnector<TModel>
@@ -50,7 +50,7 @@
 
         public async Task<bool> CreateAsync(List<TModel> models)
         {
-            await Task.Delay(1);
+            await Task.Delay(1).ConfigureAwait(false);
             throw new System.NotImplementedException();
         }
 
@@ -61,7 +61,7 @@
 
         public async Task<bool> UpdateAsync(List<TModel> models)
         {
-            await Task.Delay(1);
+            await Task.Delay(1).ConfigureAwait(false);
             throw new System.NotImplementedException();
         }
 
@@ -72,7 +72,7 @@
 
         public async Task<bool> DeleteAsync(List<TModel> models)
         {
-            await Task.Delay(1);
+            await Task.Delay(1).ConfigureAwait(false);
             throw new System.NotImplementedException();
         }
     }

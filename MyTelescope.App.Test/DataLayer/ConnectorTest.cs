@@ -1,11 +1,6 @@
 ﻿namespace MyTelescope.App.Test.DataLayer
 {
-    using System.Net;
-    using System.Net.Http;
-    using System.Text;
-    using System.Threading.Tasks;
     using App.DataLayer.Interfaces;
-    using App.DataLayer.Models.Http;
     using Base;
     using Data;
     using Moq;
@@ -13,6 +8,7 @@
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
     using Newtonsoft.Json;
+    using System.Threading.Tasks;
     using Xunit;
 
     public class ConnectorTest : IClassFixture<CustomFixture>
@@ -32,7 +28,7 @@
                 Task.Run(() => emptyContent));
 
             var connector = new App.DataLayer.Models.Connectors.CelestialObjectConnector(dataExchanger.Object);
-            
+
             var filterPlanet = new FilterModel(
                 new SortModel(new SortItemModel("Id", true), 0, 10),
                 new FilterItemModel("Code", ColumnType.StringColumn, FilterType.Equal, "iets"));

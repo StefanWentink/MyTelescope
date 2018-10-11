@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.Core.Utilities.Helpers
 {
-    using System;
-    using System.Reflection;
     using Config;
     using Microsoft.Extensions.Logging;
     using MyTelescope.Utilities.Helpers;
+    using System;
+    using System.Reflection;
 
     public static class StartupHelper
     {

@@ -12,6 +12,5 @@
 
         public static readonly ObjectCollectionLayoutModel ObjectCollectionLayoutDistance = new ObjectCollectionLayoutModel(ObjectCollectionLayout.Distance, TextResource.LayoutOptionDistance);
         public static readonly ObjectCollectionLayoutModel ObjectCollectionLayoutPosition = new ObjectCollectionLayoutModel(ObjectCollectionLayout.Position, TextResource.LayoutOptionPosition);
-
     }
 }

@@ -1,10 +1,10 @@
 namespace MyTelescope.Test.SolarSystem.Helpers
 {
-    using System;
     using Base;
     using MyTelescope.SolarSystem.Helpers;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models;
+    using System;
     using Xunit;
 
     public class KeplerianHelperTest : IClassFixture<CustomFixture>
@@ -25,7 +25,7 @@ namespace MyTelescope.Test.SolarSystem.Helpers
         [Fact]
         public void KeplerianHelperTEst()
         {
-            var centricDistance = 5.40406;
+            const double centricDistance = 5.40406;
             var ascendingNodeLongitude = new DegreeModel(100.464);
             var perihelionOmega = new DegreeModel(273.867);
             var trueAnomaly = new DegreeModel(144.637);

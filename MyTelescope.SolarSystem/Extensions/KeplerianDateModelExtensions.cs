@@ -1,7 +1,6 @@
 ﻿namespace MyTelescope.SolarSystem.Extensions
 {
     using Helpers;
-    using Models;
     using Models.Keplerian;
 
     public static class KeplerianDateModelExtensions

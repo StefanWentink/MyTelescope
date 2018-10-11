@@ -1,13 +1,6 @@
 namespace MyTelescope.Test
 {
-    using System;
-    using System.Linq;
     using Base;
-    using Data;
-    using MyTelescope.SolarSystem.Constants;
-    using MyTelescope.SolarSystem.Enums;
-    using MyTelescope.SolarSystem.Extensions;
-    using MyTelescope.SolarSystem.Models;
     using MyTelescope.Utilities.Exceptions;
     using MyTelescope.Utilities.Helpers;
     using Xunit;

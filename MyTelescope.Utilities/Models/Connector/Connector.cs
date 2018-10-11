@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.Utilities.Models.Connector
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Enums;
     using Filter;
     using Interfaces.Connector;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     public abstract class Connector<TModel> : IConnector<TModel>
         where TModel : class

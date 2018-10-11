@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.App.Models
 {
-    using System.Threading.Tasks;
     using FreshMvvm;
     using SolarSystem.Models.CelestialObject;
+    using System.Threading.Tasks;
     using ViewModels.Interfaces;
     using Xamarin.Forms;
 
@@ -13,7 +13,7 @@
         {
         }
 
-        public CustomNavigationService(Page page) 
+        public CustomNavigationService(Page page)
             : base(page)
         {
         }
@@ -47,7 +47,7 @@
             }
         }
 
-        public Task<FreshBasePageModel> SwitchSelectedRootPageModel<TPage>() 
+        public Task<FreshBasePageModel> SwitchSelectedRootPageModel<TPage>()
             where TPage : FreshBasePageModel
         {
             throw new System.NotImplementedException();

@@ -1,13 +1,13 @@
 ﻿namespace MyTelescope.Test.SolarSystem.Extensions
 {
-    using System;
-    using System.Linq;
     using Base;
     using MyTelescope.SolarSystem.Enums;
     using MyTelescope.SolarSystem.Extensions;
     using MyTelescope.SolarSystem.Models.CelestialObject;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models;
+    using System;
+    using System.Linq;
     using Xunit;
 
     public class CelestialObjectPositionModelExtensionsTest : IClassFixture<CustomFixture>
@@ -36,10 +36,10 @@
         [InlineData(Interval.Hour, 6)]
         public void GetEarthSiderealTimePerDayTest(Interval interval, int hourRange)
         {
-            var expected = 99.946;
+            const double expected = 99.946;
             var actual = EarthPosition.GetEarthSiderealTimePerDay(interval, hourRange).ToList();
 
-            var partsPerHour = (int) Math.Round((int) Interval.Hour / (double) interval);
+            var partsPerHour = (int)Math.Round((int)Interval.Hour / (double)interval);
             var actualCount = hourRange * 2 * partsPerHour;
             Assert.Equal(actualCount, actual.Count);
             var actualValue = actual.ToList()[(hourRange + 1) * partsPerHour].SideRealTime;
@@ -81,7 +81,7 @@
         public void GetSkyPositionTest()
         {
             var siderealTime = new SideRealTimeModel(new DateTimeOffset(2014, 1, 1, 0, 0, 0, TimeSpan.Zero), -65.174);
-             var actual = CelestialObjectPositionExtensions.GetSkyPosition(5.567, 52, siderealTime.DateTimeOffset, siderealTime.SideRealTime);
+            var actual = CelestialObjectPositionExtensions.GetSkyPosition(5.567, 52, siderealTime.DateTimeOffset, siderealTime.SideRealTime);
 
             Assert.Equal(actual.DateTimeOffset, siderealTime.DateTimeOffset);
             Assert.True(19.495.EqualsWithinTolerance(actual.Heigth, 3));

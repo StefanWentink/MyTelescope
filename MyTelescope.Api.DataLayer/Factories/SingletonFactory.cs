@@ -1,11 +1,11 @@
 ﻿namespace MyTelescope.Api.DataLayer.Factories
 {
+    using Core.Utilities.Helpers;
+    using Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Data.SqlClient;
     using System.Linq;
-    using Core.Utilities.Helpers;
-    using Interfaces;
     using Utilities.Interfaces.Connector;
     using Utilities.Models.Filter;
 

@@ -1,12 +1,12 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.Http
 {
+    using Enums;
+    using Interfaces;
     using System;
     using System.IO;
     using System.Net.Http;
     using System.Text;
     using System.Threading.Tasks;
-    using Enums;
-    using Interfaces;
 
     public class HttpDataExchanger : IDataExchanger<IRequestModel>, IDisposable
     {
@@ -32,9 +32,11 @@
             {
                 case HttpVerb.Get:
                     return await _client.GetAsync(string.Format(ApiFormat, requestModel.ApiRouteName, requestModel.ApiActionName) + requestModel.Content).ConfigureAwait(false);
+
                 case HttpVerb.Post:
                     var contentResult = new StringContent(requestModel.Content, Encoding.UTF8, ContentType);
                     return await _client.PostAsync(string.Format(ApiFormat, requestModel.ApiRouteName, requestModel.ApiActionName), contentResult).ConfigureAwait(false);
+
                 default:
                     return null;
             }
@@ -60,16 +62,16 @@
 
             return await response.Content.ReadAsStringAsync().ConfigureAwait(false);
         }
-        
+
         public void Dispose()
         {
             Dispose(true);
             GC.SuppressFinalize(this);
         }
- 
+
         ~HttpDataExchanger()
         {
-            // Finalizer calls Dispose(false)  
+            // Finalizer calls Dispose(false)
             Dispose(false);
         }
 

@@ -1,12 +1,12 @@
 ﻿namespace MyTelescope.SolarSystem.Helpers.Seeder
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using Constants;
     using Enums;
     using Extensions;
     using Models.CelestialObject;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Utilities.Helpers;
     using Utilities.Models;
 

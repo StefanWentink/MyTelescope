@@ -14,7 +14,7 @@
 
         protected override SortModel GetSort()
         {
-            return new SortModel($"{nameof(CelestialObjectTypeModel.Code)}", true);
+            return new SortModel(nameof(CelestialObjectTypeModel.Code), true);
         }
     }
 }

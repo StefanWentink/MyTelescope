@@ -1,6 +1,5 @@
 ﻿namespace MyTelescope.App.Models
 {
-    using System;
     using Base;
     using Constants;
     using Localisation.Resources.MyTelescope;
@@ -21,10 +20,6 @@
             AddTab<SolarSystemPageModel>(TextResource.SolarSystem, "icon.png", positionViewModel);
             AddTab<PlanetOverviewPageModel>(TextResource.Planets, "icon.png", Model);
             AddTab<PlanetComparePageModel>(TextResource.Compare, "icon.png", Model);
-        }
-
-        ~MainPageModel()
-        {
         }
     }
 }

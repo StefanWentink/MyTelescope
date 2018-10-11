@@ -6,12 +6,7 @@
     {
         public static bool ConvertIsNullOrWhiteSpace(string value)
         {
-            if (string.IsNullOrWhiteSpace(value))
-            {
-                return true;
-            }
-
-            return false;
+            return string.IsNullOrWhiteSpace(value);
         }
 
         public static bool ConvertCompare(string value, string compare)

@@ -1,11 +1,11 @@
 ﻿namespace MyTelescope.App.ViewModels.Helpers.Filter
 {
-    using System;
-    using System.Collections.Generic;
     using MyTelescope.Utilities.Enums;
     using MyTelescope.Utilities.Models.Filter;
     using SolarSystem.Enums;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.Collections.Generic;
 
     public static class CelestialObjectFilterHelper
     {
@@ -29,16 +29,16 @@
         public static FilterItemModel GetCelestialObjectTypeFilter(CelestialObjectType celestialObjectType)
         {
             return new FilterItemModel(
-                $"{nameof(CelestialObjectModel.CelestialObjectType)}",
+                nameof(CelestialObjectModel.CelestialObjectType),
                 ColumnType.IntColumn,
                 FilterType.Equal,
-                (int) celestialObjectType);
+                (int)celestialObjectType);
         }
 
         public static FilterItemModel GetParentCelestialObjectFilter(Guid celestialObjectId)
         {
             return new FilterItemModel(
-                $"{nameof(CelestialObjectModel.CelestialObjectId)}",
+                nameof(CelestialObjectModel.CelestialObjectId),
                 ColumnType.GuidColumn,
                 FilterType.Equal,
                 celestialObjectId);

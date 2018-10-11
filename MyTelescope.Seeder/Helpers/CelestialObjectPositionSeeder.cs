@@ -1,14 +1,14 @@
 ﻿namespace MyTelescope.Seeder.Helpers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
     using SolarSystem.Constants;
     using SolarSystem.Enums;
     using SolarSystem.Extensions;
     using SolarSystem.Models.CelestialObject;
     using SolarSystem.Models.Keplerian;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
     using Utilities.Interfaces.Connector;
 
     public class CelestialObjectPositionSeeder : BaseSeeder<CelestialObjectPositionModel, object>
@@ -25,7 +25,7 @@
             : base(connector)
         {
             CelestialObjectDictionary = celestialObjects.ToDictionary(x => x.Code, x => x.Id);
-            CelestialObjectPositions = celestialObjects.Select(x => new CelestialObjectPositionModel(x.Id, DateTimeOffset.Now, null,0, 0)).ToList();
+            CelestialObjectPositions = celestialObjects.Select(x => new CelestialObjectPositionModel(x.Id, DateTimeOffset.Now, null, 0, 0)).ToList();
         }
 
         private readonly object _earthPositionLock = new object();
@@ -55,7 +55,7 @@
                 }
             }
 
-            foreach(var celestialObjectPosition in CelestialObjectPositions.Where(batchExpression.Compile()))
+            foreach (var celestialObjectPosition in CelestialObjectPositions.Where(batchExpression.Compile()))
             {
                 var celestialObjectCode = CelestialObjectDictionary.Single(x => x.Value == celestialObjectPosition.CelestialObjectId).Key;
                 var celestialObject = CelestialObjectExtensions.ToEnum(celestialObjectCode);

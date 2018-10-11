@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.Helpers
 {
-    using System.Threading.Tasks;
     using Di;
+    using System.Threading.Tasks;
     using Utilities.Helpers;
     using Utilities.Interfaces;
     using Xamarin.Forms;
@@ -20,7 +20,7 @@
 
             ResourceDiHelper.ConfigureServices();
             DataDiHelper.ConfigureServices();
-            
+
             // TODO Logging
 
             while (!result)

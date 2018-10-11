@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.ViewModels.Models.Item
 {
-    using System;
     using Interfaces;
+    using System;
 
     public class PlanetDetailViewModel : DetailViewModel
     {

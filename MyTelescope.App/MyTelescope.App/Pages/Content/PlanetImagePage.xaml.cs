@@ -4,11 +4,11 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class PlanetImagePage : ContentPage
+    public partial class PlanetImagePage : ContentPage
     {
-		public PlanetImagePage ()
-		{
-			InitializeComponent ();
-		}
-	}
+        public PlanetImagePage()
+        {
+            InitializeComponent();
+        }
+    }
 }

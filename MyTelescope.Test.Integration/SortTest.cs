@@ -1,15 +1,15 @@
 namespace MyTelescope.Test.Integration
 {
-    using System;
-    using System.Diagnostics;
-    using System.Linq;
-    using System.Linq.Expressions;
     using Api.DataLayer.Context;
     using App.Test.Base;
     using Core.Utilities.Helpers;
     using Ef.Utilities.Helpers;
     using MyTelescope.SolarSystem.Models.CelestialObject;
     using MyTelescope.Utilities.Helpers.Reflection;
+    using System;
+    using System.Diagnostics;
+    using System.Linq;
+    using System.Linq.Expressions;
     using Xunit;
 
     public class SortTest : IClassFixture<CustomFixture>
@@ -57,10 +57,10 @@ namespace MyTelescope.Test.Integration
             var elapsedFunc = stopwatch.ElapsedMilliseconds;
 
             Assert.Equal(resultFunc.Count, resultExpression.Count);
-            Assert.Equal(resultFunc.First().Declination, resultExpression.First().Declination);
+            Assert.Equal(resultFunc[0].Declination, resultExpression[0].Declination);
             Assert.Equal(resultFunc.Last().Declination, resultExpression.Last().Declination);
 
-            Assert.Equal(resultFunc.First().Declination, resultMemberSelector.First().Declination);
+            Assert.Equal(resultFunc[0].Declination, resultMemberSelector[0].Declination);
             Assert.Equal(resultFunc.Last().Declination, resultMemberSelector.Last().Declination);
 
             Assert.True(elapsedFunc > elapsedExpression);
@@ -87,7 +87,7 @@ namespace MyTelescope.Test.Integration
             LogHelper.LogInformation($"Ordered memberSelector.result {stopwatch.ElapsedMilliseconds}.");
             stopwatch.Stop();
             var elapsed = stopwatch.ElapsedMilliseconds;
-            
+
             stopwatch.Reset();
             stopwatch.Start();
             var orderedMemberSelector = query.OrderByDescending(memberSelector);

@@ -1,10 +1,5 @@
 ﻿namespace MyTelescope.App.Pages.Content
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Converter;
     using DataLayer.Enums;
     using DataLayer.Interfaces;
@@ -14,6 +9,11 @@
     using MyTelescope.Utilities.Helpers;
     using SolarSystem.Constants;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Utilities.Enums;
     using Utilities.EventArgs;
     using Utilities.Helpers;
@@ -152,7 +152,7 @@
 
         protected IDataLoader<CelestialObjectViewModel, CelestialObjectModel> CelestialObjectDataLoader { get; }
 
-        private static object _celestialObjectCollectionLock = new object();
+        private static readonly object _celestialObjectCollectionLock = new object();
 
         protected ObservableCollection<CelestialObjectViewModel> CelestialObjectCollection { get; }
             = new ObservableCollection<CelestialObjectViewModel>();
@@ -192,11 +192,10 @@
 
         private void CelestialObjectDataLoaderOnCollectionFetchedEvent(object sender, CollectionFetchedEventArgs<CelestialObjectViewModel> collectionFetchedEventArgs)
         {
-            ThreadHelper.SetOnApplicationThread(
-                CelestialObjectCollection, 
-                collectionFetchedEventArgs.Models, 
-                _celestialObjectCollectionLock, 
-                RaisePropertyChanged, 
+            CelestialObjectCollection.SetOnApplicationThread(
+                collectionFetchedEventArgs.Models,
+                _celestialObjectCollectionLock,
+                RaisePropertyChanged,
                 nameof(CelestialObjectCollection),
                 null);
         }
@@ -223,9 +222,9 @@
             };
 
             ObjectCollectionOptions.SetOnApplicationThread(
-                objectCollectionOptions, 
-                _objectCollectionOptionsLock, 
-                ObjectCollectionOptionsSet, 
+                objectCollectionOptions,
+                _objectCollectionOptionsLock,
+                ObjectCollectionOptionsSet,
                 nameof(ObjectCollectionOptions),
                 null);
         }
@@ -338,10 +337,13 @@
             {
                 case ObjectCollectionOption.Inner:
                     return x => x.Model.AverageCentricDistance < 2;
+
                 case ObjectCollectionOption.Outer:
                     return x => x.Model.AverageCentricDistance >= 2 || x.Model.AverageCentricDistance.EqualsWithinTolerance(0, 6);
+
                 case ObjectCollectionOption.All:
                     return x => x.Model.AverageCentricDistance >= 0;
+
                 default:
                     return x => true;
             }
@@ -411,22 +413,22 @@
 
         public Command ForwardsCommand
         {
-            get { return new Command(async () => { await Skip(NormalSkipdays, NormalMilliseconds).ConfigureAwait(false); }); }
+            get { return new Command(async () => await Skip(NormalSkipdays, NormalMilliseconds).ConfigureAwait(false)); }
         }
 
         public Command FastForwardsCommand
         {
-            get { return new Command(async () => { await Skip(FastSkipdays, FastMilliseconds).ConfigureAwait(false); }); }
+            get { return new Command(async () => await Skip(FastSkipdays, FastMilliseconds).ConfigureAwait(false)); }
         }
 
         public Command BackwardsCommand
         {
-            get { return new Command(async () => { await Skip(-NormalSkipdays, NormalMilliseconds).ConfigureAwait(false); }); }
+            get { return new Command(async () => await Skip(-NormalSkipdays, NormalMilliseconds).ConfigureAwait(false)); }
         }
 
         public Command FastBackwardsCommand
         {
-            get { return new Command(async () => { await Skip(-FastSkipdays, FastMilliseconds).ConfigureAwait(false); }); }
+            get { return new Command(async () => await Skip(-FastSkipdays, FastMilliseconds).ConfigureAwait(false)); }
         }
 
         private async Task Skip(int daySkip, int millisecondDelay)

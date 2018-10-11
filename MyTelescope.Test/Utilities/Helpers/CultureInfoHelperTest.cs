@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System;
     using Base;
     using MyTelescope.Utilities.Helpers;
+    using System;
     using Xunit;
 
     public class CultureInfoHelperTest : IClassFixture<CustomFixture>
@@ -30,13 +30,13 @@
 
         [Theory]
         [InlineData("nlNLs", "nlNLs", "")]
-        [InlineData("NL_nl", "nl","NL")]
+        [InlineData("NL_nl", "nl", "NL")]
         [InlineData("nl-NL", "nl", "NL")]
         public void SplitCultureCodePartsTest(string value, string expectedLanguageCode, string expectedLocaleCode)
         {
-            var actual = CultureInfoHelper.SplitCultureCodeParts(value);
-            Assert.Equal(expectedLanguageCode, actual.languageCode);
-            Assert.Equal(expectedLocaleCode, actual.localeCode);
+            var (languageCode, localeCode) = CultureInfoHelper.SplitCultureCodeParts(value);
+            Assert.Equal(expectedLanguageCode, languageCode);
+            Assert.Equal(expectedLocaleCode, localeCode);
         }
 
         [Theory]

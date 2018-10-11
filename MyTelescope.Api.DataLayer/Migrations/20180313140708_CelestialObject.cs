@@ -14,10 +14,7 @@
                     Id = table.Column<Guid>(nullable: false),
                     Code = table.Column<string>(nullable: false)
                 },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CelestialObjectType", x => x.Id);
-                });
+                constraints: table => table.PrimaryKey("PK_CelestialObjectType", x => x.Id));
 
             migrationBuilder.CreateTable(
                 name: "CelestialObject",

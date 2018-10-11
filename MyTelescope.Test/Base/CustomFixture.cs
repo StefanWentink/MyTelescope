@@ -1,15 +1,15 @@
 ﻿namespace MyTelescope.Test.Base
 {
-    using System;
     using Core.Utilities.Helpers;
     using Core.Utilities.Helpers.Config;
     using Microsoft.Extensions.Logging;
     using MyTelescope.Utilities.Helpers;
+    using System;
 
     public class CustomFixture : IDisposable
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="CustomFixture"/> class. 
+        /// Initializes a new instance of the <see cref="CustomFixture"/> class.
         /// Runs once
         /// </summary>
         public CustomFixture()

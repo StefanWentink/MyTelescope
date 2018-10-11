@@ -18,9 +18,9 @@
 
             // Do your translation lookup here, using whatever method you require
 
-            var source = 
-                Device.RuntimePlatform == Device.Android ? 
-                $"{GetSource()}" : 
+            var source =
+                Device.RuntimePlatform == Device.Android ?
+                GetSource() :
                 $"Images/{GetSource()}";
 
             var imageSource = ImageSource.FromResource(source);

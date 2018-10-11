@@ -9,7 +9,7 @@
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            var stringValue = value == null 
+            var stringValue = value == null
                 ? string.Empty
                 : value.ToString();
             return BoolConvertHelper.ConvertCompare(stringValue, "true") ? "ViewCellSelected" : "ViewCellBasic";

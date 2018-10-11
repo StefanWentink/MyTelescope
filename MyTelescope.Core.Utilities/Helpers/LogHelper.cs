@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.Core.Utilities.Helpers
 {
-    using System;
     using Microsoft.Extensions.Logging;
+    using System;
 
     public static class LogHelper
     {

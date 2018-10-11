@@ -1,14 +1,13 @@
 ﻿namespace MyTelescope.App.ViewModels.Models.Item
 {
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Drawing;
     using Interfaces;
     using MyTelescope.Utilities.Helpers;
     using SolarSystem.Models.CelestialObject;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Drawing;
 
-    public class CelestialObjectViewModel : BaseKeyViewModel<CelestialObjectModel> , IDetailViewModel
+    public class CelestialObjectViewModel : BaseKeyViewModel<CelestialObjectModel>, IDetailViewModel
     {
         public CelestialObjectViewModel()
         {

@@ -1,11 +1,11 @@
 ﻿namespace MyTelescope.App.Utilities.Helpers
 {
-    using System;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Interfaces;
     using Models;
     using Newtonsoft.Json;
+    using System;
+    using System.Linq;
+    using System.Threading.Tasks;
 
     public static class ConfigHelper
     {

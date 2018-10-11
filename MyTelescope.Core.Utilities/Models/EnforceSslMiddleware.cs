@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.Core.Utilities.Models
 {
-    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Http;
+    using System.Threading.Tasks;
 
     public class EnforceSslMiddleware
     {
@@ -15,7 +15,7 @@
         public async Task Invoke(HttpContext context)
         {
             var req = context.Request;
-            if (req.IsHttps == false)
+            if (!req.IsHttps)
             {
                 var url = "https://" + req.Host + req.Path + req.QueryString;
                 context.Response.Redirect(url, permanent: true);

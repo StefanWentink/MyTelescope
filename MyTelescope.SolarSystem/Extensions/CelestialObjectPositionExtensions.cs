@@ -1,13 +1,13 @@
 ﻿namespace MyTelescope.SolarSystem.Extensions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using Constants;
     using Enums;
     using Helpers;
     using Models.CelestialObject;
     using Models.Keplerian;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
     using Utilities.Helpers;
     using Utilities.Models;
 
@@ -57,8 +57,8 @@
             int hourRange)
         {
             return GetEarthSiderealTimePerDay(
-                celestialObjectPosition.MeanAnomaly, 
-                celestialObjectPosition.ReferenceDate, 
+                celestialObjectPosition.MeanAnomaly,
+                celestialObjectPosition.ReferenceDate,
                 interval,
                 hourRange);
         }
@@ -95,7 +95,7 @@
             KeplerianOrbitValueModel keplerianOrbitValue,
             int utcMinutes)
         {
-            var minuteConstant = celestialObject.SiderealRotationPeriod / (int) Interval.Day;
+            var minuteConstant = celestialObject.SiderealRotationPeriod / (int)Interval.Day;
 
             return celestialObjectPosition.GetSiderealTime(minuteConstant, keplerianOrbitValue, utcMinutes);
         }
@@ -163,10 +163,10 @@
             double earthMeanAnomaly,
             double longitudeDegrees)
         {
-            return DegreeHelper.Modulo360Absolute(celestialObjectRightAscension +
-                     longitudeDegrees -
-                     earthMeanAnomaly -
-                     EarthKeplerianOrbitValue.Pi);
+            return DegreeHelper.Modulo360Absolute(celestialObjectRightAscension
+                     + longitudeDegrees
+                     - earthMeanAnomaly
+                     - EarthKeplerianOrbitValue.Pi);
         }
 
         public static RiseTransitSetModel GetRiseTransitSet(
@@ -204,13 +204,13 @@
             {
                 return DegreeHelper.RadiansToDegrees(
                     Math.Acos(
-                        -MathDegrees.Tan(latitudeDegrees) *
-                        MathDegrees.Tan(celestialObjectPosition.Declination)));
+                        -MathDegrees.Tan(latitudeDegrees)
+                        * MathDegrees.Tan(celestialObjectPosition.Declination)));
             }
 
             return DegreeHelper.RadiansToDegrees(Math.Acos(
-                (MathDegrees.Sin(h0) - (MathDegrees.Sin(latitudeDegrees) * MathDegrees.Sin(celestialObjectPosition.Declination))) /
-                (MathDegrees.Cos(latitudeDegrees) * MathDegrees.Cos(celestialObjectPosition.Declination))));
+                (MathDegrees.Sin(h0) - (MathDegrees.Sin(latitudeDegrees) * MathDegrees.Sin(celestialObjectPosition.Declination)))
+                / (MathDegrees.Cos(latitudeDegrees) * MathDegrees.Cos(celestialObjectPosition.Declination))));
         }
 
         public static IEnumerable<SkyPositionModel> GetSkyPositions(
@@ -219,13 +219,13 @@
             List<SideRealTimeModel> siderealTimes,
             RiseTransitSetModel transitModel)
         {
-            foreach (var sideRealTime in siderealTimes.Where(x => x.DateTimeOffset >= transitModel.Rise &&
-                                                                  x.DateTimeOffset <= transitModel.Set))
+            foreach (var sideRealTime in siderealTimes.Where(x => x.DateTimeOffset >= transitModel.Rise
+                                                                  && x.DateTimeOffset <= transitModel.Set))
             {
                 yield return celestialObjectPosition.GetSkyPosition(latitude, sideRealTime);
             }
         }
-        
+
         public static SkyPositionModel GetSkyPosition(
             this CelestialObjectPositionModel celestialObjectPosition,
             double latitude,
@@ -249,8 +249,8 @@
             var height =
                 DegreeHelper.RadiansToDegrees(
                     Math.Asin(
-                        (MathDegrees.Sin(latitude) * MathDegrees.Sin(declination)) +
-                        (MathDegrees.Cos(latitude) * MathDegrees.Cos(declination) * MathDegrees.Cos(siderealTime))));
+                        (MathDegrees.Sin(latitude) * MathDegrees.Sin(declination))
+                        + (MathDegrees.Cos(latitude) * MathDegrees.Cos(declination) * MathDegrees.Cos(siderealTime))));
 
             return new SkyPositionModel(dateTimeOffset, height, azimuth);
         }

@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Utilities.Helpers.Filter
 {
+    using Enums;
     using System;
     using System.Linq.Expressions;
-    using Enums;
 
     public static class FilterExpressionHelper
     {
@@ -12,12 +12,16 @@
             {
                 case FilterType.Equal:
                     return x => x == value;
+
                 case FilterType.NotEqual:
                     return x => x != value;
+
                 case FilterType.Contains:
                     return x => x.Contains(value);
+
                 case FilterType.NotContains:
                     return x => !x.Contains(value);
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, $"{filter} is invalid for type {typeof(string)}.");
             }
@@ -29,12 +33,16 @@
             {
                 case FilterType.Equal:
                     return x => x == value;
+
                 case FilterType.NotEqual:
                     return x => x != value;
+
                 case FilterType.GreaterOrEqual:
                     return x => x >= value;
+
                 case FilterType.LessOrEqual:
                     return x => x <= value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, $"{filter} is invalid for type {typeof(int)}.");
             }
@@ -46,12 +54,16 @@
             {
                 case FilterType.Equal:
                     return x => x.EqualsWithinTolerance(value, 10);
+
                 case FilterType.NotEqual:
                     return x => !x.EqualsWithinTolerance(value, 10);
+
                 case FilterType.GreaterOrEqual:
                     return x => x >= value;
+
                 case FilterType.LessOrEqual:
                     return x => x <= value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, $"{filter} is invalid for type {typeof(int)}.");
             }
@@ -63,12 +75,16 @@
             {
                 case FilterType.Equal:
                     return x => x == value;
+
                 case FilterType.NotEqual:
                     return x => x != value;
+
                 case FilterType.GreaterOrEqual:
                     return x => x >= value;
+
                 case FilterType.LessOrEqual:
                     return x => x <= value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, $"{filter} is invalid for type {typeof(int)}.");
             }
@@ -80,8 +96,10 @@
             {
                 case FilterType.Equal:
                     return x => x == value;
+
                 case FilterType.NotEqual:
                     return x => x != value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, null);
             }
@@ -93,8 +111,10 @@
             {
                 case FilterType.Equal:
                     return x => x == value;
+
                 case FilterType.NotEqual:
                     return x => x != value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, null);
             }
@@ -106,12 +126,16 @@
             {
                 case FilterType.Equal:
                     return x => x.HasValue && x.Value == value;
+
                 case FilterType.NotEqual:
                     return x => !x.HasValue || x.Value != value;
+
                 case FilterType.GreaterOrEqual:
                     return x => x.HasValue && x.Value >= value;
+
                 case FilterType.LessOrEqual:
                     return x => x.HasValue && x.Value <= value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, $"{filter} is invalid for type {typeof(int)}.");
             }
@@ -123,12 +147,16 @@
             {
                 case FilterType.Equal:
                     return x => x.HasValue && x.Value.EqualsWithinTolerance(value, 10);
+
                 case FilterType.NotEqual:
                     return x => !x.HasValue || !x.Value.EqualsWithinTolerance(value, 10);
+
                 case FilterType.GreaterOrEqual:
                     return x => x.HasValue && x.Value >= value;
+
                 case FilterType.LessOrEqual:
                     return x => x.HasValue && x.Value <= value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, $"{filter} is invalid for type {typeof(int)}.");
             }
@@ -140,12 +168,16 @@
             {
                 case FilterType.Equal:
                     return x => x.HasValue && x.Value == value;
+
                 case FilterType.NotEqual:
                     return x => !x.HasValue || x.Value != value;
+
                 case FilterType.GreaterOrEqual:
                     return x => x.HasValue && x.Value >= value;
+
                 case FilterType.LessOrEqual:
                     return x => x.HasValue && x.Value <= value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, $"{filter} is invalid for type {typeof(DateTimeOffset)}.");
             }
@@ -157,8 +189,10 @@
             {
                 case FilterType.Equal:
                     return x => x.HasValue && x.Value == value;
+
                 case FilterType.NotEqual:
                     return x => !x.HasValue || x.Value != value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, null);
             }
@@ -170,8 +204,10 @@
             {
                 case FilterType.Equal:
                     return x => x.HasValue && x.Value == value;
+
                 case FilterType.NotEqual:
                     return x => !x.HasValue || x.Value != value;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, null);
             }

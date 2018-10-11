@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using System;
     using FreshMvvm;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Interfaces;
+    using System;
     using ViewModels.Interfaces;
     using Xamarin.Forms;
 
@@ -30,9 +30,11 @@
             {
                 case null:
                     return;
+
                 case TModel model:
                     SetModel(model);
                     break;
+
                 default:
                     throw new ArgumentException($"InitData {initData} is not of the expected type {initData.GetType()}.");
             }
@@ -54,10 +56,7 @@
         {
             get
             {
-                return new Command(async () =>
-                {
-                    await CoreMethods.PopModalNavigationService().ConfigureAwait(false);
-                });
+                return new Command(async () => await CoreMethods.PopModalNavigationService().ConfigureAwait(false));
             }
         }
 

@@ -9,7 +9,7 @@
 
         public ModelFetchedEventArgs(TModel model)
         {
-            Model = model ;
+            Model = model;
         }
     }
 }

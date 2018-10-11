@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.App.ViewModels.Models.Item
 {
-    using System;
-    using System.ComponentModel.DataAnnotations;
     using SolarSystem.Enums;
     using SolarSystem.Extensions;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.ComponentModel.DataAnnotations;
 
     public class CelestialObjectTypeViewModel : BaseKeyViewModel<CelestialObjectTypeModel>
     {

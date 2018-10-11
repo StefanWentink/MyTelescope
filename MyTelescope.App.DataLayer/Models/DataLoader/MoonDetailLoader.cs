@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.DataLoader
 {
+    using SolarSystem.Models.CelestialObject;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using SolarSystem.Models.CelestialObject;
     using ViewModels.Models.Item;
 
     public class MoonDetailLoader : StaticDataLoader<MoonDetailViewModel, CelestialObjectModel>

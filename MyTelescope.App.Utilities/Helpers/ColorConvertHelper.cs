@@ -12,7 +12,7 @@
                 return Color.Black;
             }
 
-            if (value.ToLowerInvariant().Contains("who"))
+            if (value.IndexOf("who", StringComparison.InvariantCultureIgnoreCase) >= 0)
             {
                 return Color.Red;
             }

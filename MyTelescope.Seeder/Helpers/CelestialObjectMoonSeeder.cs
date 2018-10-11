@@ -1,13 +1,13 @@
 ﻿namespace MyTelescope.Seeder.Helpers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Linq.Expressions;
     using SolarSystem.Constants;
     using SolarSystem.Enums;
     using SolarSystem.Extensions;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
     using Utilities.Interfaces.Connector;
 
     public class CelestialObjectMoonSeeder : BaseSeeder<CelestialObjectModel, string>

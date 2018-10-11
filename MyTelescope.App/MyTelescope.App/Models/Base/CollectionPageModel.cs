@@ -1,13 +1,13 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Linq;
-    using System.Threading.Tasks;
     using DataLayer.Enums;
     using DataLayer.Interfaces;
     using Helpers;
     using MyTelescope.Utilities.Interfaces;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Utilities.EventArgs;
     using ViewModels.Interfaces;
     using Xamarin.Forms;
@@ -59,7 +59,7 @@
                 if (_selectedItem != null)
                 {
                     _selectedItem.Selected = true;
-                    Task.Run(() => { ItemSelected(_selectedItem).ConfigureAwait(false); }).ConfigureAwait(false);
+                    Task.Run(() => ItemSelected(_selectedItem).ConfigureAwait(false)).ConfigureAwait(false);
                 }
             }
         }
@@ -76,7 +76,7 @@
 
         protected virtual void CollectionFetchedHandler(object sender, CollectionFetchedEventArgs<TViewModel> args)
         {
-            if (args.Models == null || !args.Models.Any())
+            if (args.Models == null || args.Models.Count == 0)
             {
                 return;
             }

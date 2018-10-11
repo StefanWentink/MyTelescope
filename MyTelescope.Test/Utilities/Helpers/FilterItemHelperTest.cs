@@ -1,15 +1,14 @@
 ﻿namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data.Common;
-    using System.Linq;
-    using System.Linq.Expressions;
     using Base;
     using Data;
     using MyTelescope.Utilities.Enums;
     using MyTelescope.Utilities.Helpers.Filter;
     using MyTelescope.Utilities.Models.Filter;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Linq.Expressions;
     using Xunit;
 
     public class FilterItemHelperTest : IClassFixture<CustomFixture>
@@ -32,22 +31,17 @@
         [Theory]
         [InlineData(nameof(DataModel.DataString), ColumnType.StringColumn, FilterType.Equal, nameof(DataModel.DataString), "other")]
         [InlineData(nameof(DataModel.DataString), ColumnType.StringColumn, FilterType.Contains, nameof(DataModel.DataString), "other")]
-
         [InlineData(nameof(DataModel.DataInt), ColumnType.IntColumn, FilterType.Equal, 1, 0)]
         [InlineData(nameof(DataModel.DataInt), ColumnType.IntColumn, FilterType.GreaterOrEqual, 1, 2)]
         [InlineData(nameof(DataModel.DataNullableInt), ColumnType.IntColumn, FilterType.Equal, 1, 0)]
-
         [InlineData(nameof(DataModel.DataDouble), ColumnType.DoubleColumn, FilterType.Equal, 2.1, 2.0)]
         [InlineData(nameof(DataModel.DataDouble), ColumnType.DoubleColumn, FilterType.GreaterOrEqual, 2.1, 2.2)]
         [InlineData(nameof(DataModel.DataNullableDouble), ColumnType.DoubleColumn, FilterType.Equal, 2.1, 2.0)]
-
         [InlineData(nameof(DataModel.DataDateTimeOffset), ColumnType.DateTimeOffsetColumn, FilterType.Equal, "2017-3-25 01:00:00 +00:00", "2017-3-25 00:00:00 +00:00")]
         [InlineData(nameof(DataModel.DataDateTimeOffset), ColumnType.DateTimeOffsetColumn, FilterType.GreaterOrEqual, "2017-3-25 01:00:00 +00:00", "2017-3-25 01:00:01 +00:00")]
         [InlineData(nameof(DataModel.DataNullableDateTimeOffset), ColumnType.DateTimeOffsetColumn, FilterType.GreaterOrEqual, "2017-3-25 01:00:00 +00:00", "2017-3-25 01:00:01 +00:00")]
-
         [InlineData(nameof(DataModel.DataGuid), ColumnType.GuidColumn, FilterType.Equal, "00000000-0000-0000-0000-000000000001", "00000000-0000-0000-0000-000000000002")]
         [InlineData(nameof(DataModel.DataNullableGuid), ColumnType.GuidColumn, FilterType.Equal, "00000000-0000-0000-0000-000000000001", "00000000-0000-0000-0000-000000000002")]
-
         [InlineData(nameof(DataModel.DataBool), ColumnType.BoolColumn, FilterType.Equal, true, false)]
         [InlineData(nameof(DataModel.DataNullableBool), ColumnType.BoolColumn, FilterType.Equal, true, false)]
         public void GetExpressionStringTest(string columnName, ColumnType columnType, FilterType filterType, object valueTrue, object valueFalse)
@@ -67,7 +61,7 @@
         {
             var filter = new FilterItemModel(nameof(DataModel.DataInt), ColumnType.IntColumn, FilterType.In, new List<object> { 1 });
             Expression<Func<DataModel, int>> paramSelector = x => x.DataInt;
-            int DataTypeFunc(object x) => (int) x;
+            int DataTypeFunc(object x) => (int)x;
             var expression = filter.CollectionExpression(paramSelector, DataTypeFunc);
 
             Assert.Null(expression);

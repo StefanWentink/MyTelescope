@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.SolarSystem.Helpers
 {
+    using Enums;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Enums;
     using Utilities.Helpers;
 
     public static class CelestialObjectHelper
@@ -54,12 +54,12 @@
                 solarSolarSystemObjectTypes.Add(CelestialObjectType.MinorMoon);
             }
 
-            bool Expression(CelestialObject x) => 
-                x > solarSystemObject && 
-                x < solarSystemObject + (int) CelestialObjectType.Planet 
+            bool Expression(CelestialObject x) =>
+                x > solarSystemObject
+                && x < solarSystemObject + (int)CelestialObjectType.Planet
                 && x.GetSolarSystemObjectType().In(solarSolarSystemObjectTypes.ToArray());
 
-            return EnumHelper.GetValues((Func<CelestialObject, bool>) Expression);
+            return EnumHelper.GetValues((Func<CelestialObject, bool>)Expression);
         }
 
         public static CelestialObjectType GetSolarSystemObjectType(this CelestialObject solarSystemObject)

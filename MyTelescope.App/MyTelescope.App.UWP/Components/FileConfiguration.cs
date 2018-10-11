@@ -9,9 +9,9 @@ namespace MyTelescope.App.UWP.Components
     using System.IO;
     using System.Text;
     using System.Threading.Tasks;
-    using Windows.Storage;
     using Utilities.Helpers;
     using Utilities.Interfaces;
+    using Windows.Storage;
 
     public class FileConfiguration : IFileConfiguration
     {
@@ -24,7 +24,7 @@ namespace MyTelescope.App.UWP.Components
 
         private static async Task<byte[]> ReadAsBytes(string fileName)
         {
-            var folderStructure = "Assets";
+            const string folderStructure = "Assets";
             var uri = new Uri($"ms-appx:///{folderStructure}/{fileName}", UriKind.Absolute);
 
             try

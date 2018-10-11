@@ -9,7 +9,7 @@ namespace MyTelescope.Test.Utilities.Helpers
         [Fact]
         public void AstronomicalUnitsToKilometers()
         {
-            double expected = 149597870.69;
+            const double expected = 149597870.69;
             var actual = DistanceHelper.AstronomicalUnitsToKilometers(1);
             Assert.Equal(expected, actual);
 
@@ -20,7 +20,7 @@ namespace MyTelescope.Test.Utilities.Helpers
         [Fact]
         public void KilometersToAstronomicalUnits()
         {
-            double expected = 1;
+            const double expected = 1;
             var actual = DistanceHelper.KilometersToAstronomicalUnits(149597870.69);
             Assert.Equal(expected, actual);
 
@@ -31,7 +31,7 @@ namespace MyTelescope.Test.Utilities.Helpers
         [Fact]
         public void AstronomicalUnitsToMillionKilometers()
         {
-            double expected = 149.59787069;
+            const double expected = 149.59787069;
             var actual = DistanceHelper.AstronomicalUnitsToMillionKilometers(1);
             Assert.Equal(expected, actual);
 
@@ -42,7 +42,7 @@ namespace MyTelescope.Test.Utilities.Helpers
         [Fact]
         public void MillionKilometersToAstronomicalUnits()
         {
-            double expected = 1;
+            const double expected = 1;
             var actual = DistanceHelper.MillionKilometersToAstronomicalUnits(149.59787069);
             Assert.Equal(expected, actual);
 

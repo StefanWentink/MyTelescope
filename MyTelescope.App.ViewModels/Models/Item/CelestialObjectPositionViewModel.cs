@@ -13,7 +13,6 @@
         {
         }
 
-
         public double RatioEarthAuDistance
         {
             get => Model.RatioEarthAuDistance;

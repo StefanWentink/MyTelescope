@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.App.ViewModels.Helpers.Filter
 {
-    using System;
-    using System.Collections.Generic;
     using MyTelescope.Utilities.Enums;
     using MyTelescope.Utilities.Models.Filter;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.Collections.Generic;
 
     public static class CelestialObjectPositionFilterHelper
     {
@@ -47,7 +47,7 @@
         public static FilterItemModel GetReferenceDateFilter(DateTimeOffset referenceDate)
         {
             return new FilterItemModel(
-                $"{nameof(CelestialObjectPositionModel.ReferenceDate)}",
+                nameof(CelestialObjectPositionModel.ReferenceDate),
                 ColumnType.DateTimeOffsetColumn,
                 FilterType.Equal,
                 referenceDate.GetUtcReferenceDate());
@@ -56,7 +56,7 @@
         public static FilterItemModel GetReferenceDateGreaterOrEqualFilter(DateTimeOffset referenceDate)
         {
             return new FilterItemModel(
-                $"{nameof(CelestialObjectPositionModel.ReferenceDate)}",
+                nameof(CelestialObjectPositionModel.ReferenceDate),
                 ColumnType.DateTimeOffsetColumn,
                 FilterType.GreaterOrEqual,
                 referenceDate.GetUtcReferenceDate());
@@ -65,7 +65,7 @@
         public static FilterItemModel GetReferenceDateLessOrEqualFilter(DateTimeOffset referenceDate)
         {
             return new FilterItemModel(
-                $"{nameof(CelestialObjectPositionModel.ReferenceDate)}",
+                nameof(CelestialObjectPositionModel.ReferenceDate),
                 ColumnType.DateTimeOffsetColumn,
                 FilterType.LessOrEqual,
                 referenceDate.GetUtcReferenceDate());

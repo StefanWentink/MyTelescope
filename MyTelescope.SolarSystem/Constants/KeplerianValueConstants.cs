@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.SolarSystem.Constants
 {
-    using System.Collections.Generic;
     using Enums;
     using Models.Keplerian;
+    using System.Collections.Generic;
 
     public static class KeplerianValueConstants
     {

@@ -4,7 +4,7 @@
 
     public class ObjectCollectionLayoutModel : SelectListModel<ObjectCollectionLayout>
     {
-        public ObjectCollectionLayoutModel(ObjectCollectionLayout value, string description) 
+        public ObjectCollectionLayoutModel(ObjectCollectionLayout value, string description)
             : base(value, description)
         {
         }

@@ -1,9 +1,9 @@
 namespace MyTelescope.Test.Exceptions
 {
-    using System;
     using Base;
     using Data;
     using MyTelescope.Utilities.Exceptions;
+    using System;
     using Xunit;
 
     public class EnumArgumentExceptionTest : IClassFixture<CustomFixture>

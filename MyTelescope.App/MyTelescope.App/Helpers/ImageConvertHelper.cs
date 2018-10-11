@@ -12,10 +12,10 @@
             {
                 return null;
             }
-            
+
             var source =
                 Device.RuntimePlatform == Device.Android ?
-                    $"{GetSource(value)}" :
+                    GetSource(value) :
                     $"MyTelescope.App.{GetSource(value)}";
 
             var imageSource = ImageSource.FromResource(source, ImageAssembly);

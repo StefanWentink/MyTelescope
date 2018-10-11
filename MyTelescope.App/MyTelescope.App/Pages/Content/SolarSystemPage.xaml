@@ -9,11 +9,11 @@
              Style="{DynamicResource BasePage}">
     <ContentPage.Content>
 
-        <StackLayout VerticalOptions="FillAndExpand" >
+        <StackLayout VerticalOptions="FillAndExpand">
 
             <StackLayout Orientation="Horizontal">
 
-                <Picker 
+                <Picker
                     x:Name="ObjectCollectionLayoutPicker"
                     Style="{DynamicResource Picker}"
                     ItemsSource="{Binding ObjectCollectionLayouts}"
@@ -21,10 +21,9 @@
                     ItemDisplayBinding="{Binding Description}"
                     Title="{extensions:TranslateExtension Text=ObjectCollectionLayout}"
                     HorizontalOptions="FillAndExpand">
-
                 </Picker>
 
-                <Picker 
+                <Picker
                     x:Name="ObjectCollectionOptionPicker"
                     Style="{DynamicResource Picker}"
                     ItemsSource="{Binding ObjectCollectionOptions}"
@@ -32,31 +31,29 @@
                     ItemDisplayBinding="{Binding Description}"
                     Title="{extensions:TranslateExtension Text=ObjectCollectionOption}"
                     HorizontalOptions="FillAndExpand">
-
                 </Picker>
-
             </StackLayout>
 
             <StackLayout Orientation="Horizontal">
 
-                <StackLayout Orientation="Horizontal" 
-                             HorizontalOptions="CenterAndExpand" 
+                <StackLayout Orientation="Horizontal"
+                             HorizontalOptions="CenterAndExpand"
                              IsVisible="{Binding ObjectCollectionLayoutSelectedIndex, Converter={converter:TimeLapseVisibleConverter}}">
 
                 <Button
                     HorizontalOptions="End"
-                    Text="{extensions:TranslateExtension Text=FastBackwards}" 
+                    Text="{extensions:TranslateExtension Text=FastBackwards}"
                     Command="{Binding FastBackwardsCommand}"
-                    Style="{DynamicResource PlayButton}"/>
+                    Style="{DynamicResource PlayButton}" />
                 <Button
                     HorizontalOptions="Start"
-                    Text="{extensions:TranslateExtension Text=Backwards}" 
+                    Text="{extensions:TranslateExtension Text=Backwards}"
                     Command="{Binding BackwardsCommand}"
-                    Style="{DynamicResource PlayButton}"/>
+                    Style="{DynamicResource PlayButton}" />
 
-                <DatePicker x:Name="ReferenceDateDatePicker" 
-                            Format="dd-MM-YYYY" 
-                            
+                <DatePicker x:Name="ReferenceDateDatePicker"
+                            Format="dd-MM-YYYY"
+
                             Date="{Binding ReferenceDate, Mode=TwoWay}"
                             Style="{DynamicResource DatePicker}">
 
@@ -75,24 +72,20 @@
                             </x:Arguments>
                         </system:DateTime>
                     </DatePicker.MinimumDate>
-
                 </DatePicker>
 
                 <Button
                     HorizontalOptions="End"
-                    Text="{extensions:TranslateExtension Text=Forwards}" 
+                    Text="{extensions:TranslateExtension Text=Forwards}"
                     Command="{Binding ForwardsCommand}"
-                    Style="{DynamicResource PlayButton}"/>
+                    Style="{DynamicResource PlayButton}" />
                 <Button
                     HorizontalOptions="End"
-                    Text="{extensions:TranslateExtension Text=FastForwards}" 
+                    Text="{extensions:TranslateExtension Text=FastForwards}"
                     Command="{Binding FastForwardsCommand}"
-                    Style="{DynamicResource PlayButton}"/>
-
+                    Style="{DynamicResource PlayButton}" />
                 </StackLayout>
-
             </StackLayout>
-
 
             <StackLayout
                 HorizontalOptions="FillAndExpand"
@@ -102,12 +95,8 @@
                     CanvasViewKey="{Binding CanvasViewKey}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    PaintSurface="OnPaintSurface"/>
-
+                    PaintSurface="OnPaintSurface" />
             </StackLayout>
-
         </StackLayout>
-
     </ContentPage.Content>
-
 </ContentPage>

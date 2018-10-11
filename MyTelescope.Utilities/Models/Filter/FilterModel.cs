@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.Utilities.Models.Filter
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Helpers;
     using Sort;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class FilterModel
     {

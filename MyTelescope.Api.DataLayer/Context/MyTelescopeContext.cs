@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Api.DataLayer.Context
 {
-    using System.Linq;
     using Microsoft.EntityFrameworkCore;
     using SolarSystem.Models.CelestialObject;
+    using System.Linq;
 
     public class MyTelescopeContext : DbContext
     {

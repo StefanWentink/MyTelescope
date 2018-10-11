@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Core.Utilities.Helpers
 {
-    using System;
     using Microsoft.AspNetCore.Builder;
     using Models;
+    using System;
 
     public static class SslExtension
     {

@@ -8,17 +8,17 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <Label Text="{extensions:TranslateExtension Text=Planets}"
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand" />
 
-            <ListView 
+            <ListView
                 x:Name="ListViewPlanetOverview"
-                ItemsSource="{Binding Collection}" 
+                ItemsSource="{Binding Collection}"
                 SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                IsPullToRefreshEnabled="true" 
-                RefreshCommand="{Binding RefreshDataCommand}" 
-                IsRefreshing="{Binding IsBusy}"  
-                IsVisible="{Binding HasItems}" 
+                IsPullToRefreshEnabled="true"
+                RefreshCommand="{Binding RefreshDataCommand}"
+                IsRefreshing="{Binding IsBusy}"
+                IsVisible="{Binding HasItems}"
                 CachingStrategy="RecycleElement">
 
                 <ListView.ItemTemplate
@@ -29,39 +29,32 @@
                         <ViewCell>
                             <!--Style="{Binding Selected, DynamicResource={converter:ViewCellStyleConverter}}"-->
 
-                            <StackLayout 
+                            <StackLayout
                                 Orientation="Horizontal">
 
                                 <StackLayout>
 
-                                    <Image 
-                                        Source="{Binding ImageName, Converter={converter:ImageConverter}}" 
-                                        Style="{DynamicResource ImageSmall}"/>
-
+                                    <Image
+                                        Source="{Binding ImageName, Converter={converter:ImageConverter}}"
+                                        Style="{DynamicResource ImageSmall}" />
                                 </StackLayout>
 
-                                <StackLayout 
+                                <StackLayout
                                     Orientation="Vertical">
 
-                                    <Label 
+                                    <Label
                                         Text="{Binding Code}"
-                                        Style="{DynamicResource LabelStyleBold}"/>
+                                        Style="{DynamicResource LabelStyleBold}" />
 
-                                    <Label 
+                                    <Label
                                         Text="{Binding Description}"
-                                        Style="{DynamicResource LabelStyle}"/>
-
+                                        Style="{DynamicResource LabelStyle}" />
                                 </StackLayout>
-
                             </StackLayout>
-
                         </ViewCell>
-
                     </DataTemplate>
-
                 </ListView.ItemTemplate>
             </ListView>
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

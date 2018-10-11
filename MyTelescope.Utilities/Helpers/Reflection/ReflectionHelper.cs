@@ -40,7 +40,7 @@
         public static Expression<Func<TModel, TValue>> MemberSelector<TModel, TValue>(string propertyName)
         {
             var parameter = Expression.Parameter(typeof(TModel), nameof(TModel));
-            
+
             var property = GetPropertyExpression(parameter, propertyName);
             var operand = Expression.Convert(property, typeof(TValue)).Operand;
 

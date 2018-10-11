@@ -1,11 +1,11 @@
 namespace MyTelescope.Test.SolarSystem.Helpers
 {
-    using System;
-    using System.Linq;
     using Base;
     using MyTelescope.SolarSystem.Enums;
     using MyTelescope.SolarSystem.Helpers;
     using MyTelescope.Utilities.Helpers;
+    using System;
+    using System.Linq;
     using Xunit;
 
     public class SolarSystemObjectHelperTest : IClassFixture<CustomFixture>
@@ -13,7 +13,7 @@ namespace MyTelescope.Test.SolarSystem.Helpers
         [Fact]
         public void SolarSystemObjectHelperListTest()
         {
-           var list = EnumHelper.GetValues<CelestialObject>();
+            var list = EnumHelper.GetValues<CelestialObject>();
             Assert.NotEmpty(list);
         }
 

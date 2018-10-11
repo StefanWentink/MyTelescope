@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.App.Converter
 {
+    using Helpers;
     using System;
     using System.Globalization;
-    using Helpers;
     using Xamarin.Forms;
 
     internal class ImageConverter : IValueConverter

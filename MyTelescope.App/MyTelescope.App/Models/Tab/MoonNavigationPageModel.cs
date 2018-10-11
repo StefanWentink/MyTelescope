@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.App.Pages.Tab
 {
-    using System;
     using Constants;
     using Content;
     using Models.Base;
     using SolarSystem.Models.CelestialObject;
+    using System;
 
     public class MoonNavigationPageModel : TabbedPageModel<CelestialObjectModel>
     {

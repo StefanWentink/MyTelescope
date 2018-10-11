@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.Api.DataLayer.Helpers
 {
-    using System;
-    using System.Linq.Expressions;
     using Factories;
     using SolarSystem.Enums;
+    using System;
+    using System.Linq.Expressions;
     using Utilities.Enums;
     using Utilities.Helpers;
     using Utilities.Interfaces;
@@ -30,10 +30,10 @@
                         throw new ArgumentException($"{filterItem.Value} is not a valid value.");
                     }
 
-                    var celestialObjectType = (CelestialObjectType) IntHelper.ToInt(filterItem.Value);
+                    var celestialObjectType = (CelestialObjectType)IntHelper.ToInt(filterItem.Value);
 
                     var model = CelestialObjectTypeFactory.Instance.GetSingleByEnum(celestialObjectType);
-                    
+
                     filter.FilterItems.RemoveAt(index);
 
                     return x => x.CelestialObjectTypeId == model.Id;

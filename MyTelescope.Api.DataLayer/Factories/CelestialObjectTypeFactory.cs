@@ -9,7 +9,6 @@
     {
         public static CelestialObjectTypeFactory Instance { get; private set; }
 
-
         public CelestialObjectTypeFactory(IConnector<CelestialObjectTypeModel> connector)
             : base(connector)
         {

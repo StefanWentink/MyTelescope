@@ -24,7 +24,7 @@
             serviceCollection.AddSingleton<IContextConnector<CelestialObjectPositionModel>, CelestialObjectPositionConnector>();
 
             serviceCollection.AddSingleton<ISingletonFactory<CelestialObjectTypeModel>, CelestialObjectTypeFactory>();
-            
+
             // Build the intermediate service provider
             var serviceProvider = serviceCollection.BuildServiceProvider();
 

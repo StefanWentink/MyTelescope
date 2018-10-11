@@ -1,11 +1,11 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using System.Threading.Tasks;
     using DataLayer.Interfaces;
     using MyTelescope.Utilities.Interfaces;
+    using System.Threading.Tasks;
     using ViewModels.Interfaces;
 
-    public abstract class DetailOverViewPageModel<TViewModel, TModel> : 
+    public abstract class DetailOverViewPageModel<TViewModel, TModel> :
         CollectionPageModel<TViewModel, TModel>
         where TViewModel : class, IBaseViewModel
         where TModel : class, IKeyModel, new()

@@ -1,14 +1,14 @@
 ﻿namespace MyTelescope.Ef.Utilities.Helpers
 {
+    using Core.Utilities.Helpers;
+    using Microsoft.EntityFrameworkCore;
+    using MyTelescope.Utilities.Helpers.Reflection;
+    using MyTelescope.Utilities.Models.Sort;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    using Core.Utilities.Helpers;
-    using Microsoft.EntityFrameworkCore;
-    using MyTelescope.Utilities.Helpers.Reflection;
-    using MyTelescope.Utilities.Models.Sort;
 
     public static class QueryHelper
     {
@@ -61,7 +61,7 @@
 
                     return await resultTask;
                 }
-                
+
                 IOrderedQueryable<TModel> orderedQueryable = null;
 
                 foreach (var sortitem in sort.SortItems.Where(x => !string.IsNullOrEmpty(x.Column)))

@@ -4,7 +4,7 @@
 
     public class ObjectCollectionOptionModel : SelectListModel<ObjectCollectionOption>
     {
-        public ObjectCollectionOptionModel(ObjectCollectionOption value, string description) 
+        public ObjectCollectionOptionModel(ObjectCollectionOption value, string description)
             : base(value, description)
         {
         }

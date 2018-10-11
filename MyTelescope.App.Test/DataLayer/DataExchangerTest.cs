@@ -1,18 +1,15 @@
 ﻿namespace MyTelescope.App.Test.DataLayer
 {
-    using System;
-    using System.Net;
-    using System.Net.Http;
-    using System.Net.Mime;
-    using System.Text;
-    using System.Threading.Tasks;
     using App.DataLayer.Interfaces;
     using App.DataLayer.Models.Http;
     using Moq;
-    using MyTelescope.Test.Base;
     using MyTelescope.Utilities.Enums;
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
+    using System.Net;
+    using System.Net.Http;
+    using System.Text;
+    using System.Threading.Tasks;
     using Xunit;
     using CustomFixture = Base.CustomFixture;
 
@@ -21,7 +18,7 @@
         [Fact]
         public void DataExchangerGetStringTest()
         {
-            var expected = "Content";
+            const string expected = "Content";
 
             var httpContent = new StringContent(expected, Encoding.UTF8, "application/text");
             var dataExchanger = new Mock<MyTelescopeDataExchanger>();

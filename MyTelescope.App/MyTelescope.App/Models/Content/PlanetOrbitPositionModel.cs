@@ -1,12 +1,12 @@
 ﻿namespace MyTelescope.App.Pages.Content
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Linq;
     using DataLayer.Interfaces;
     using Models.Base;
     using MyTelescope.Utilities.Helpers;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.Collections.ObjectModel;
+    using System.Linq;
     using ViewModels.Models.Item;
 
     public class PlanetOrbitPositionModel : DetailOverViewPageModel<CelestialObjectPositionViewModel, CelestialObjectPositionModel>
@@ -33,12 +33,12 @@
             }
         }
 
-        private static readonly int _minimumYear = 1950;
+        private const int _minimumYear = 1950;
 
-        private static readonly int _maximumYear = 2049;
+        private const int _maximumYear = 2049;
 
         public ObservableCollection<int> YearCollection { get; } = new ObservableCollection<int>(Enumerable.Range(_minimumYear, _maximumYear));
-        
+
         private readonly object _referenceYearLock = new object();
 
         private int _referenceYear;
@@ -73,7 +73,7 @@
                         if (_referenceYear != default(int))
                         {
                             RaisePropertyChanged(nameof(ReferenceYear));
-                            
+
                             var positionModel = new CelestialObjectPositionModel(
                                     Model.CelestialObjectId,
                                     new DateTimeOffset(ReferenceYear, 1, 1, 0, 0, 0, TimeSpan.Zero),

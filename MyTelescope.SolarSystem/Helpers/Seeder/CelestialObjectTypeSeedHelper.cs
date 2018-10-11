@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.SolarSystem.Helpers.Seeder
 {
-    using System;
-    using System.Collections.Generic;
     using Enums;
     using Extensions;
     using Models.CelestialObject;
+    using System;
+    using System.Collections.Generic;
 
     public static class CelestialObjectTypeSeedHelper
     {

@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System;
     using Base;
     using MyTelescope.Utilities.Helpers;
+    using System;
     using Xunit;
 
     public class ColorHelperTest : IClassFixture<CustomFixture>
@@ -15,7 +15,7 @@
         public void GetColorFromHexTest(string value)
         {
             var actual = ColorHelper.GetColorFromHex(value);
-            Assert.True(actual != null);
+            Assert.True(actual != default(System.Drawing.Color));
         }
 
         [Theory]

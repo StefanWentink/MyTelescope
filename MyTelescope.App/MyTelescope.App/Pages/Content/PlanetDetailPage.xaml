@@ -7,49 +7,45 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <Label Text="{extensions:TranslateExtension Text=Details}"
-                   VerticalOptions="CenterAndExpand" 
+                   VerticalOptions="CenterAndExpand"
                    HorizontalOptions="CenterAndExpand" />
 
             <ScrollView>
 
                 <ListView
-                    x:Name="ListViewPlanetDetails" 
-                    ItemsSource="{Binding Collection}" 
+                    x:Name="ListViewPlanetDetails"
+                    ItemsSource="{Binding Collection}"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                    IsPullToRefreshEnabled="true" 
-                    RefreshCommand="{Binding RefreshDataCommand}" 
-                    IsRefreshing="{Binding IsBusy}"  
-                    IsVisible="{Binding HasItems}" 
+                    IsPullToRefreshEnabled="true"
+                    RefreshCommand="{Binding RefreshDataCommand}"
+                    IsRefreshing="{Binding IsBusy}"
+                    IsVisible="{Binding HasItems}"
                     CachingStrategy="RecycleElement">
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal">
-                                    <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand" >
-                                        <Label 
+                                    <StackLayout Orientation="Vertical" HorizontalOptions="StartAndExpand">
+                                        <Label
                                             Text="{Binding Code}"
-                                            Style="{DynamicResource LabelStyleBold}"/>
-                                        <Label 
+                                            Style="{DynamicResource LabelStyleBold}" />
+                                        <Label
                                             Text="{Binding Description}"
-                                            Style="{DynamicResource LabelStyle}"/>
+                                            Style="{DynamicResource LabelStyle}" />
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-
                 </ListView>
-
             </ScrollView>
 
             <Button
                 VerticalOptions="End"
-                Text="{extensions:TranslateExtension Text=PageBack}" 
+                Text="{extensions:TranslateExtension Text=PageBack}"
                 Command="{Binding BackCommand}"
-                Style="{DynamicResource BackButton}"/>
-
+                Style="{DynamicResource BackButton}" />
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

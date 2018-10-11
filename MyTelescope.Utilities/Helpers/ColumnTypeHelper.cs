@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.Utilities.Helpers
 {
+    using Enums;
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
-    using Enums;
 
     public static class ColumnTypeHelper
     {
@@ -15,14 +15,18 @@
             {
                 case ColumnType.StringColumn:
                     return GetValidStringFilterTypes();
+
                 case ColumnType.GuidColumn:
                     return GetValidGuidFilterTypes();
+
                 case ColumnType.BoolColumn:
                     return GetValidBoolFilterTypes();
+
                 case ColumnType.DateTimeOffsetColumn:
                 case ColumnType.IntColumn:
                 case ColumnType.DoubleColumn:
                     return GetValidCompareFilterTypes(type);
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }

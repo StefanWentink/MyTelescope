@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.Test.Base
 {
-    using System.Threading.Tasks;
     using App.Utilities.Interfaces;
+    using System.Threading.Tasks;
 
     internal class DummyFileConfiguration : IFileConfiguration
     {

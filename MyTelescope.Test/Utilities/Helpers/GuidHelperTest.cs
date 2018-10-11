@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System;
     using Base;
     using MyTelescope.Utilities.Helpers;
+    using System;
     using Xunit;
 
     public class GuidHelperTest : IClassFixture<CustomFixture>

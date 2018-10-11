@@ -17,7 +17,7 @@
         {
             var actual = BoolHelper.ToBool(value);
             var isDefaultResult = actual == default(bool);
-            
+
             Assert.Equal(expected, isDefaultResult);
         }
 
@@ -32,7 +32,7 @@
         {
             var actual = BoolHelper.ToBoolOrNull(value);
             var isDefaultResult = actual == null;
-            
+
             Assert.Equal(expected, isDefaultResult);
         }
 

@@ -19,7 +19,7 @@
 
             FreshIOC.Container.Register<IConnector<CelestialObjectModel>, DataLayer.Models.Connectors.CelestialObjectConnector>().AsMultiInstance();
             FreshIOC.Container.Register<IConnector<CelestialObjectPositionModel>, DataLayer.Models.Connectors.CelestialObjectPositionConnector>().AsMultiInstance();
-            
+
             FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectTypeModel>, CelestialObjectTypeDataLoader>().AsMultiInstance();
             FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectViewModel, CelestialObjectModel>, CelestialObjectDataLoader>().AsMultiInstance();
             FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPositionModel>, CelestialObjectPositionDataLoader>().AsMultiInstance();

@@ -11,7 +11,7 @@
 
         public CollectionsLoadContainer()
         {
-            lock(_collectionsLock)
+            lock (_collectionsLock)
             {
                 _collections = new Dictionary<string, CollectionLoadContainer<TViewModel>>();
             }

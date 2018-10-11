@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.Core.Utilities.Helpers.Config
 {
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.Extensions.Configuration;
 
     public static class ConfigHelper
     {

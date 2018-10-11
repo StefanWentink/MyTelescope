@@ -11,62 +11,55 @@
         <StackLayout VerticalOptions="FillAndExpand">
 
             <Label Text="{extensions:TranslateExtension Text=MajorMoons}"
-                VerticalOptions="CenterAndExpand" 
+                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand" />
 
             <ScrollView>
 
-                <ListView 
+                <ListView
                     x:Name="ListViewPlanetMoonOverview"
-                    ItemsSource="{Binding Collection}" 
+                    ItemsSource="{Binding Collection}"
                     SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
-                    IsPullToRefreshEnabled="true" 
-                    RefreshCommand="{Binding RefreshDataCommand}" 
-                    IsRefreshing="{Binding IsBusy}"  
-                    IsVisible="{Binding HasItems}" 
+                    IsPullToRefreshEnabled="true"
+                    RefreshCommand="{Binding RefreshDataCommand}"
+                    IsRefreshing="{Binding IsBusy}"
+                    IsVisible="{Binding HasItems}"
                     CachingStrategy="RecycleElement">
                     <ListView.ItemTemplate>
                         <DataTemplate>
 
                             <ViewCell>
-                                <StackLayout 
+                                <StackLayout
                                         Orientation="Horizontal">
 
                                     <StackLayout>
 
-                                        <Image 
-                                            Source="{Binding ImageUrl}"  
-                                            Style="{DynamicResource ImageSmall}"/>
-
+                                        <Image
+                                            Source="{Binding ImageUrl}"
+                                            Style="{DynamicResource ImageSmall}" />
                                     </StackLayout>
 
-                                    <StackLayout 
+                                    <StackLayout
                                             Orientation="Vertical">
-                                        <Label 
+                                        <Label
                                             Text="{Binding Code}"
-                                            Style="{DynamicResource LabelStyleBold}"/>
-                                        <Label 
+                                            Style="{DynamicResource LabelStyleBold}" />
+                                        <Label
                                             Text="{Binding Description}"
-                                            Style="{DynamicResource LabelStyle}"/>
+                                            Style="{DynamicResource LabelStyle}" />
                                     </StackLayout>
-
                                 </StackLayout>
                             </ViewCell>
-
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
             </ScrollView>
 
             <Button
                     VerticalOptions="End"
                     Text="{extensions:TranslateExtension Text=PageBack}"
                     Command="{Binding BackCommand}"
-                    Style="{DynamicResource BackButton}"/>
-
+                    Style="{DynamicResource BackButton}" />
         </StackLayout>
-
     </ContentPage.Content>
-
 </ContentPage>

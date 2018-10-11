@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System;
-    using System.Linq.Expressions;
     using Base;
     using MyTelescope.Utilities.Enums;
     using MyTelescope.Utilities.Helpers.Filter;
+    using System;
+    using System.Linq.Expressions;
     using Xunit;
 
     public class FilterExpressionHelperTest : IClassFixture<CustomFixture>

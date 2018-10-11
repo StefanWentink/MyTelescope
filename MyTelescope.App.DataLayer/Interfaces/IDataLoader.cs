@@ -1,11 +1,9 @@
 ﻿namespace MyTelescope.App.DataLayer.Interfaces
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using Enums;
     using MyTelescope.Utilities.Interfaces;
-    using MyTelescope.Utilities.Models.Filter;
+    using System;
+    using System.Threading.Tasks;
     using Utilities.EventArgs;
     using ViewModels.Interfaces;
 

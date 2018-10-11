@@ -114,7 +114,7 @@
                 return _recordRequestNumber;
             }
         }
-        
+
         protected bool NoRunningTask()
         {
             lock (_runningTaskCountLock)
@@ -127,7 +127,7 @@
         {
             lock (_runningTaskCountLock)
             {
-                _runningTaskCount += 1;
+                _runningTaskCount++;
             }
         }
 
@@ -145,7 +145,7 @@
             {
                 if (_runningTaskCount > 0)
                 {
-                    _runningTaskCount -= 1;
+                    _runningTaskCount--;
                 }
             }
         }

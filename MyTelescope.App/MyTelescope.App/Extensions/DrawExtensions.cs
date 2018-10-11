@@ -1,10 +1,8 @@
 ﻿namespace MyTelescope.App.Extensions
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
     using MyTelescope.Utilities.Helpers;
     using SolarSystem.Extensions;
+    using System;
     using Utilities.Models;
     using ViewModels.Models.Item;
 
@@ -25,7 +23,7 @@
             return new CelestialDrawModel(
                 celestialObject.Id,
                 celestialObject.Description,
-                //celestialObjectPosition?.Model.Location.GetOrbitRadius() ?? 
+                //celestialObjectPosition?.Model.Location.GetOrbitRadius() ??
                 DistanceHelper.MillionKilometersToAstronomicalUnits(celestialObject.Model.SemiMajorAxis),
                 celestialObjectPosition?.Model.Location,
                 celestialObject.Color,

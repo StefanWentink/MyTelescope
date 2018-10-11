@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.ViewModels.Interfaces
 {
-    using System.Collections.ObjectModel;
     using MyTelescope.Utilities.Interfaces;
+    using System.Collections.ObjectModel;
 
     public interface ICollectionPageModel<TViewModel, TModel> : IModelContainer<TModel>
         where TViewModel : class, IBaseViewModel

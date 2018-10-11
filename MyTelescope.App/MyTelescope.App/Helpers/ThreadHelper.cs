@@ -10,10 +10,10 @@
     public static class ThreadHelper
     {
         public static void SetOnApplicationThread<TModel>(
-            this ICollection<TModel> collection, 
-            IEnumerable<TModel> models, 
-            object writeLock, 
-            Action<string> propertyRaisedTask, 
+            this ICollection<TModel> collection,
+            IEnumerable<TModel> models,
+            object writeLock,
+            Action<string> propertyRaisedTask,
             string propertyName,
             Action followUpTask)
         {
@@ -21,11 +21,11 @@
         }
 
         public static void InsertOnApplicationThread<TModel>(
-            this ObservableCollection<TModel> collection, 
+            this ObservableCollection<TModel> collection,
             TModel model,
-            object writeLock, 
-            Action<string> propertyRaisedTask, 
-            string propertyName, 
+            object writeLock,
+            Action<string> propertyRaisedTask,
+            string propertyName,
             int index,
             Action followUpTask)
         {
@@ -50,11 +50,11 @@
         }
 
         public static void PutOnApplicationThread<TModel>(
-            this ICollection<TModel> collection, 
-            IEnumerable<TModel> models, 
-            object writeLock, 
-            Action<string> propertyRaisedTask, 
-            string propertyName, 
+            this ICollection<TModel> collection,
+            IEnumerable<TModel> models,
+            object writeLock,
+            Action<string> propertyRaisedTask,
+            string propertyName,
             bool clear,
             Action followUpTask)
         {
@@ -89,10 +89,7 @@
 
         public static void RaiseOnApplicationThread(this Action<string> propertyRaisedTask, string propertyName)
         {
-            Device.BeginInvokeOnMainThread(() =>
-                {
-                        propertyRaisedTask.Invoke(propertyName);
-                });
+            Device.BeginInvokeOnMainThread(() => propertyRaisedTask.Invoke(propertyName));
         }
     }
 }

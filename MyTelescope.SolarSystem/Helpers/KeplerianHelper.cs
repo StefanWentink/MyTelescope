@@ -2,7 +2,6 @@
 {
     using System;
     using Utilities.Constants;
-    using Utilities.Exceptions;
     using Utilities.Extensions;
     using Utilities.Helpers;
     using Utilities.Models;
@@ -58,7 +57,6 @@
             return CalculationConstants.GaussianGravitationalConstant / Math.Pow(semiMajorAxis, 3d / 2);
         }
 
-
         /// <summary>
         /// Compute the mean anomaly 'M'
         /// </summary>
@@ -78,7 +76,7 @@
         }
 
         /// <summary>
-        /// Compute the mean anomaly 'M' for a 
+        /// Compute the mean anomaly 'M' for a
         /// </summary>
         /// <param name="meanAnomaly"></param>
         /// <param name="anglePerDay"></param>
@@ -98,7 +96,7 @@
         internal static double GetEccentricAnomaly(double eccentricity, DegreeModel meanAnomaly)
         {
             var iteration = 0;
-            var maxIterationsiteration = 1000000;
+            const int maxIterationsiteration = 1000000;
             var tolerance = Math.Pow(10, -10);
 
             var eccentricAnomalyDegrees = new DegreeModel(DegreeHelper.RadiansToDegrees(eccentricity));
@@ -109,7 +107,7 @@
             {
                 var deltaMeanAnomaly = meanAnomaly.Degrees - (result - (eccentricAnomalyDegrees.Degrees * MathDegrees.Sin(result)));
                 var deltaEccentricAnomaly = deltaMeanAnomaly / (1 - (eccentricity * MathDegrees.Cos(result)));
-                result = result + deltaEccentricAnomaly;
+                result += deltaEccentricAnomaly;
 
                 if (Math.Abs(deltaEccentricAnomaly) < tolerance)
                 {
@@ -121,7 +119,6 @@
 
             return result;
         }
-
 
         /// <summary>
         /// Compute the eccentric anomaly 'E'
@@ -147,7 +144,7 @@
             var delta = Math.Pow(10, -tolerance);
 
             var ma = meanAnomaly.Degrees;
-            ma = ma / 360.0;
+            ma /= 360.0;
 
             ma = 2 * Math.PI * (ma - Math.Floor(ma));
 
@@ -159,7 +156,7 @@
 
             while (Math.Abs(calculateF) > delta && i < maximumIterations)
             {
-                eccentricAnomaly = eccentricAnomaly - (calculateF / (1.0 - (eccentricity * Math.Cos(eccentricAnomaly))));
+                eccentricAnomaly -= (calculateF / (1.0 - (eccentricity * Math.Cos(eccentricAnomaly))));
                 calculateF = eccentricAnomaly - (eccentricity * Math.Sin(eccentricAnomaly)) - ma;
                 i++;
             }
@@ -179,13 +176,12 @@
         public static LocationModel GetLocation(double centricDistance, DegreeModel ascendingNodeLongitude, DegreeModel perihelionOmega, DegreeModel trueAnomaly, DegreeModel inclination)
         {
             var x = centricDistance * (
-                        (ascendingNodeLongitude.Cos() * MathDegrees.Cos(perihelionOmega.Degrees + trueAnomaly.Degrees)) -
-                        (ascendingNodeLongitude.Sin() * inclination.Cos() * MathDegrees.Sin(perihelionOmega.Degrees + trueAnomaly.Degrees)));
+                        (ascendingNodeLongitude.Cos() * MathDegrees.Cos(perihelionOmega.Degrees + trueAnomaly.Degrees))
+                        - (ascendingNodeLongitude.Sin() * inclination.Cos() * MathDegrees.Sin(perihelionOmega.Degrees + trueAnomaly.Degrees)));
 
             var y = centricDistance * (
-                        (ascendingNodeLongitude.Sin() * MathDegrees.Cos(perihelionOmega.Degrees + trueAnomaly.Degrees)) +
-                        (ascendingNodeLongitude.Cos() * inclination.Cos() * MathDegrees.Sin(perihelionOmega.Degrees + trueAnomaly.Degrees)));
-
+                        (ascendingNodeLongitude.Sin() * MathDegrees.Cos(perihelionOmega.Degrees + trueAnomaly.Degrees))
+                        + (ascendingNodeLongitude.Cos() * inclination.Cos() * MathDegrees.Sin(perihelionOmega.Degrees + trueAnomaly.Degrees)));
 
             var z = centricDistance * (inclination.Sin() * MathDegrees.Sin(perihelionOmega.Degrees + trueAnomaly.Degrees));
 

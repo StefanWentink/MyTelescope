@@ -1,12 +1,12 @@
 ﻿namespace MyTelescope.Seeder.Helpers
 {
+    using Core.Utilities.Helpers;
+    using MoreLinq;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Linq.Expressions;
     using System.Threading.Tasks;
-    using Core.Utilities.Helpers;
-    using MoreLinq;
     using Utilities.Interfaces;
     using Utilities.Interfaces.Connector;
     using Utilities.Models.Sort;
@@ -53,7 +53,7 @@
                     (batchExpression) =>
                     {
                         var createList = GetCreateList(batchExpression);
-                        if (createList.Any())
+                        if (createList.Count > 0)
                         {
                             LogHelper.LogInformation($"Start seeding {createList.Count} {nameof(TModel)}.");
                             var task = Task.Run(() => Connector.CreateAsync(createList).Result);

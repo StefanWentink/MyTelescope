@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.App.Pages.Content
 {
-    using System;
-    using System.Threading.Tasks;
     using DataLayer.Interfaces;
     using Models.Base;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.Threading.Tasks;
     using Tab;
     using Utilities.Helpers;
     using ViewModels.Models.Item;

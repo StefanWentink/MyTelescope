@@ -1,4 +1,5 @@
 ﻿using MyTelescope.App.Droid.Components;
+
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(FileStorage))]
@@ -8,6 +9,7 @@ namespace MyTelescope.App.Droid.Components
     using System;
     using System.IO;
     using System.Threading.Tasks;
+
     using Utilities.Interfaces;
 
     public class FileStorage : IFileStorage

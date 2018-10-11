@@ -1,18 +1,18 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using System;
     using FreshMvvm;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Interfaces;
+    using System;
     using ViewModels.Interfaces;
 
-    public abstract class TabbedPageModel<TModel> : 
+    public abstract class TabbedPageModel<TModel> :
         FreshTabbedNavigationContainer,
         IModelContainer<TModel>
         where TModel : class, IKeyModel, new()
     {
         public TModel Model { get; set; }
-        
+
         public virtual void SetModel(TModel model)
         {
             if (Model?.Id != model?.Id)
@@ -28,7 +28,6 @@
         }
 
         protected abstract void OnModelPop();
-
 
         [Obsolete("Only for page generation.")]
         protected TabbedPageModel(string navigationServiceName)

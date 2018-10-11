@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MyTelescope.App.Pages.Content.MoonComparePage"
              xmlns:views="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
@@ -9,11 +9,11 @@
 
     <ContentPage.Content>
 
-        <StackLayout VerticalOptions="FillAndExpand" >
+        <StackLayout VerticalOptions="FillAndExpand">
 
             <StackLayout Orientation="Horizontal">
 
-                <Picker 
+                <Picker
                     x:Name="MoonOriginPicker"
                     Style="{DynamicResource Picker}"
                     ItemsSource="{Binding Collection}"
@@ -21,10 +21,9 @@
                     ItemDisplayBinding="{Binding Description}"
                     Title="{extensions:TranslateExtension Text=Origin}"
                     HorizontalOptions="FillAndExpand">
-
                 </Picker>
 
-                <Picker 
+                <Picker
                     x:Name="MoonComparePicker"
                     Style="{DynamicResource Picker}"
                     ItemsSource="{Binding Collection}"
@@ -32,9 +31,7 @@
                     ItemDisplayBinding="{Binding Description}"
                     Title="{extensions:TranslateExtension Text=Compare}"
                     HorizontalOptions="FillAndExpand">
-
                 </Picker>
-
             </StackLayout>
 
             <StackLayout
@@ -45,10 +42,8 @@
                     CanvasViewKey="{Binding CanvasViewKey}"
                     HorizontalOptions="FillAndExpand"
                     VerticalOptions="FillAndExpand"
-                    PaintSurface="OnPaintSurface"/>
+                    PaintSurface="OnPaintSurface" />
             </StackLayout>
-
         </StackLayout>
-
     </ContentPage.Content>
 </ContentPage>

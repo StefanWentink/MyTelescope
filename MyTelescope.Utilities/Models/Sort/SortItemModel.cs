@@ -7,7 +7,7 @@
         public string Key => $"{Column}-{Ascending}";
 
         public string Column { get; set; }
-        
+
         public bool Ascending { get; set; }
 
         [Obsolete("Only for serialisation.")]
@@ -27,7 +27,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="SortItemModel"/> class. 
+        /// Initializes a new instance of the <see cref="SortItemModel"/> class.
         /// </summary>
         /// <param name="column">
         /// </param>

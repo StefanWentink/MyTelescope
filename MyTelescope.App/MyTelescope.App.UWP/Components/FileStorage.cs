@@ -7,8 +7,8 @@ namespace MyTelescope.App.UWP.Components
 {
     using System;
     using System.Threading.Tasks;
-    using Windows.Storage;
     using Utilities.Interfaces;
+    using Windows.Storage;
 
     // https://msdn.microsoft.com/library/windows/apps/xaml/hh758325.aspx
     public class FileStorage : IFileStorage

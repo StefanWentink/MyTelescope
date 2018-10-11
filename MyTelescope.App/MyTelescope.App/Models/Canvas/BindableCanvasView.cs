@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.App.Models.Canvas
 {
-    using System.Collections.ObjectModel;
-    using System.Linq;
     using Helpers;
     using SkiaSharp.Views.Forms;
+    using System.Collections.ObjectModel;
+    using System.Linq;
     using Utilities.Helpers;
     using Utilities.Models;
     using Xamarin.Forms;
@@ -51,7 +51,7 @@
                         CanvasSessionHelper.SetCanvasView(newCanvasViewKey, bindableCanvas);
                     }
 
-                    if(!string.IsNullOrWhiteSpace(oldCanvasViewKey))
+                    if (!string.IsNullOrWhiteSpace(oldCanvasViewKey))
                     {
                         CanvasSessionHelper.RemoveCanvasView(oldCanvasViewKey);
                     }

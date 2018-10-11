@@ -1,11 +1,11 @@
 namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Base;
     using Data;
     using MyTelescope.Utilities.Helpers.Reflection;
     using MyTelescope.Utilities.Models;
+    using System.Collections.Generic;
+    using System.Linq;
     using Xunit;
 
     public class ReflectionHelperTest : IClassFixture<CustomFixture>
@@ -13,7 +13,7 @@ namespace MyTelescope.Test.Utilities.Helpers
         [Fact]
         public void ReflectionHelperMemberSelectorTest()
         {
-            double expected = 1.23;
+            const double expected = 1.23;
             var model = new DegreeModel(expected);
 
             var memberSelectorTyped = ReflectionHelper.MemberSelector<DegreeModel, double>(nameof(DegreeModel.Degrees));
@@ -22,16 +22,16 @@ namespace MyTelescope.Test.Utilities.Helpers
             Assert.Equal(expected, actual);
 
             var memberSelectorObject = ReflectionHelper.MemberSelector<DegreeModel>(nameof(DegreeModel.Degrees));
-            actual = (double) memberSelectorObject.Compile().Invoke(model);
+            actual = (double)memberSelectorObject.Compile().Invoke(model);
             Assert.Equal(expected, actual);
         }
 
         [Fact]
         public void ReflectionHelperSortTest()
         {
-            var expectedSmall = 1.23;
-            var expectedMedium = 2.34;
-            var expectedLarge = 3.45;
+            const double expectedSmall = 1.23;
+            const double expectedMedium = 2.34;
+            const double expectedLarge = 3.45;
 
             var list = new List<DegreeModel>
             {
@@ -48,9 +48,9 @@ namespace MyTelescope.Test.Utilities.Helpers
             var memberSelectorTypedList = list.AsQueryable().OrderByDescending(memberSelectorTyped).ToList();
             var memberSelectorObjectList = list.AsQueryable().OrderByDescending(memberSelectorObject).ToList();
 
-            Assert.Equal(expectedLarge, funcList.First().Degrees);
-            Assert.Equal(expectedLarge, memberSelectorTypedList.First().Degrees);
-            Assert.Equal(expectedLarge, memberSelectorObjectList.First().Degrees);
+            Assert.Equal(expectedLarge, funcList[0].Degrees);
+            Assert.Equal(expectedLarge, memberSelectorTypedList[0].Degrees);
+            Assert.Equal(expectedLarge, memberSelectorObjectList[0].Degrees);
 
             Assert.Equal(expectedSmall, funcList.Last().Degrees);
             Assert.Equal(expectedSmall, memberSelectorTypedList.Last().Degrees);

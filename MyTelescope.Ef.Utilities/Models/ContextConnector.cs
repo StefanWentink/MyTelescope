@@ -1,12 +1,5 @@
 ﻿namespace MyTelescope.Ef.Utilities.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Data.SqlClient;
-    using System.Linq;
-    using System.Linq.Expressions;
-    using System.Runtime.CompilerServices;
-    using System.Threading.Tasks;
     using Core.Utilities.Helpers;
     using EFCore.BulkExtensions;
     using Helpers;
@@ -19,6 +12,13 @@
     using MyTelescope.Utilities.Models.Connector;
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
+    using System;
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Runtime.CompilerServices;
+    using System.Threading.Tasks;
 
     public abstract class ContextConnector<TModel> : Connector<TModel>, IContextConnector<TModel>
         where TModel : class
@@ -47,7 +47,7 @@
         protected override async Task<List<TModel>> Get(FilterModel filter)
         {
             var customExpression = GetCustomExpression(filter);
-            var expression  = FilterHelper.ToExpression<TModel>(filter);
+            var expression = FilterHelper.ToExpression<TModel>(filter);
             return await ReadAsync(customExpression.CombineExpressionAnd(expression), filter.Sort).ConfigureAwait(false);
         }
 
@@ -63,19 +63,19 @@
                         {
                             case ProcessDirective.Create:
                                 await context.BulkInsertAsync(
-                                    models, 
+                                    models,
                                     new BulkConfig { PreserveInsertOrder = true, SetOutputIdentity = true, BatchSize = 4000 }).ConfigureAwait(false);
                                 return true;
 
                             case ProcessDirective.Update:
                                 await context.BulkUpdateAsync(
-                                    models, 
+                                    models,
                                     new BulkConfig { PreserveInsertOrder = true, SetOutputIdentity = true, BatchSize = 4000 }).ConfigureAwait(false);
                                 return true;
 
                             case ProcessDirective.Delete:
                                 await context.BulkDeleteAsync(
-                                    models, 
+                                    models,
                                     new BulkConfig { PreserveInsertOrder = true, SetOutputIdentity = true, BatchSize = 4000 }).ConfigureAwait(false);
                                 return true;
 
@@ -85,7 +85,7 @@
                     }
 
                     var process = 0;
-                    var step = 1000;
+                    const int step = 1000;
                     var count = models.Count;
                     while (process < models.Count)
                     {
@@ -101,12 +101,15 @@
                             case ProcessDirective.Create:
                                 await context.GetObjectSet<TModel>().AddRangeAsync(processModels).ConfigureAwait(false);
                                 break;
+
                             case ProcessDirective.Update:
                                 context.GetObjectSet<TModel>().UpdateRange(processModels);
                                 break;
+
                             case ProcessDirective.Delete:
                                 context.GetObjectSet<TModel>().RemoveRange(processModels);
                                 break;
+
                             default:
                                 throw new ArgumentOutOfRangeException(nameof(directive), directive, null);
                         }
@@ -144,7 +147,7 @@
             try
             {
                 var combinedExpression = CombineExpression(expression);
-                
+
                 // Kickoff async RecordCount, transaction on another SqlTransaction.
                 var countTask =
                     sort.Skip == 0

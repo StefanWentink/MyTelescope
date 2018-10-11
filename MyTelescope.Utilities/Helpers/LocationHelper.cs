@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.Utilities.Helpers
 {
-    using System;
     using Models;
+    using System;
 
     public static class LocationHelper
     {
@@ -71,8 +71,8 @@
         public static double GetDeclination(double eclipticLatitude, double eclipticLongitude, double angle)
         {
             return DegreeHelper.RadiansToDegrees(Math.Asin(
-                (MathDegrees.Sin(eclipticLatitude) * MathDegrees.Cos(angle)) +
-                (MathDegrees.Cos(eclipticLatitude) * MathDegrees.Sin(angle) * MathDegrees.Sin(eclipticLongitude))));
+                (MathDegrees.Sin(eclipticLatitude) * MathDegrees.Cos(angle))
+                + (MathDegrees.Cos(eclipticLatitude) * MathDegrees.Sin(angle) * MathDegrees.Sin(eclipticLongitude))));
         }
 
         /// <summary>
@@ -85,8 +85,8 @@
         public static double GetRightAscension(double eclipticLatitude, double eclipticLongitude, double angle)
         {
             return DegreeHelper.RadiansToDegrees(Math.Atan2(
-                (MathDegrees.Sin(eclipticLongitude) * MathDegrees.Cos(angle)) -
-                (MathDegrees.Tan(eclipticLatitude) * MathDegrees.Sin(angle)),
+                (MathDegrees.Sin(eclipticLongitude) * MathDegrees.Cos(angle))
+                - (MathDegrees.Tan(eclipticLatitude) * MathDegrees.Sin(angle)),
                 MathDegrees.Cos(eclipticLongitude)));
         }
     }

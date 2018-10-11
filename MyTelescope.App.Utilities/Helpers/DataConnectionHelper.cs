@@ -1,10 +1,9 @@
 ﻿namespace MyTelescope.App.Utilities.Helpers
 {
     using Enums;
-    using System;
-    using System.Linq;
     using Plugin.Connectivity;
     using Plugin.Connectivity.Abstractions;
+    using System;
 
     public static class DataConnectionHelper
     {
@@ -26,7 +25,7 @@
 
         public static void InitDataConnection()
         {
-            lock(InitDataConnectionLock)
+            lock (InitDataConnectionLock)
             {
                 if (!initDataConnection)
                 {
@@ -58,13 +57,13 @@
                     case ConnectionType.Wimax:
                         SetDataConnection(DataConnection.Unlimited);
                         return;
+
                     default:
                         SetDataConnection(DataConnection.Limited);
                         return;
                 }
             }
         }
-
 
         private static void SetDataConnection(DataConnection dataConnection)
         {
@@ -85,10 +84,13 @@
             {
                 case DataConnection.None:
                     return 0;
+
                 case DataConnection.Limited:
                     return 30;
+
                 case DataConnection.Unlimited:
                     return 100;
+
                 case DataConnection.Undetermined:
                     throw new ArgumentOutOfRangeException($"{nameof(DataConnection)} not yet determined", nameof(dataConnection));
                 default:

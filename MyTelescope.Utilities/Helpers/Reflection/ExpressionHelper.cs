@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.Utilities.Helpers.Reflection
 {
+    using Models.Reflection;
     using System;
     using System.Linq;
     using System.Linq.Expressions;
-    using Models.Reflection;
 
     public static class ExpressionHelper
     {
@@ -15,7 +15,7 @@
             // replace parameters in the second lambda expression with parameters from the first
             var secondBody = ParameterRebinder.ReplaceParameters(map, second.Body);
 
-            // apply composition of lambda expression bodies to parameters from the first expression 
+            // apply composition of lambda expression bodies to parameters from the first expression
             return Expression.Lambda<T>(merge(first.Body, secondBody), first.Parameters);
         }
 
@@ -122,8 +122,6 @@
             return first.ComposeSub(second, false);
         }
 
-
-
         /// <summary>
         /// Applies a type based property-selector onto to a model based property-selector
         /// </summary>
@@ -143,9 +141,7 @@
 
             var expr = Expression.Lambda<Func<TModel, bool>>(propertyPredicate.Body, propertySelector.Parameters);
             var rebinder = new ParamExpressionToMemberExpressionRebinder(propertyPredicate.Parameters[0], memberExpression);
-            expr = (Expression<Func<TModel, bool>>)rebinder.Visit(expr);
-
-            return expr;
+            return (Expression<Func<TModel, bool>>)rebinder.Visit(expr);
         }
     }
 }

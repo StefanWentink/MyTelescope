@@ -1,9 +1,5 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.DataLoader
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Enums;
     using Interfaces;
     using MyTelescope.Utilities.Helpers;
@@ -11,6 +7,10 @@
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
     using SolarSystem.Models.CelestialObject;
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using Utilities.EventArgs;
     using Utilities.Helpers;
     using Utilities.Models;
@@ -36,7 +36,7 @@
         {
             _collectionsLoadContainer = new CollectionsLoadContainer<TViewModel>();
         }
-        
+
         protected virtual List<FilterItemModel> DefaultFilterItems => new List<FilterItemModel>();
 
         /// <summary>
@@ -68,7 +68,7 @@
 
         protected virtual SortModel GetSort()
         {
-            return new SortModel($"{nameof(CelestialObjectPositionModel.CelestialObjectId)}", true);
+            return new SortModel(nameof(CelestialObjectPositionModel.CelestialObjectId), true);
         }
 
         public async Task LoadAsync(DataLoading dataLoading, TModel model)
@@ -131,7 +131,7 @@
 
         protected void PopToList(string filterKey, List<TViewModel> collection, DataLoading dataLoading, bool singleRequest)
         {
-            if (collection.Any())
+            if (collection.Count > 0)
             {
                 GetCollectionsLoadContainer(filterKey).AddCollection(collection);
 
@@ -141,7 +141,7 @@
                 }
             }
 
-            if(singleRequest || !collection.Any())
+            if (singleRequest || collection.Count == 0)
             {
                 GetCollectionsLoadContainer(filterKey).SetEndOfCollection();
             }
@@ -158,9 +158,9 @@
             var tasks = new List<Task<List<TViewModel>>>();
             var recordRequestNumber = GetCollectionsLoadContainer(filterKey).GetRecordRequestNumber();
 
-            if (recordRequestNumber == int.MaxValue || 
-                GetCollectionsLoadContainer(filterKey).GetEndOfCollection() || 
-                GetCollectionsLoadContainer(filterKey).RunningTaskCount() > 0)
+            if (recordRequestNumber == int.MaxValue
+                || GetCollectionsLoadContainer(filterKey).GetEndOfCollection()
+                || GetCollectionsLoadContainer(filterKey).RunningTaskCount() > 0)
             {
                 return;
             }
@@ -184,7 +184,7 @@
                 }
             }
 
-            while (tasks.Any())
+            while (tasks.Count > 0)
             {
                 var completedTask = await Task.WhenAny(tasks).ConfigureAwait(false);
                 GetCollectionsLoadContainer(filterKey).RemoveRunningTask();
@@ -212,7 +212,7 @@
 
         protected virtual void OnCollectionFetched(List<TViewModel> models)
         {
-            if (models.Any())
+            if (models.Count > 0)
             {
                 CollectionFetchedEvent?.Invoke(this, new CollectionFetchedEventArgs<TViewModel>(models));
             }

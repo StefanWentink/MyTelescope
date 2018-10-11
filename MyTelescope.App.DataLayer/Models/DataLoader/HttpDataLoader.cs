@@ -1,22 +1,22 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.DataLoader
 {
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
     using Interfaces;
     using MyTelescope.Utilities.Interfaces;
     using MyTelescope.Utilities.Interfaces.Connector;
     using MyTelescope.Utilities.Models.Filter;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
     using ViewModels.Interfaces;
 
-    public abstract class HttpDataLoader<TViewModel, TModel> : 
-        BaseDataLoader<TViewModel, TModel>, 
+    public abstract class HttpDataLoader<TViewModel, TModel> :
+        BaseDataLoader<TViewModel, TModel>,
         IHttpDataLoader<TViewModel, TModel>
         where TViewModel : class, IBaseKeyViewModel<TModel>, new()
         where TModel : class, IKeyModel, new()
     {
         protected IConnector<TModel> Connector { get; set; }
-        
+
         protected HttpDataLoader(IConnector<TModel> connector)
         {
             Connector = connector;

@@ -11,33 +11,28 @@
 
             <ScrollView VerticalOptions="FillAndExpand">
 
-                <StackLayout Orientation="Vertical" >
+                <StackLayout Orientation="Vertical">
 
                     <Image
                         BindingContext="{Binding ViewModel}"
                         IsVisible="{Binding ImageName, Converter={converter:BoolConverter}}"
                         Source="{Binding ImageName, Converter={converter:ImageConverter}}"
                         HorizontalOptions="Start"
-                        Style="{DynamicResource Image}"/>
+                        Style="{DynamicResource Image}" />
 
                     <Image
                         BindingContext="{Binding ViewModel}"
-                        Source="{Binding ImageUrl}" 
+                        Source="{Binding ImageUrl}"
                         HorizontalOptions="Start"
-                        Style="{DynamicResource ImageMedium}"/>
-
+                        Style="{DynamicResource ImageMedium}" />
                 </StackLayout>
-
             </ScrollView>
-            
+
             <Button
                 VerticalOptions="End"
-                Text="{extensions:TranslateExtension Text=PageBack}" 
+                Text="{extensions:TranslateExtension Text=PageBack}"
                 Command="{Binding BackCommand}"
-                Style="{DynamicResource BackButton}"/>
-
+                Style="{DynamicResource BackButton}" />
         </StackLayout>
-
     </ContentPage.Content>
-
 </ContentPage>

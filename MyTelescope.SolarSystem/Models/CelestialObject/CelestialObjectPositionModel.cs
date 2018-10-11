@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.SolarSystem.Models.CelestialObject
 {
+    using Keplerian;
     using System;
-    using System.Diagnostics;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
-    using Keplerian;
+    using System.Diagnostics;
     using Utilities.Interfaces;
     using Utilities.Models;
 
@@ -26,7 +26,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CelestialObjectPositionModel"/> class. 
+        /// Initializes a new instance of the <see cref="CelestialObjectPositionModel"/> class.
         /// For Earth
         /// </summary>
         /// <param name="celestialObjectId"></param>
@@ -35,10 +35,10 @@
         /// <param name="averageCentricDistance"></param>
         /// <param name="centricDistance"></param>
         public CelestialObjectPositionModel(
-            Guid celestialObjectId, 
-            DateTimeOffset referenceDate, 
+            Guid celestialObjectId,
+            DateTimeOffset referenceDate,
             LocationModel location,
-            double averageCentricDistance, 
+            double averageCentricDistance,
             double centricDistance)
             : this(
                 celestialObjectId,
@@ -46,10 +46,10 @@
                 location,
                 averageCentricDistance,
                 centricDistance,
-                0, 
-                0, 
-                0, 
-                0, 
+                0,
+                0,
+                0,
+                0,
                 0,
                 0,
                 0,
@@ -118,7 +118,7 @@
             LargeDeltaEarthDistance = largeDeltaEarthDistance;
             AverageCentricDistance = averageCentricDistance;
             CentricDistance = centricDistance;
-            
+
             EclipticLongitude = eclipticLongitude;
             EclipticLatitude = eclipticLatitude;
             Declination = declination;
@@ -129,10 +129,10 @@
         }
 
         public CelestialObjectPositionModel(
-            Guid celestialObjectId, 
-            DateTimeOffset referenceDate, 
+            Guid celestialObjectId,
+            DateTimeOffset referenceDate,
             KeplerianCalculationModel calculationModel)
-        : this (
+        : this(
             celestialObjectId,
             referenceDate,
             calculationModel.Location,
@@ -187,7 +187,7 @@
 
         [Required]
         public DateTimeOffset ReferenceDate { get; set; }
-        
+
         [NotMapped]
         public DateTimeOffset? ReferenceEndDate { get; set; }
 

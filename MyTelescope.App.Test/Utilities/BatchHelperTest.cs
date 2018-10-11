@@ -1,9 +1,8 @@
 ﻿namespace MyTelescope.App.Test.Utilities
 {
-    using System.Linq;
     using App.Utilities.Constants;
     using App.Utilities.Helpers;
-    using MyTelescope.Test.Base;
+    using System.Linq;
     using Xunit;
     using CustomFixture = Base.CustomFixture;
 

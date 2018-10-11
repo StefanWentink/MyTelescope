@@ -13,10 +13,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Models\CelestialObjectDistancesModel.cs" />
-    <Compile Remove="Models\CelestialObjectModel.cs" />
-    <Compile Remove="Models\CelestialObjectPositionModel.cs" />
-    <Compile Remove="Models\CelestialObjectTypeModel.cs" />
+    <Compile Remove="Models\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="Models\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -28,10 +27,6 @@
     <ProjectReference Include="..\MyTelescope.Ef.Utilities\MyTelescope.Ef.Utilities.csproj" />
     <ProjectReference Include="..\MyTelescope.SolarSystem\MyTelescope.SolarSystem.csproj" />
     <ProjectReference Include="..\MyTelescope.Utilities\MyTelescope.Utilities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>

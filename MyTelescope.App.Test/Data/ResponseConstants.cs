@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.App.Test.Data
 {
-    using System.Collections.Generic;
     using Newtonsoft.Json;
     using SolarSystem.Helpers.Seeder;
     using SolarSystem.Models.CelestialObject;
+    using System.Collections.Generic;
 
     internal static class ResponseConstants
     {

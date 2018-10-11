@@ -4,8 +4,6 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    using MyTelescope.Utilities.Interfaces;
-
     public class CollectionFetchedEventArgs<TModel> : EventArgs
         where TModel : class
     {

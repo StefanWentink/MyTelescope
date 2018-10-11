@@ -1,9 +1,6 @@
 namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System.Collections.Generic;
-    using System.Linq;
     using Base;
-    using Data;
     using MyTelescope.Utilities.Helpers;
     using Xunit;
 
@@ -12,8 +9,8 @@ namespace MyTelescope.Test.Utilities.Helpers
         [Fact]
         public void Test()
         {
-            var baseUrl = "c:\\project\\SomeTest";
-            var binUrl = baseUrl + "\\Bin\\object\\bla";
+            const string baseUrl = "c:\\project\\SomeTest";
+            const string binUrl = baseUrl + "\\Bin\\object\\bla";
 
             var actual = DirectoryHelper.GetCurrentMainDirectory(baseUrl);
             Assert.Equal(baseUrl, actual);

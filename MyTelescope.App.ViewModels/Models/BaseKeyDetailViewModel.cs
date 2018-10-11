@@ -1,9 +1,9 @@
 ﻿namespace MyTelescope.App.ViewModels.Models
 {
-    using System;
-    using System.Collections.Generic;
     using Interfaces;
     using MyTelescope.Utilities.Interfaces;
+    using System;
+    using System.Collections.Generic;
     using Utilities.EventArgs;
 
     public abstract class BaseKeyDetailViewModel<TModel> : BaseKeyViewModel<TModel>, IBaseKeyDetailViewModel<TModel>

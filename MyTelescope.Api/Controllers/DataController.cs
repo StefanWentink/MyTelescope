@@ -1,16 +1,16 @@
 ﻿namespace MyTelescope.Api.Controllers
 {
+    using Binders;
+    using Microsoft.AspNetCore.Mvc;
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-    using Binders;
-    using Microsoft.AspNetCore.Mvc;
     using Utilities.Interfaces;
     using Utilities.Interfaces.Connector;
     using Utilities.Models.Filter;
     using Utilities.Models.Sort;
-    using Newtonsoft.Json;
 
     [Route("api/[controller]/[action]")]
     public abstract class DataController<TModel> : Controller
@@ -59,14 +59,14 @@
                 throw new ArgumentException($"no filter supplied: '{filterString}'", nameof(filterString));
             }
 
-            return await Connector.ReadAsync(filter);
+            return await Connector.ReadAsync(filter).ConfigureAwait(false);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public async Task<TModel> GetAsync(Guid id)
         {
-            var result = await Connector.ReadAsync(x => x.Id == id, new SortModel(nameof(IKeyModel.Id)));
+            var result = await Connector.ReadAsync(x => x.Id == id, new SortModel(nameof(IKeyModel.Id))).ConfigureAwait(false);
             return result.Single();
         }
 

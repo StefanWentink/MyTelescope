@@ -4,11 +4,11 @@
     using Xamarin.Forms.Xaml;
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MoonDetailPage : ContentPage
+    public partial class MoonDetailPage : ContentPage
     {
-		public MoonDetailPage()
+        public MoonDetailPage()
         {
             InitializeComponent();
-		}
-	}
+        }
+    }
 }

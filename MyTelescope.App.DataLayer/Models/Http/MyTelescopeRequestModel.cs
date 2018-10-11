@@ -1,13 +1,13 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.Http
 {
     using Enums;
-    using Newtonsoft.Json;
     using MyTelescope.Utilities.Models.Filter;
+    using Newtonsoft.Json;
 
     public class MyTelescopeRequestModel : HttpRequestModel
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MyTelescopeRequestModel"/> class. 
+        /// Initializes a new instance of the <see cref="MyTelescopeRequestModel"/> class.
         /// <see cref="HttpRequestModel"/> for MyTelescope InfrastructureConfiguration
         /// </summary>
         /// <param name="apiRouteName">

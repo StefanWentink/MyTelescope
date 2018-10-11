@@ -1,19 +1,16 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
     using DataLayer.Interfaces;
     using Extensions;
     using Interfaces;
-
     using MyTelescope.App.Helpers;
-
     using SolarSystem.Models.CelestialObject;
+    using System.Collections.Generic;
+    using System.Linq;
     using Utilities.Models;
     using ViewModels.Models.Item;
 
-    public abstract class CelestialComparePageModel : 
+    public abstract class CelestialComparePageModel :
         CanvasPageModel<CelestialObjectViewModel, CelestialObjectModel>,
         IDrawablePageModel
     {
@@ -29,13 +26,13 @@
 
         private void ShowPageDefaultSelection()
         {
-            if (Collection != null && Collection.Any())
+            if (Collection?.Any() == true)
             {
                 if (OriginDrawSelectedIndex < 0)
                 {
                     OriginDrawSelectedIndex = 0;
                 }
-                
+
                 if (CompareDrawSelectedIndex < 0 && Collection.Count == 2)
                 {
                     CompareDrawSelectedIndex = 1;
@@ -84,7 +81,7 @@
                     DrawExtensions.ToCelestialCompareDrawModelFunction.Invoke(Collection[_originDrawSelectedIndex]),
                     DrawExtensions.ToCelestialCompareDrawModelFunction.Invoke(Collection[_compareDrawSelectedIndex])
                 };
-                
+
                 SetShapes(shapes);
             }
         }

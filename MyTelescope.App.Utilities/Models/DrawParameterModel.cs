@@ -15,8 +15,8 @@
 
         public ObjectCollectionLayout ObjectCollectionLayout { get; }
 
-        public DrawOrientation Orientation{ get; }
-        
+        public DrawOrientation Orientation { get; }
+
         public int CentreX { get; }
 
         public int CentreY { get; }

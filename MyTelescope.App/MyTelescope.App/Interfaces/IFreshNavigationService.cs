@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.Interfaces
 {
-    using System.Threading.Tasks;
     using FreshMvvm;
+    using System.Threading.Tasks;
     using Xamarin.Forms;
 
     public interface IFreshNavigationService

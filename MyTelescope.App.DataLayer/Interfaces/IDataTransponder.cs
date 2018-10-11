@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.DataLayer.Interfaces
 {
-    using System.Collections.Generic;
     using MyTelescope.Utilities.Models.Filter;
+    using System.Collections.Generic;
 
     public interface IDataTransponder
     {

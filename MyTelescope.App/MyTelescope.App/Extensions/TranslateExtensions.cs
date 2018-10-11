@@ -1,11 +1,11 @@
 ﻿namespace MyTelescope.App.Extensions
 {
+    using Localisation.Resources.MyTelescope;
     using MyTelescope.App.Localisation.Interfaces;
     using System;
     using System.Globalization;
     using System.Reflection;
     using System.Resources;
-    using Localisation.Resources.MyTelescope;
     using Xamarin.Forms;
     using Xamarin.Forms.Xaml;
 
@@ -15,13 +15,13 @@
     {
         public string Text { get; set; }
 
-        private CultureInfo CultureInfo { get; set; }
+        private CultureInfo CultureInfo { get; }
 
         private static string ResourceFullName { get; } = typeof(TextResource).FullName;
 
         private static Lazy<ResourceManager> _resourceManager;
 
-        private static Lazy<ResourceManager> ResourceManager => 
+        private static Lazy<ResourceManager> ResourceManager =>
             _resourceManager ?? (_resourceManager = LoadLazyResourceManager());
 
         private static Lazy<ResourceManager> LoadLazyResourceManager()

@@ -1,11 +1,10 @@
 ﻿namespace MyTelescope.App.ViewModels.Models.Item
 {
-    using System.ComponentModel.DataAnnotations;
-    using MyTelescope.Utilities.Helpers;
     using SolarSystem.Enums;
     using SolarSystem.Extensions;
     using SolarSystem.Interfaces;
     using SolarSystem.Models.CelestialObject;
+    using System.ComponentModel.DataAnnotations;
 
     public abstract class CelestialObjectDetailViewModel : BaseKeyDetailViewModel<CelestialObjectModel>, ICalculatableRadius
     {
@@ -268,7 +267,7 @@
         }
 
         /// <summary>
-        /// Maximum visual magnitude  
+        /// Maximum visual magnitude
         /// </summary>
         public double MaximumVisualMagnitude
         {

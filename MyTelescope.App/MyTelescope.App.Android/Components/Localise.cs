@@ -5,6 +5,7 @@
 namespace MyTelescope.App.Droid.Components
 {
     using Localisation.Models;
+
     using MyTelescope.Utilities.Helpers;
 
     public class Localise : LocaliseBase
@@ -18,16 +19,13 @@ namespace MyTelescope.App.Droid.Components
 
         protected override string ToDotnetFallbackLanguage(PlatformCultureInfo platformCultureInfo)
         {
-            var languageCode = platformCultureInfo.LanguageCode;
-
             switch (platformCultureInfo.LanguageCode)
             {
                 case "gsw":
-                    languageCode = "de-CH";
-                    break;
+                    return "de-CH";
             }
 
-            return languageCode;
+            return platformCultureInfo.LanguageCode;
         }
 
         private static string PlatformToDotnetLanguage(string platformLanguage)
@@ -41,12 +39,15 @@ namespace MyTelescope.App.Droid.Components
                 case "ms-SG":   // "Malaysian (Singapore)" not supported .NET culture
                     languageCode = "ms"; // closest supported
                     break;
+
                 case "in-ID":  // "Indonesian (Indonesia)" has different code in  .NET
                     languageCode = "id-ID"; // correct code for .NET
                     break;
+
                 case "gsw-CH":  // "Schwiizertüütsch (Swiss German)" not supported .NET culture
                     languageCode = "de-CH"; // closest supported
                     break;
+
                 default:
                     return languageCode;
 

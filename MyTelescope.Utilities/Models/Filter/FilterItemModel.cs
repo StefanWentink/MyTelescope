@@ -1,10 +1,10 @@
 ﻿namespace MyTelescope.Utilities.Models.Filter
 {
+    using Enums;
+    using Helpers;
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Enums;
-    using Helpers;
 
     public class FilterItemModel
     {
@@ -29,7 +29,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FilterItemModel"/> class. 
+        /// Initializes a new instance of the <see cref="FilterItemModel"/> class.
         /// Bool column
         /// </summary>
         /// <param name="column">
@@ -43,7 +43,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FilterItemModel"/> class. 
+        /// Initializes a new instance of the <see cref="FilterItemModel"/> class.
         /// In - filter
         /// </summary>
         /// <param name="column"></param>
@@ -55,7 +55,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="FilterItemModel"/> class. 
+        /// Initializes a new instance of the <see cref="FilterItemModel"/> class.
         /// </summary>
         /// <param name="column"></param>
         /// <param name="type"></param>

@@ -1,20 +1,20 @@
 ﻿namespace MyTelescope.App.Helpers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Drawing;
-    using System.Linq;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models;
     using SkiaSharp;
     using SkiaSharp.Views.Forms;
+    using System;
+    using System.Collections.Generic;
+    using System.Drawing;
+    using System.Linq;
     using Utilities.Enums;
     using Utilities.Helpers;
     using Utilities.Models;
 
     public static class CanvasHelper
     {
-        private static readonly int SunRadius = 25;
+        private const int SunRadius = 25;
 
         public static void OnPaintSurface(this SKPaintSurfaceEventArgs args, string key)
         {
@@ -75,7 +75,7 @@
             ICollection<CelestialDrawModel> shapes,
             ObjectCollectionLayout objectCollectionLayout)
         {
-            if (!shapes.Any())
+            if (shapes.Count == 0)
             {
                 return;
             }
@@ -83,7 +83,7 @@
             if (shapes.Count == 2)
             {
                 var shapeList = shapes.ToList();
-                var origin = shapeList.First();
+                var origin = shapeList[0];
                 var compare = shapeList.Last();
                 canvas.DrawCompare(info, origin, compare);
             }
@@ -210,7 +210,7 @@
                 return canvasCentre;
             }
 
-            var orbitRadius = (int) Math.Ceiling(location?.GetOrbitRadius() ?? 0 * drawParameters.OrbitFactor);
+            var orbitRadius = (int)Math.Ceiling(location?.GetOrbitRadius() ?? 0 * drawParameters.OrbitFactor);
             if (orbitRadius > 0)
             {
                 orbitRadius += SunRadius;
@@ -220,7 +220,7 @@
             {
                 return canvasCentre - orbitRadius;
             }
-            
+
             return canvasCentre + orbitRadius;
         }
 
@@ -233,7 +233,7 @@
             var absCentreY = Math.Abs(centreY);
 
             var absCentreTotal = absCentreX + absCentreY;
-            
+
             var factorCentre = absCentreX / absCentreTotal;
             var locationCoordinate = centreX;
 

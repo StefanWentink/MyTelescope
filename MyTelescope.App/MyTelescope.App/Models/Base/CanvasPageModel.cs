@@ -1,13 +1,13 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
+    using DataLayer.Interfaces;
+    using Helpers;
+    using MyTelescope.Utilities.Interfaces;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Threading.Tasks;
-    using DataLayer.Interfaces;
-    using Helpers;
-    using MyTelescope.Utilities.Interfaces;
     using Utilities.Enums;
     using Utilities.EventArgs;
     using Utilities.Models;
@@ -22,7 +22,6 @@
         public abstract string CanvasViewKey { get; }
 
         public ObservableCollection<CelestialDrawModel> Shapes { get; set; } = new ObservableCollection<CelestialDrawModel>();
-
 
         protected override bool AddToCollection { get; set; }
 
@@ -39,7 +38,7 @@
 
         protected override void CollectionFetchedHandler(object sender, CollectionFetchedEventArgs<TViewModel> args)
         {
-            if (args.Models == null || !args.Models.Any())
+            if (args.Models == null || args.Models.Count == 0)
             {
                 return;
             }
@@ -58,7 +57,7 @@
         {
             SetShapes(shapes, ObjectCollectionLayout.Position);
         }
-        
+
         protected void SetShapes(ICollection<CelestialDrawModel> shapes, ObjectCollectionLayout objectCollectionLayout)
         {
             CanvasSessionHelper.SetCanvasShapes(CanvasViewKey, shapes.ToList());
@@ -67,7 +66,7 @@
         }
 
         /// <summary>
-        /// This method is called when the view is disappearing. 
+        /// This method is called when the view is disappearing.
         /// </summary>
         /// <param name="sender"> The sender. </param>
         /// <param name="e"> The e. </param>

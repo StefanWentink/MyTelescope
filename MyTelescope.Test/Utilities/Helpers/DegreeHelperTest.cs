@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Test.Utilities.Helpers
 {
-    using System;
     using Base;
     using MyTelescope.Utilities.Helpers;
+    using System;
     using Xunit;
 
     public class DegreeHelperTest : IClassFixture<CustomFixture>
@@ -63,7 +63,7 @@
         public void DegreeTimeSpanConversionTest(double value)
         {
             var actualTimeSpan = DegreeHelper.DegreeToTimeSpan(value);
-            var expectedTimeSpan = new TimeSpan((int) Math.Floor(value / 15), (int) Math.Floor(value % 15) * 4, (int)Math.Floor((value % 0.25) * 240));
+            var expectedTimeSpan = new TimeSpan((int)Math.Floor(value / 15), (int)Math.Floor(value % 15) * 4, (int)Math.Floor((value % 0.25) * 240));
             Assert.Equal(expectedTimeSpan.Hours, actualTimeSpan.Hours);
             Assert.Equal(expectedTimeSpan.Minutes, actualTimeSpan.Minutes);
             Assert.Equal(expectedTimeSpan.Seconds, actualTimeSpan.Seconds);

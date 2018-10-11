@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.App.Helpers
 {
+    using Models.Canvas;
     using System.Collections.Generic;
     using System.Linq;
-    using Models.Canvas;
     using Utilities.Enums;
     using Utilities.Models;
 
@@ -31,7 +31,7 @@
         private static readonly object ShapeCollectionLock = new object();
 
         private static readonly Dictionary<string, List<CelestialDrawModel>> CanvasShapes = new Dictionary<string, List<CelestialDrawModel>>();
-        
+
         public static void SetCanvasShapes(string key, List<CelestialDrawModel> shapes)
         {
             lock (ShapeCollectionLock)
@@ -49,7 +49,7 @@
                         CanvasShapes.Add(key, pushShapes);
                     }
 
-                    if (pushShapes.Any())
+                    if (pushShapes.Count > 0)
                     {
                         InvalidateSurface(key);
                     }

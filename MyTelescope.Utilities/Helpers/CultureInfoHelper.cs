@@ -6,9 +6,9 @@
 
     public static class CultureInfoHelper
     {
-        private static readonly char LanguageCultureSeparatorChar = '-';
+        private const char LanguageCultureSeparatorChar = '-';
 
-        private static readonly string LanguageCultureSeparator = "-";
+        private const string LanguageCultureSeparator = "-";
 
         private static void CutureCodeLengthValidation(string cultureCode)
         {
@@ -32,7 +32,7 @@
             if (result.Contains(LanguageCultureSeparator))
             {
                 var parts = result.Split(LanguageCultureSeparatorChar);
-                return (parts.First().ToLowerInvariant(), parts.Last().ToUpperInvariant());
+                return (parts[0].ToLowerInvariant(), parts.Last().ToUpperInvariant());
             }
 
             return (result, string.Empty);
@@ -40,9 +40,9 @@
 
         public static string ConcatCultureCodeParts(string languageCode, string localeCode)
         {
-            return languageCode.ToLowerInvariant() + 
-                   (string.IsNullOrWhiteSpace(localeCode) 
-                       ? string.Empty 
+            return languageCode.ToLowerInvariant() +
+                   (string.IsNullOrWhiteSpace(localeCode)
+                       ? string.Empty
                        : LanguageCultureSeparator + localeCode.ToUpperInvariant());
         }
     }

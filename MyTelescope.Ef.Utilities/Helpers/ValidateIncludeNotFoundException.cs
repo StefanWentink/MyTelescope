@@ -1,8 +1,7 @@
 ﻿namespace MyTelescope.Ef.Utilities.Helpers
 {
-    using System;
     using Core.Utilities.Helpers;
-    using MyTelescope.Utilities.Helpers;
+    using System;
 
     public static class IncludePathExceptionHelper
     {

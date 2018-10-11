@@ -45,17 +45,17 @@
             </Style>
 
             <Style x:Key="LabelStyleBold" TargetType="Label" BasedOn="{StaticResource LabelStyle}">
-                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontAttributes" Value="Bold" />
             </Style>
 
             <Style x:Key="DatePicker" TargetType="DatePicker">
                 <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
-                <!--<Setter Property="FontAttributes" Value="Bold"/>-->
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
             </Style>
 
             <Style x:Key="Picker" TargetType="Picker">
                 <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
-                <!--<Setter Property="FontAttributes" Value="Bold"/>-->
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
             </Style>
 
             <Style x:Key="ImageBase" TargetType="Image" BasedOn="{StaticResource BackgroundStyle}">
@@ -79,17 +79,16 @@
                 <Style.Triggers>
 
                     <Trigger TargetType="Button" Property="IsFocused" Value="true">
-                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="FontAttributes" Value="Bold" />
                         <Setter Property="BackgroundColor" Value="{DynamicResource SelectedBackgroundColor}" />
                         <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
                     </Trigger>
 
                     <!--<Trigger TargetType="Button" Property="" Value="true">
-                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="FontAttributes" Value="Bold" />
                         <Setter Property="BackgroundColor" Value="{DynamicResource SelectedBackgroundColor}" />
                         <Setter Property="TextColor" Value="{DynamicResource TextColor}" />
                     </Trigger>-->
-
                 </Style.Triggers>
             </Style>
 
@@ -105,22 +104,20 @@
 
             <Style x:Key="ViewCellSelected" TargetType="ViewCell">
                 <!--<Setter Property="BackgroundColor" Value="{DynamicResource SelectedBackgroundColor}" />-->
-                <!--<Setter Property="FontAttributes" Value="Bold"/>-->
+                <!--<Setter Property="FontAttributes" Value="Bold" />-->
                 <!--<Style.Triggers>
 
                     <Trigger TargetType="ViewCell" Property="IsMouseOver" Value="true">
                         <Setter Property="Foreground" Value="Blue" />
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="FontAttributes" Value="Bold"/>
+                        <Setter Property="Cursor" Value="Hand" />
+                        <Setter Property="FontAttributes" Value="Bold" />
                     </Trigger>
-
                 </Style.Triggers>-->
             </Style>
 
             <Style x:Key="ViewCell" TargetType="ViewCell">
                 <!--<Setter Property="SelectedBackgroundView" Value="{DynamicResource SelectedBackgroundColor}" />-->
             </Style>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

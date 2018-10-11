@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.SolarSystem.Models.Keplerian
 {
-    using System;
     using Extensions;
     using Helpers;
+    using System;
 
     public class KeplerianDateModel
     {

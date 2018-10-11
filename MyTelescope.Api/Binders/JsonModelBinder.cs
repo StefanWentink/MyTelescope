@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Api.Binders
 {
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
     using System.IO;
     using System.Threading.Tasks;
-    using Microsoft.AspNetCore.Mvc.ModelBinding;
 
     public class JsonModelBinder : IModelBinder
     {

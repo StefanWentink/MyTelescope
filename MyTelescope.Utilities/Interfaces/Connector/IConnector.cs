@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.Utilities.Interfaces.Connector
 {
+    using Models.Filter;
     using System.Collections.Generic;
     using System.Threading.Tasks;
-    using Models.Filter;
 
     public interface IConnector<TModel>
         where TModel : class

@@ -25,7 +25,7 @@
         /// the Average distance from the centre in AU 'n'
         /// </summary>
         public double AverageCentricDistance { get; }
-        
+
         /// <summary>
         /// Distance from the centre in AU 'n'
         /// </summary>
@@ -48,7 +48,7 @@
         /// </summary>
         /// <returns></returns>
         public double EclipticLatitude { get; set; }
-        
+
         /// <summary>
         /// Declination δ
         /// </summary>
@@ -74,7 +74,7 @@
         /// </summary>
         /// <returns></returns>
         public double RatioEarthAuDistance { get; set; }
-        
+
         /// <summary>
         /// Location x y z
         /// </summary>
