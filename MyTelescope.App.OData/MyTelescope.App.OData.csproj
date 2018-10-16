@@ -7,7 +7,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DebugType>Full</DebugType>
   </PropertyGroup>
-
+  
+  <PropertyGroup>
+    <ProjectGuid>{E6CE4CAD-F072-475D-8470-16D6E847D17C}</ProjectGuid>
+  </PropertyGroup>
+  
   <ItemGroup>
     <PackageReference Include="Microsoft.OData.Client" Version="7.5.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />

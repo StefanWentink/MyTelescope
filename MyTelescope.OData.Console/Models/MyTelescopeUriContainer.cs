@@ -1,4 +1,4 @@
-﻿namespace MyTelescope.App.OData.Models
+﻿namespace MyTelescope.OData.Console.Models
 {
     using SWE.Http.Constants;
     using SWE.Http.Models;
@@ -6,7 +6,7 @@
     public class MyTelescopeUriContainer : UriContainer
     {
         public MyTelescopeUriContainer()
-            : base("http://localhost:58138", "odata", ExchangerConstants.ContentType, string.Empty)
+            : base("https://localhost:44375", "odata", ExchangerConstants.ContentType, "/")
         {
         }
     }

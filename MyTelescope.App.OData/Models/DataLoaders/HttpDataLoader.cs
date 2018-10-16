@@ -10,6 +10,7 @@
     using SWE.OData.Interfaces;
     using System;
     using SWE.Http.Interfacess;
+    using System.Threading;
 
     public abstract class HttpDataLoader<TView, T> :
         BaseDataLoader<TView, T>,
@@ -24,9 +25,12 @@
             Repository = repository;
         }
 
-        protected override async Task<List<TView>> GetTask(T model, IODataBuilder<T, Guid> filter)
+        protected override async Task<List<TView>> GetTask(
+            T model,
+            CancellationToken cancellationToken,
+            IODataBuilder<T, Guid> filter)
         {
-            var collection = await Repository.ReadAsync<T>(filter.Build()).ConfigureAwait(false);
+            var collection = await Repository.ReadAsync<T>(cancellationToken, filter.Build()).ConfigureAwait(false);
             return collection.Select(x => new TView { Model = x }).ToList();
         }
 

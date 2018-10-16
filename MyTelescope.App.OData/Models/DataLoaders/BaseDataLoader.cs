@@ -19,6 +19,7 @@
     using SWE.OData.Builders;
     using SWE.OData.Models;
     using SWE.OData.Enums;
+    using System.Threading;
 
     public abstract class BaseDataLoader<TView, T> : IDataLoader<TView, T>
         where TView : class, IBaseViewModel
@@ -194,6 +195,8 @@
 
             var singleRequest = false;
 
+            var cancelationToken = new CancellationToken();
+
             foreach (var batch in GetSortModels(dataLoading, recordRequestNumber))
             {
                 singleRequest = batch.RecordRequestNumber == int.MaxValue;
@@ -204,7 +207,7 @@
                     lock (_filterLock)
                     {
                         filter.SetSkip(batch.Skip).SetTop(batch.Take);
-                        tasks.Add(GetTask(model, filter));
+                        tasks.Add(GetTask(model, cancelationToken, filter));
                         GetCollectionsLoadContainer(filterKey).AddRunningTask();
                     }
                 }
@@ -219,7 +222,10 @@
             }
         }
 
-        protected abstract Task<List<TView>> GetTask(T model, IODataBuilder<T, Guid> filter);
+        protected abstract Task<List<TView>> GetTask(
+            T model,
+            CancellationToken cancellationToken,
+            IODataBuilder<T, Guid> filter);
 
         protected virtual IEnumerable<SortModel> GetSortModels(DataLoading dataLoading, int recordRequestNumber)
         {

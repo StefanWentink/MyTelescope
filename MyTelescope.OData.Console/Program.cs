@@ -2,19 +2,24 @@
 {
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
-    using MyTelescope.App.OData.Models;
     using MyTelescope.Core.Utilities.Helpers;
+    using MyTelescope.SolarSystem.Models.CelestialObject;
+    using MyTelescope.Utilities.Helpers;
     using SWE.Http.Interfaces;
     using SWE.Http.Interfacess;
     using SWE.Http.Models;
+    using SWE.OData.Builders;
     using SWE.Polly.Interfaces.Policies;
     using SWE.Polly.Models;
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
+    using Newtonsoft.Json;
+    using MyTelescope.OData.Console.Models;
+    using System.Threading;
 
     internal class Program
     {
+        private static ServiceProvider InternalServiceProvider { get; set; }
+
         private static void Main(string[] args)
         {
             // setup our DI
@@ -27,6 +32,8 @@
                     .AddSingleton<IUriContainer, MyTelescopeUriContainer>()
                     .BuildServiceProvider();
 
+            InternalServiceProvider = serviceProvider;
+
             // configure console logging
             serviceProvider
                 .GetService<ILoggerFactory>()
@@ -38,86 +45,36 @@
             LogHelper.Init(logger);
 
             var input = ReadInput();
-            ProcessInput(input);
 
-            LogHelper.LogInformation(string.Empty);
-            LogHelper.LogInformation("Press any key to exit.");
-            Console.Read();
+            while (input != 0)
+            {
+                ProcessInput(input);
+                input = ReadInput();
+            }
         }
 
         private static void ProcessInput(int input)
         {
-            var celestialObjectConnector = ServiceProvider.GetService<IContextConnector<CelestialObject>>();
-            List<CelestialObject> celestialObjectSunResult = null;
-            List<CelestialObject> celestialObjectPlanetResult = null;
-            List<CelestialObjectType> celestialObjectTypeResult = null;
-
-            if (input.In(1, 9))
+            try
             {
-                var celestialObjectTypeConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectType>>();
-                celestialObjectTypeResult = new CelestialObjectTypeSeeder(celestialObjectTypeConnector).Seed();
+                var cancellationToken = new CancellationToken();
+                var result = string.Empty;
+                var repository = InternalServiceProvider.GetService<IRepository>();
 
-                if (celestialObjectTypeResult == null || celestialObjectTypeResult.Count == 0)
+                if (input.In(1, 4))
                 {
-                    celestialObjectTypeResult = celestialObjectTypeConnector.Read(new FilterModel());
+                    var builder = new ODataBuilder<CelestialObjectType, Guid>(nameof(CelestialObjectType));
+                    var content = builder.Build();
+                    var objectTypes = repository.ReadAsync<CelestialObjectType>(cancellationToken, content).Result;
+                    result = JsonConvert.SerializeObject(objectTypes);
                 }
 
-                celestialObjectSunResult = new CelestialObjectSunSeeder(celestialObjectConnector).Seed();
-
-                if (celestialObjectSunResult == null || celestialObjectSunResult.Count == 0)
-                {
-                    var filter = new FilterModel(
-                        new FilterItemModel(
-                            nameof(CelestialObject.CelestialObjectTypeId),
-                            ColumnType.GuidColumn,
-                            FilterType.Equal,
-                            celestialObjectTypeResult.Single(x => x.Code == CelestialObjectTypeConstants.Star).Id));
-
-                    celestialObjectSunResult = celestialObjectConnector.Read(filter);
-                }
-
-                celestialObjectPlanetResult = new CelestialObjectPlanetSeeder(celestialObjectConnector).Seed();
-                celestialObjectPlanetResult = celestialObjectPlanetResult
-                    .Where(x => x.CelestialObjectTypeId == celestialObjectTypeResult.Single(p => p.Code == CelestialObjectTypeConstants.Planet).Id).ToList();
-
-                new CelestialObjectMoonSeeder(celestialObjectConnector, celestialObjectTypeResult, celestialObjectPlanetResult).Seed();
+                Console.WriteLine(result);
             }
-
-            if (input.In(2, 9))
+            catch (Exception exception)
             {
-                if (celestialObjectTypeResult == null || celestialObjectTypeResult.Count == 0)
-                {
-                    var celestialObjectTypeConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectType>>();
-                    celestialObjectTypeResult = celestialObjectTypeConnector.Read(new FilterModel());
-                }
-
-                // TODO
-                if (celestialObjectPlanetResult == null)
-                {
-                    var filter = new FilterModel(
-                        new FilterItemModel(
-                            nameof(CelestialObject.CelestialObjectTypeId),
-                            ColumnType.GuidColumn,
-                            FilterType.Equal,
-                        celestialObjectTypeResult.Single(x => x.Code == CelestialObjectTypeConstants.Planet).Id));
-
-                    celestialObjectPlanetResult = celestialObjectConnector.Read(filter);
-                }
-
-                if (celestialObjectPlanetResult == null)
-                {
-                    var filter = new FilterModel(
-                        new FilterItemModel(
-                            nameof(CelestialObject.CelestialObjectTypeId),
-                            ColumnType.GuidColumn,
-                            FilterType.Equal,
-                        celestialObjectTypeResult.Single(x => x.Code == CelestialObjectTypeConstants.Planet).Id));
-
-                    celestialObjectPlanetResult = celestialObjectConnector.Read(filter);
-                }
-
-                var celestialObjectPositionConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectPosition>>();
-                new CelestialObjectPositionSeeder(celestialObjectPositionConnector, celestialObjectPlanetResult).Seed();
+                Console.WriteLine("EXCEPTION");
+                Console.WriteLine(exception.Message);
             }
         }
 
@@ -125,15 +82,15 @@
         {
             LogHelper.LogInformation(string.Empty);
             LogHelper.LogInformation("Choose one of the following options.");
-            LogHelper.LogInformation("1. Seed celestial object types.");
-            LogHelper.LogInformation("2. Seed celestial data.");
-            LogHelper.LogInformation("3. Read celestial data.");
-            LogHelper.LogInformation("9. Seed all.");
+            LogHelper.LogInformation("1. Read celestial types.");
+            LogHelper.LogInformation("2. Read celestial objects.");
+            LogHelper.LogInformation("3. Read celestial positions.");
+            LogHelper.LogInformation("0. Exit.");
             LogHelper.LogInformation(string.Empty);
 
             var key = Console.ReadKey();
 
-            if (!key.KeyChar.In('1', '2', '9'))
+            if (!key.KeyChar.In('0', '1', '2', '3', '4', '5', '6', '9'))
             {
                 LogHelper.LogInformation($"{key.KeyChar} input is invalid.");
                 LogHelper.LogInformation(string.Empty);
