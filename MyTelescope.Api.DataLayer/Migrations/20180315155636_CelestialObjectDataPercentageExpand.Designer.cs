@@ -21,7 +21,7 @@ namespace MyTelescope.Api.DataLayer.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MyTelescope.Api.DataLayer.Models.CelestialObjectModel", b =>
+            modelBuilder.Entity("MyTelescope.Api.DataLayer.Models.CelestialObject", b =>
                 {
                     b.Property<Guid>("Id");
 
@@ -120,7 +120,7 @@ namespace MyTelescope.Api.DataLayer.Migrations
                     b.ToTable("CelestialObjectPosition");
                 });
 
-            modelBuilder.Entity("MyTelescope.Api.DataLayer.Models.CelestialObjectTypeModel", b =>
+            modelBuilder.Entity("MyTelescope.Api.DataLayer.Models.CelestialObjectType", b =>
                 {
                     b.Property<Guid>("Id");
 
@@ -135,9 +135,9 @@ namespace MyTelescope.Api.DataLayer.Migrations
                     b.ToTable("CelestialObjectType");
                 });
 
-            modelBuilder.Entity("MyTelescope.Api.DataLayer.Models.CelestialObjectModel", b =>
+            modelBuilder.Entity("MyTelescope.Api.DataLayer.Models.CelestialObject", b =>
                 {
-                    b.HasOne("MyTelescope.Api.DataLayer.Models.CelestialObjectTypeModel", "CelestialObjectType")
+                    b.HasOne("MyTelescope.Api.DataLayer.Models.CelestialObjectType", "CelestialObjectType")
                         .WithMany("CelestialObjects")
                         .HasForeignKey("CelestialObjectTypeId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -145,7 +145,7 @@ namespace MyTelescope.Api.DataLayer.Migrations
 
             modelBuilder.Entity("MyTelescope.Api.DataLayer.Models.CelestialObjectPositionModel", b =>
                 {
-                    b.HasOne("MyTelescope.Api.DataLayer.Models.CelestialObjectModel", "CelestialObject")
+                    b.HasOne("MyTelescope.Api.DataLayer.Models.CelestialObject", "CelestialObject")
                         .WithMany("CelestialObjectPositions")
                         .HasForeignKey("CelestialObjectId")
                         .OnDelete(DeleteBehavior.Restrict);

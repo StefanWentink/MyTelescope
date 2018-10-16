@@ -17,6 +17,7 @@
     <PackageReference Include="Microsoft.AspNetCore.OData" Version="7.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="3.0.0" />
+    <PackageReference Include="SWE.Swagger" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>

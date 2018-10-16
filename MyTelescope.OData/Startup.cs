@@ -1,5 +1,6 @@
 ﻿namespace MyTelescope.OData
 {
+    using Microsoft.AspNet.OData.Builder;
     using Microsoft.AspNet.OData.Extensions;
     using Microsoft.AspNet.OData.Formatter;
     using Microsoft.AspNetCore.Builder;
@@ -7,8 +8,11 @@
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
+    using Microsoft.OData.Edm;
     using MyTelescope.Api.DataLayer.Helpers.Di;
     using MyTelescope.OData.Utilities;
+    using MyTelescope.SolarSystem.Models.CelestialObject;
     using Swashbuckle.AspNetCore.Swagger;
     using SWE.Swagger.DocumentFilters;
     using System.Linq;
@@ -52,7 +56,7 @@
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
             if (env.IsDevelopment())
             {
@@ -64,6 +68,9 @@
             }
 
             app.UseHttpsRedirection();
+
+            loggerFactory.AddConsole(Configuration.GetSection("Logging")); //log levels set in your configuration
+            loggerFactory.AddDebug(); //does all log levels
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
@@ -81,7 +88,7 @@
                 {
                     routebuilder.Select().Expand().Filter().OrderBy().MaxTop(100).Count();
                     routebuilder.MapODataServiceRoute("odata", "odata", ODataUtilities.GetODataConventionModelBuilder().GetEdmModel());
-                    //routebuilder.EnableDependencyInjection();
+                    routebuilder.EnableDependencyInjection();
                 });
         }
     }

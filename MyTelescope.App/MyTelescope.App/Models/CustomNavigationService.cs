@@ -8,7 +8,7 @@
 
     public class CustomNavigationService : NavigationPage, IFreshNavigationService
     {
-        public CustomNavigationService(IModelContainer<CelestialObjectTypeModel> page)
+        public CustomNavigationService(IModelContainer<CelestialObjectType> page)
             : base((Page)page)
         {
         }

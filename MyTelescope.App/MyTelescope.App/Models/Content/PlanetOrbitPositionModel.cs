@@ -9,14 +9,14 @@
     using System.Linq;
     using ViewModels.Models.Item;
 
-    public class PlanetOrbitPositionModel : DetailOverViewPageModel<CelestialObjectPositionViewModel, CelestialObjectPositionModel>
+    public class PlanetOrbitPositionModel : DetailOverViewPageModel<CelestialObjectPositionViewModel, CelestialObjectPosition>
     {
-        public PlanetOrbitPositionModel(IStaticDataLoader<CelestialObjectPositionViewModel, CelestialObjectPositionModel> dataLoader)
+        public PlanetOrbitPositionModel(IStaticDataLoader<CelestialObjectPositionViewModel, CelestialObjectPosition> dataLoader)
             : base(dataLoader)
         {
         }
 
-        public override void SetModel(CelestialObjectPositionModel model)
+        public override void SetModel(CelestialObjectPosition model)
         {
             if (!GuidHelper.GuidIsNullOrEmpty(model?.Id) && model != Model)
             {
@@ -74,7 +74,7 @@
                         {
                             RaisePropertyChanged(nameof(ReferenceYear));
 
-                            var positionModel = new CelestialObjectPositionModel(
+                            var positionModel = new CelestialObjectPosition(
                                     Model.CelestialObjectId,
                                     new DateTimeOffset(ReferenceYear, 1, 1, 0, 0, 0, TimeSpan.Zero),
                                     new DateTimeOffset(ReferenceYear, 12, 31, 0, 0, 0, TimeSpan.Zero));

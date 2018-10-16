@@ -16,8 +16,8 @@ namespace MyTelescope.Test.SolarSystem.Extensions
         [Fact]
         public void GetKeplerianMeanAnomaly360Test()
         {
-            var jupiter = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == CelestialObject.Jupiter);
-            var earth = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == CelestialObject.Earth);
+            var jupiter = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == Celestial.Jupiter);
+            var earth = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == Celestial.Earth);
 
             var referenceDate = new DateTimeOffset(2004, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
@@ -34,8 +34,8 @@ namespace MyTelescope.Test.SolarSystem.Extensions
         [Fact]
         public void GetKeplerianMeanAnomalyAroundZeroTest()
         {
-            var jupiter = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == CelestialObject.Jupiter);
-            var earth = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == CelestialObject.Earth);
+            var jupiter = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == Celestial.Jupiter);
+            var earth = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == Celestial.Earth);
 
             var referenceDate = new DateTimeOffset(2004, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
@@ -52,8 +52,8 @@ namespace MyTelescope.Test.SolarSystem.Extensions
         [Fact]
         public void GetKeplerianCalculateTest()
         {
-            var jupiter = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == CelestialObject.Jupiter);
-            var earth = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == CelestialObject.Earth);
+            var jupiter = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == Celestial.Jupiter);
+            var earth = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == Celestial.Earth);
 
             var referenceDate = new DateTimeOffset(2004, 1, 1, 0, 0, 0, TimeSpan.Zero);
 
@@ -83,8 +83,8 @@ namespace MyTelescope.Test.SolarSystem.Extensions
         [Fact]
         public void GetKeplerianCalculationTest()
         {
-            var jupiter = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == CelestialObject.Jupiter);
-            var earth = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == CelestialObject.Earth);
+            var jupiter = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == Celestial.Jupiter);
+            var earth = KeplerianValueConstants.PlanetKeplerianModels.Single(x => x.SolarSystemObject == Celestial.Earth);
 
             var referenceDate = new DateTimeOffset(2004, 1, 1, 0, 0, 0, TimeSpan.Zero);
 

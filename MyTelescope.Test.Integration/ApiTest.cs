@@ -46,22 +46,22 @@ namespace MyTelescope.Test.Integration
         [Fact]
         public void ApiGetCelestialObjectTypeTest()
         {
-            var modelName = ModelHelper.GetName(nameof(CelestialObjectTypeModel));
-            AssertExecuteTest<CelestialObjectTypeModel>(modelName);
+            var modelName = ModelHelper.GetName(nameof(CelestialObjectType));
+            AssertExecuteTest<CelestialObjectType>(modelName);
         }
 
         [Fact]
         public void ApiGetCelestialObjectTest()
         {
-            var modelName = ModelHelper.GetName(nameof(CelestialObjectModel));
-            AssertExecuteTest<CelestialObjectModel>(modelName);
+            var modelName = ModelHelper.GetName(nameof(CelestialObject));
+            AssertExecuteTest<CelestialObject>(modelName);
         }
 
         [Fact]
         public void ApiGetCelestialObjectPositionTest()
         {
-            var modelName = ModelHelper.GetName(nameof(CelestialObjectPositionModel));
-            AssertExecuteTest<CelestialObjectPositionModel>(modelName);
+            var modelName = ModelHelper.GetName(nameof(CelestialObjectPosition));
+            AssertExecuteTest<CelestialObjectPosition>(modelName);
         }
 
         private void AssertExecuteTest<T>(string modelName)

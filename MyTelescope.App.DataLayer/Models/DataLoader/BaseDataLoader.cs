@@ -68,7 +68,7 @@
 
         protected virtual SortModel GetSort()
         {
-            return new SortModel(nameof(CelestialObjectPositionModel.CelestialObjectId), true);
+            return new SortModel(nameof(CelestialObjectPosition.CelestialObjectId), true);
         }
 
         public async Task LoadAsync(DataLoading dataLoading, TModel model)

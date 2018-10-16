@@ -18,9 +18,9 @@
         public void HttpDataLoaderCelestialObjectReadTest()
         {
             var planetResult = CelestialObjectSeedHelper.GetPlanets();
-            var emptyResult = new List<CelestialObjectModel>();
+            var emptyResult = new List<CelestialObject>();
 
-            var connector = new Mock<IConnector<CelestialObjectModel>>();
+            var connector = new Mock<IConnector<CelestialObject>>();
 
             connector.Setup(x => x.ReadAsync(It.Is<FilterModel>(f => f.Sort.Skip <= 0))).Returns(
                 Task.Run(() => planetResult));

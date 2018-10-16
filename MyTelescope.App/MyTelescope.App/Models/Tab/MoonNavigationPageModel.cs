@@ -6,7 +6,7 @@
     using SolarSystem.Models.CelestialObject;
     using System;
 
-    public class MoonNavigationPageModel : TabbedPageModel<CelestialObjectModel>
+    public class MoonNavigationPageModel : TabbedPageModel<CelestialObject>
     {
         [Obsolete("Only for page generation.")]
         public MoonNavigationPageModel()
@@ -14,7 +14,7 @@
         {
         }
 
-        public MoonNavigationPageModel(CelestialObjectModel model)
+        public MoonNavigationPageModel(CelestialObject model)
             : base(model, NavigationServiceNameConstants.Moon)
         {
         }

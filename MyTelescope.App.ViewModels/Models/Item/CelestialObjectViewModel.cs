@@ -7,13 +7,13 @@
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Drawing;
 
-    public class CelestialObjectViewModel : BaseKeyViewModel<CelestialObjectModel>, IDetailViewModel
+    public class CelestialObjectViewModel : BaseKeyViewModel<CelestialObject>, IDetailViewModel
     {
         public CelestialObjectViewModel()
         {
         }
 
-        public CelestialObjectViewModel(CelestialObjectModel model)
+        public CelestialObjectViewModel(CelestialObject model)
             : base(model)
         {
         }

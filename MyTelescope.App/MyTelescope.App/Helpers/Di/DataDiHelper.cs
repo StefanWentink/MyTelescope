@@ -17,17 +17,17 @@
             FreshIOC.Container.Register<ICrudDataExchanger<IRequestModel>, MyTelescopeDataExchanger>().AsMultiInstance();
             FreshIOC.Container.Register<IDataTransponder, DataTransponder>().AsMultiInstance();
 
-            FreshIOC.Container.Register<IConnector<CelestialObjectModel>, DataLayer.Models.Connectors.CelestialObjectConnector>().AsMultiInstance();
-            FreshIOC.Container.Register<IConnector<CelestialObjectPositionModel>, DataLayer.Models.Connectors.CelestialObjectPositionConnector>().AsMultiInstance();
+            FreshIOC.Container.Register<IConnector<CelestialObject>, DataLayer.Models.Connectors.CelestialObjectConnector>().AsMultiInstance();
+            FreshIOC.Container.Register<IConnector<CelestialObjectPosition>, DataLayer.Models.Connectors.CelestialObjectPositionConnector>().AsMultiInstance();
 
-            FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectTypeModel>, CelestialObjectTypeDataLoader>().AsMultiInstance();
-            FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectViewModel, CelestialObjectModel>, CelestialObjectDataLoader>().AsMultiInstance();
-            FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPositionModel>, CelestialObjectPositionDataLoader>().AsMultiInstance();
+            FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectType>, CelestialObjectTypeDataLoader>().AsMultiInstance();
+            FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectViewModel, CelestialObject>, CelestialObjectDataLoader>().AsMultiInstance();
+            FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPosition>, CelestialObjectPositionDataLoader>().AsMultiInstance();
 
-            FreshIOC.Container.Register<IStaticDataLoader<CelestialObjectViewModel, CelestialObjectModel>, PlanetDataLoader>().AsMultiInstance();
+            FreshIOC.Container.Register<IStaticDataLoader<CelestialObjectViewModel, CelestialObject>, PlanetDataLoader>().AsMultiInstance();
 
-            FreshIOC.Container.Register<IStaticDataLoader<PlanetDetailViewModel, CelestialObjectModel>, PlanetDetailLoader>().AsMultiInstance();
-            FreshIOC.Container.Register<IStaticDataLoader<MoonDetailViewModel, CelestialObjectModel>, MoonDetailLoader>().AsMultiInstance();
+            FreshIOC.Container.Register<IStaticDataLoader<PlanetDetailViewModel, CelestialObject>, PlanetDetailLoader>().AsMultiInstance();
+            FreshIOC.Container.Register<IStaticDataLoader<MoonDetailViewModel, CelestialObject>, MoonDetailLoader>().AsMultiInstance();
         }
     }
 }

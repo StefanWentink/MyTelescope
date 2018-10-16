@@ -8,16 +8,16 @@
     using System.Linq.Expressions;
     using Utilities.Models.Filter;
 
-    public class CelestialObjectConnector : ContextConnector<CelestialObjectModel>
+    public class CelestialObjectConnector : ContextConnector<CelestialObject>
     {
         public CelestialObjectConnector(IContextContainer contextContainer) :
             base(contextContainer)
         {
         }
 
-        protected override Expression<Func<CelestialObjectModel, bool>> GetCustomExpression(FilterModel filter)
+        protected override Expression<Func<CelestialObject, bool>> GetCustomExpression(FilterModel filter)
         {
-            return CustomFilterItemHelper.GetCelestialObjectTypeExpression<CelestialObjectModel>(filter);
+            return CustomFilterItemHelper.GetCelestialObjectTypeExpression<CelestialObject>(filter);
         }
     }
 }

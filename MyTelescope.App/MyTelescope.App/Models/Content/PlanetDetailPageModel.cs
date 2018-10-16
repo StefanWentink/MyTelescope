@@ -5,9 +5,9 @@
     using SolarSystem.Models.CelestialObject;
     using ViewModels.Models.Item;
 
-    public class PlanetDetailPageModel : DetailOverViewPageModel<PlanetDetailViewModel, CelestialObjectModel>
+    public class PlanetDetailPageModel : DetailOverViewPageModel<PlanetDetailViewModel, CelestialObject>
     {
-        public PlanetDetailPageModel(IStaticDataLoader<PlanetDetailViewModel, CelestialObjectModel> dataLoader)
+        public PlanetDetailPageModel(IStaticDataLoader<PlanetDetailViewModel, CelestialObject> dataLoader)
             : base(dataLoader)
         {
         }

@@ -5,11 +5,11 @@
     using SolarSystem.Models.CelestialObject;
     using Utilities.Interfaces.Connector;
 
-    public class CelestialObjectTypeFactory : SingletonFactory<CelestialObjectTypeModel>
+    public class CelestialObjectTypeFactory : SingletonFactory<CelestialObjectType>
     {
         public static CelestialObjectTypeFactory Instance { get; private set; }
 
-        public CelestialObjectTypeFactory(IConnector<CelestialObjectTypeModel> connector)
+        public CelestialObjectTypeFactory(IConnector<CelestialObjectType> connector)
             : base(connector)
         {
             if (Instance == null)
@@ -18,13 +18,13 @@
             }
         }
 
-        public CelestialObjectTypeModel GetSingleByEnum(CelestialObjectType value)
+        public CelestialObjectType GetSingleByEnum(CelestialType value)
         {
             var celestialObjectTypeCode = value.ToConstant();
             return GetSingleByCode(celestialObjectTypeCode);
         }
 
-        public CelestialObjectTypeModel GetSingleByCode(string value)
+        public CelestialObjectType GetSingleByCode(string value)
         {
             return GetSingleByFunction(x => x.Code.Equals(value));
         }

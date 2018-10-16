@@ -11,28 +11,28 @@
     using System.Linq.Expressions;
     using Utilities.Interfaces.Connector;
 
-    public class CelestialObjectPositionSeeder : BaseSeeder<CelestialObjectPositionModel, object>
+    public class CelestialObjectPositionSeeder : BaseSeeder<CelestialObjectPosition, object>
     {
         private Dictionary<string, Guid> CelestialObjectDictionary { get; }
 
-        private List<CelestialObjectPositionModel> CelestialObjectPositions { get; }
+        private List<CelestialObjectPosition> CelestialObjectPositions { get; }
 
-        private List<CelestialObjectPositionModel> _earthPositions;
+        private List<CelestialObjectPosition> _earthPositions;
 
-        private Dictionary<DateTimeOffset, CelestialObjectPositionModel> _earthLocations;
+        private Dictionary<DateTimeOffset, CelestialObjectPosition> _earthLocations;
 
-        public CelestialObjectPositionSeeder(IContextConnector<CelestialObjectPositionModel> connector, List<CelestialObjectModel> celestialObjects)
+        public CelestialObjectPositionSeeder(IContextConnector<CelestialObjectPosition> connector, List<CelestialObject> celestialObjects)
             : base(connector)
         {
             CelestialObjectDictionary = celestialObjects.ToDictionary(x => x.Code, x => x.Id);
-            CelestialObjectPositions = celestialObjects.Select(x => new CelestialObjectPositionModel(x.Id, DateTimeOffset.Now, null, 0, 0)).ToList();
+            CelestialObjectPositions = celestialObjects.Select(x => new CelestialObjectPosition(x.Id, DateTimeOffset.Now, null, 0, 0)).ToList();
         }
 
         private readonly object _earthPositionLock = new object();
 
-        protected override List<Expression<Func<CelestialObjectPositionModel, bool>>> GetBatchExpression()
+        protected override List<Expression<Func<CelestialObjectPosition, bool>>> GetBatchExpression()
         {
-            var result = new List<Expression<Func<CelestialObjectPositionModel, bool>>>();
+            var result = new List<Expression<Func<CelestialObjectPosition, bool>>>();
 
             foreach (var celestialObjectId in CelestialObjectDictionary.Values)
             {
@@ -42,15 +42,15 @@
             return result;
         }
 
-        protected override List<CelestialObjectPositionModel> SeedList(Expression<Func<CelestialObjectPositionModel, bool>> batchExpression)
+        protected override List<CelestialObjectPosition> SeedList(Expression<Func<CelestialObjectPosition, bool>> batchExpression)
         {
-            var result = new List<CelestialObjectPositionModel>();
+            var result = new List<CelestialObjectPosition>();
 
             lock (_earthPositionLock)
             {
                 if (_earthPositions == null)
                 {
-                    _earthPositions = SeedPlanet(CelestialObject.Earth, null);
+                    _earthPositions = SeedPlanet(Celestial.Earth, null);
                     _earthLocations = _earthPositions.ToDictionary(x => x.ReferenceDate, x => x);
                 }
             }
@@ -66,9 +66,9 @@
             return result;
         }
 
-        private List<CelestialObjectPositionModel> SeedPlanet(CelestialObject planet, Dictionary<DateTimeOffset, CelestialObjectPositionModel> earthPositions)
+        private List<CelestialObjectPosition> SeedPlanet(Celestial planet, Dictionary<DateTimeOffset, CelestialObjectPosition> earthPositions)
         {
-            var result = new List<CelestialObjectPositionModel>();
+            var result = new List<CelestialObjectPosition>();
             var celestialObjectId = CelestialObjectDictionary[planet.ToConstant()];
             var referenceDate = new DateTimeOffset(1950, 1, 1, 0, 0, 0, TimeSpan.Zero);
             var endDate = new DateTimeOffset(2100, 1, 1, 0, 0, 0, TimeSpan.Zero);
@@ -85,9 +85,9 @@
                     calculationModel.SetEarthPosition(earthPosition.Location, earthPosition.CentricDistance);
                 }
 
-                var positionModel = planet == CelestialObject.Earth
-                    ? new CelestialObjectPositionModel(celestialObjectId, referenceDate, calculationModel.Location, 1, calculationModel.CentricDistance)
-                    : new CelestialObjectPositionModel(celestialObjectId, referenceDate, calculationModel);
+                var positionModel = planet == Celestial.Earth
+                    ? new CelestialObjectPosition(celestialObjectId, referenceDate, calculationModel.Location, 1, calculationModel.CentricDistance)
+                    : new CelestialObjectPosition(celestialObjectId, referenceDate, calculationModel);
 
                 result.Add(positionModel);
 
@@ -97,7 +97,7 @@
             return result;
         }
 
-        protected override Func<CelestialObjectPositionModel, object> DuplicateCheckFunction
+        protected override Func<CelestialObjectPosition, object> DuplicateCheckFunction
         {
             get { return x => new { x.CelestialObjectId, x.ReferenceDate }; }
         }

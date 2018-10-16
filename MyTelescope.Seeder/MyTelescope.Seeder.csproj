@@ -1,12 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
-  
+
   <PropertyGroup>
-	<ProjectGuid>{70229D13-8CE4-4C93-B147-558FDF3E86BC}</ProjectGuid>
+    <ProjectGuid>{70229D13-8CE4-4C93-B147-558FDF3E86BC}</ProjectGuid>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -26,5 +26,4 @@
     <ProjectReference Include="..\MyTelescope.Ef.Utilities\MyTelescope.Ef.Utilities.csproj" />
     <ProjectReference Include="..\MyTelescope.Utilities\MyTelescope.Utilities.csproj" />
   </ItemGroup>
-
 </Project>

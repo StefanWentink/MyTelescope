@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.SolarSystem.Enums
 {
-    public enum CelestialObjectType
+    public enum CelestialType
     {
         Star = 0,
         Planet = 100,

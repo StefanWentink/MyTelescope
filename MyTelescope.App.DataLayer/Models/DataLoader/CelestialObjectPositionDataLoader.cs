@@ -8,9 +8,9 @@
     using ViewModels.Helpers.Filter;
     using ViewModels.Models.Item;
 
-    public class CelestialObjectPositionDataLoader : HttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPositionModel>
+    public class CelestialObjectPositionDataLoader : HttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPosition>
     {
-        public CelestialObjectPositionDataLoader(IConnector<CelestialObjectPositionModel> connector)
+        public CelestialObjectPositionDataLoader(IConnector<CelestialObjectPosition> connector)
             : base(connector)
         {
         }
@@ -20,19 +20,19 @@
             return new SortModel(
                 new List<SortItemModel>
                 {
-                    new SortItemModel(nameof(CelestialObjectPositionModel.CelestialObjectId), true),
-                    new SortItemModel(nameof(CelestialObjectPositionModel.ReferenceDate), true)
+                    new SortItemModel(nameof(CelestialObjectPosition.CelestialObjectId), true),
+                    new SortItemModel(nameof(CelestialObjectPosition.ReferenceDate), true)
                 });
         }
 
-        protected override List<FilterItemModel> GetModelFilterItems(CelestialObjectPositionModel model)
+        protected override List<FilterItemModel> GetModelFilterItems(CelestialObjectPosition model)
         {
             return model == null
                 ? base.GetModelFilterItems(null)
                 : GetReferenceFilterItems(model);
         }
 
-        private List<FilterItemModel> GetReferenceFilterItems(CelestialObjectPositionModel model)
+        private List<FilterItemModel> GetReferenceFilterItems(CelestialObjectPosition model)
         {
             return model.ReferenceEndDate.HasValue
                     ? CelestialObjectPositionFilterHelper.GetDefaultFilterList(model.CelestialObjectId, model.ReferenceDate, model.ReferenceEndDate.Value)

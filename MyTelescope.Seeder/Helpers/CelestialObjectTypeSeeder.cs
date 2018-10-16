@@ -8,25 +8,25 @@
     using System.Linq.Expressions;
     using Utilities.Interfaces.Connector;
 
-    public class CelestialObjectTypeSeeder : BaseSeeder<CelestialObjectTypeModel, string>
+    public class CelestialObjectTypeSeeder : BaseSeeder<CelestialObjectType, string>
     {
-        public CelestialObjectTypeSeeder(IContextConnector<CelestialObjectTypeModel> connector) : base(connector)
+        public CelestialObjectTypeSeeder(IContextConnector<CelestialObjectType> connector) : base(connector)
         {
         }
 
-        private static List<CelestialObjectTypeModel> List { get; } = CelestialObjectTypeSeedHelper.GetCelestialObjectTypes();
+        private static List<CelestialObjectType> List { get; } = CelestialObjectTypeSeedHelper.GetCelestialObjectTypes();
 
-        protected override List<Expression<Func<CelestialObjectTypeModel, bool>>> GetBatchExpression()
+        protected override List<Expression<Func<CelestialObjectType, bool>>> GetBatchExpression()
         {
-            return new List<Expression<Func<CelestialObjectTypeModel, bool>>> { x => true };
+            return new List<Expression<Func<CelestialObjectType, bool>>> { x => true };
         }
 
-        protected override List<CelestialObjectTypeModel> SeedList(Expression<Func<CelestialObjectTypeModel, bool>> batchExpression)
+        protected override List<CelestialObjectType> SeedList(Expression<Func<CelestialObjectType, bool>> batchExpression)
         {
             return List.Where(batchExpression.Compile()).ToList();
         }
 
-        protected override Func<CelestialObjectTypeModel, string> DuplicateCheckFunction
+        protected override Func<CelestialObjectType, string> DuplicateCheckFunction
         {
             get { return x => x.Code; }
         }

@@ -27,7 +27,7 @@
         }
 
         [EnableQuery]
-        public IActionResult Get(Guid key)
+        public IActionResult Get([FromODataUri] Guid key)
         {
             return Ok(Connector.Queryable.SingleOrDefault(x => x.Id == key));
         }

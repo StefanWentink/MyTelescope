@@ -6,14 +6,14 @@
     using SolarSystem.Models.CelestialObject;
     using System.ComponentModel.DataAnnotations;
 
-    public abstract class CelestialObjectDetailViewModel : BaseKeyDetailViewModel<CelestialObjectModel>, ICalculatableRadius
+    public abstract class CelestialObjectDetailViewModel : BaseKeyDetailViewModel<CelestialObject>, ICalculatableRadius
     {
-        protected CelestialObjectDetailViewModel(CelestialObjectModel model)
+        protected CelestialObjectDetailViewModel(CelestialObject model)
             : base(model)
         {
         }
 
-        public abstract CelestialObjectType CelestialObjectType { get; }
+        public abstract CelestialType CelestialObjectType { get; }
 
         [Required]
         public string Code

@@ -3,7 +3,7 @@
     using Interfaces;
     using SolarSystem.Models.CelestialObject;
 
-    public class CelestialObjectConnector : MyTelescopeConnector<CelestialObjectModel>
+    public class CelestialObjectConnector : MyTelescopeConnector<CelestialObject>
     {
         public CelestialObjectConnector(ICrudDataExchanger<IRequestModel> exchanger)
             : base(exchanger)

@@ -3,7 +3,7 @@
     using Interfaces;
     using SolarSystem.Models.CelestialObject;
 
-    public class CelestialObjectPositionConnector : MyTelescopeConnector<CelestialObjectPositionModel>
+    public class CelestialObjectPositionConnector : MyTelescopeConnector<CelestialObjectPosition>
     {
         public CelestialObjectPositionConnector(ICrudDataExchanger<IRequestModel> exchanger)
             : base(exchanger)

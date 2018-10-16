@@ -9,12 +9,12 @@
 
     public class PlanetViewModel : CelestialObjectDetailViewModel
     {
-        public PlanetViewModel(CelestialObjectModel model)
+        public PlanetViewModel(CelestialObject model)
             : base(model)
         {
         }
 
-        public override CelestialObjectType CelestialObjectType => CelestialObjectType.Planet;
+        public override CelestialType CelestialObjectType => CelestialType.Planet;
 
         public override List<IDetailViewModel> GetDetails()
         {

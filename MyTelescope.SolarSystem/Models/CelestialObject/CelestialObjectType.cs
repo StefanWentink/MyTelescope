@@ -6,18 +6,17 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Diagnostics;
-    using Utilities.Interfaces;
 
     [DebuggerDisplay("{" + nameof(Code) + "}")]
-    public class CelestialObjectTypeModel : IKey
+    public class CelestialObjectType : IKey
     {
         [Obsolete("For serialisation")]
-        public CelestialObjectTypeModel()
+        public CelestialObjectType()
         {
             InitCollections();
         }
 
-        public CelestialObjectTypeModel(string code)
+        public CelestialObjectType(string code)
         {
             Id = Guid.NewGuid();
             Code = code;
@@ -26,7 +25,7 @@
 
         private void InitCollections()
         {
-            CelestialObjects = new HashSet<CelestialObjectModel>();
+            CelestialObjects = new HashSet<CelestialObject>();
         }
 
         /// <summary>
@@ -40,6 +39,6 @@
         [Required]
         public string Code { get; set; }
 
-        public virtual ICollection<CelestialObjectModel> CelestialObjects { get; set; }
+        public virtual ICollection<CelestialObject> CelestialObjects { get; set; }
     }
 }

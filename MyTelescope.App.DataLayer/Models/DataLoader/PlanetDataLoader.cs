@@ -7,9 +7,9 @@
     using System.Threading.Tasks;
     using ViewModels.Models.Item;
 
-    public class PlanetDataLoader : StaticDataLoader<CelestialObjectViewModel, CelestialObjectModel>
+    public class PlanetDataLoader : StaticDataLoader<CelestialObjectViewModel, CelestialObject>
     {
-        protected override Task<List<CelestialObjectViewModel>> GetData(CelestialObjectModel model)
+        protected override Task<List<CelestialObjectViewModel>> GetData(CelestialObject model)
         {
             return Task.Run(() => CelestialObjectSeedHelper.GetPlanets().Select(x => new CelestialObjectViewModel(x)).ToList());
         }

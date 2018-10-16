@@ -3,8 +3,6 @@
     using Interfaces;
     using SWE.Model.Interfaces;
 
-    using SWE.Model.Interfaces;
-
     using System;
 
     public abstract class BaseKeyViewModel<TModel> : BaseViewModel, IBaseKeyViewModel<TModel>, IKey

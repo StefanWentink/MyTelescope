@@ -5,14 +5,14 @@
 
     public static class CelestialObjectExtensions
     {
-        public static string ToConstant(this CelestialObject value)
+        public static string ToConstant(this Celestial value)
         {
             return value.ToString();
         }
 
-        public static CelestialObject ToEnum(string value)
+        public static Celestial ToEnum(string value)
         {
-            return (CelestialObject)Enum.Parse(typeof(CelestialObject), value);
+            return (Celestial)Enum.Parse(typeof(Celestial), value);
         }
     }
 }

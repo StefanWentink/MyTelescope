@@ -4,14 +4,14 @@
 
     public class KeplerianModel
     {
-        public CelestialObject SolarSystemObject { get; }
+        public Celestial SolarSystemObject { get; }
 
         public KeplerianValueModel BaseValues { get; }
 
         public KeplerianValueModel CenturyValues { get; }
 
         public KeplerianModel(
-            CelestialObject solarSystemObject,
+            Celestial solarSystemObject,
             KeplerianValueModel baseValues,
             KeplerianValueModel centuryValues)
         {

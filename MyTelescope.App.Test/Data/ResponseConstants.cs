@@ -14,7 +14,7 @@
 
         internal static string GetCelestialObjectEmptyContentString()
         {
-            return JsonConvert.SerializeObject(new List<CelestialObjectModel>());
+            return JsonConvert.SerializeObject(new List<CelestialObject>());
         }
     }
 }

@@ -8,19 +8,19 @@
     using ViewModels.Helpers.Filter;
     using ViewModels.Models.Item;
 
-    public class CelestialObjectDataLoader : HttpDataLoader<CelestialObjectViewModel, CelestialObjectModel>
+    public class CelestialObjectDataLoader : HttpDataLoader<CelestialObjectViewModel, CelestialObject>
     {
-        public CelestialObjectDataLoader(IConnector<CelestialObjectModel> connector)
+        public CelestialObjectDataLoader(IConnector<CelestialObject> connector)
             : base(connector)
         {
         }
 
         protected override SortModel GetSort()
         {
-            return new SortModel(nameof(CelestialObjectModel.SemiMajorAxis), true);
+            return new SortModel(nameof(CelestialObject.SemiMajorAxis), true);
         }
 
-        protected override List<FilterItemModel> GetModelFilterItems(CelestialObjectModel model)
+        protected override List<FilterItemModel> GetModelFilterItems(CelestialObject model)
         {
             return model == null
                 ? base.GetModelFilterItems(null)

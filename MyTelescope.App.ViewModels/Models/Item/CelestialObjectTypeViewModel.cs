@@ -6,7 +6,7 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    public class CelestialObjectTypeViewModel : BaseKeyViewModel<CelestialObjectTypeModel>
+    public class CelestialObjectTypeViewModel : BaseKeyViewModel<CelestialObjectType>
     {
         [Obsolete("Only for page generation.")]
         public CelestialObjectTypeViewModel()
@@ -14,7 +14,7 @@
         {
         }
 
-        public CelestialObjectTypeViewModel(CelestialObjectTypeModel model)
+        public CelestialObjectTypeViewModel(CelestialObjectType model)
             : base(model)
         {
         }
@@ -30,6 +30,6 @@
         public string Description => "TODO - Implement.";
 
         [Required]
-        public CelestialObjectType CelestialObjectType => CelestialObjectTypeExtensions.ToEnum(Model.Code);
+        public CelestialType CelestialObjectType => CelestialObjectTypeExtensions.ToEnum(Model.Code);
     }
 }

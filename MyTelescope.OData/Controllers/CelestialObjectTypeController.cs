@@ -5,9 +5,9 @@
     using MyTelescope.Utilities.Interfaces.Connector;
 
     [ApiController]
-    public class CelestialObjectController : DataController<CelestialObjectModel>
+    public class CelestialObjectTypeController : DataController<CelestialObjectType>
     {
-        public CelestialObjectController(IContextConnector<CelestialObjectModel> connector)
+        public CelestialObjectTypeController(IContextConnector<CelestialObjectType> connector)
             : base(connector)
         {
         }

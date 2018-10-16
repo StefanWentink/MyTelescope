@@ -20,7 +20,7 @@ namespace MyTelescope.Api.DataLayer.Migrations
                 .HasAnnotation("ProductVersion", "2.0.2-rtm-10011")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectModel", b =>
+            modelBuilder.Entity("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObject", b =>
                 {
                     b.Property<Guid>("Id");
 
@@ -147,7 +147,7 @@ namespace MyTelescope.Api.DataLayer.Migrations
                     b.ToTable("CelestialObjectPosition");
                 });
 
-            modelBuilder.Entity("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectTypeModel", b =>
+            modelBuilder.Entity("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectType", b =>
                 {
                     b.Property<Guid>("Id");
 
@@ -162,14 +162,14 @@ namespace MyTelescope.Api.DataLayer.Migrations
                     b.ToTable("CelestialObjectType");
                 });
 
-            modelBuilder.Entity("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectModel", b =>
+            modelBuilder.Entity("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObject", b =>
                 {
-                    b.HasOne("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectModel", "CelestialObject")
+                    b.HasOne("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObject", "CelestialObject")
                         .WithMany()
                         .HasForeignKey("CelestialObjectId")
                         .OnDelete(DeleteBehavior.Restrict);
 
-                    b.HasOne("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectTypeModel", "CelestialObjectType")
+                    b.HasOne("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectType", "CelestialObjectType")
                         .WithMany("CelestialObjects")
                         .HasForeignKey("CelestialObjectTypeId")
                         .OnDelete(DeleteBehavior.Restrict);
@@ -177,7 +177,7 @@ namespace MyTelescope.Api.DataLayer.Migrations
 
             modelBuilder.Entity("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectPositionModel", b =>
                 {
-                    b.HasOne("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObjectModel", "CelestialObject")
+                    b.HasOne("MyTelescope.SolarSystem.Models.CelestialObject.CelestialObject", "CelestialObject")
                         .WithMany("CelestialObjectPositions")
                         .HasForeignKey("CelestialObjectId")
                         .OnDelete(DeleteBehavior.Restrict);

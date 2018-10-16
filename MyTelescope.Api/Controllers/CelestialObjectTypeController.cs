@@ -3,9 +3,9 @@
     using SolarSystem.Models.CelestialObject;
     using Utilities.Interfaces.Connector;
 
-    public class CelestialObjectTypeController : DataController<CelestialObjectTypeModel>
+    public class CelestialObjectTypeController : DataController<CelestialObjectType>
     {
-        public CelestialObjectTypeController(IContextConnector<CelestialObjectTypeModel> connector)
+        public CelestialObjectTypeController(IContextConnector<CelestialObjectType> connector)
             : base(connector)
         {
         }

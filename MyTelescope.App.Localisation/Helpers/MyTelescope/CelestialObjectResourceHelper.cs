@@ -6,37 +6,37 @@
 
     public static class CelestialObjectTypeResourceHelper
     {
-        public static string GetResourceSingular(this CelestialObjectType celestialObjectType)
+        public static string GetResourceSingular(this CelestialType celestialObjectType)
         {
             switch (celestialObjectType)
             {
-                case CelestialObjectType.Star:
+                case CelestialType.Star:
                     return TextResource.Star;
-                case CelestialObjectType.Planet:
+                case CelestialType.Planet:
                     return TextResource.Planet;
-                case CelestialObjectType.MajorMoon:
+                case CelestialType.MajorMoon:
                     return TextResource.MajorMoon;
-                case CelestialObjectType.MinorMoon:
+                case CelestialType.MinorMoon:
                     return TextResource.MinorMoon;
                 default:
-                    throw new EnumArgumentException<CelestialObjectType>((int)celestialObjectType);
+                    throw new EnumArgumentException<CelestialType>((int)celestialObjectType);
             }
         }
 
-        public static string GetResourcePlural(this CelestialObjectType celestialObjectType)
+        public static string GetResourcePlural(this CelestialType celestialObjectType)
         {
             switch (celestialObjectType)
             {
-                case CelestialObjectType.Star:
+                case CelestialType.Star:
                     return TextResource.Stars;
-                case CelestialObjectType.Planet:
+                case CelestialType.Planet:
                     return TextResource.Planets;
-                case CelestialObjectType.MajorMoon:
+                case CelestialType.MajorMoon:
                     return TextResource.MajorMoons;
-                case CelestialObjectType.MinorMoon:
+                case CelestialType.MinorMoon:
                     return TextResource.MinorMoons;
                 default:
-                    throw new EnumArgumentException<CelestialObjectType>((int)celestialObjectType);
+                    throw new EnumArgumentException<CelestialType>((int)celestialObjectType);
             }
         }
     }

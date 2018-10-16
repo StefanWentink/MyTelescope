@@ -17,11 +17,11 @@ namespace MyTelescope.Test.Integration
         [Fact]
         public void SortFunctionTest()
         {
-            var query = new MyTelescopeContext().GetNoTrackingQuery<CelestialObjectPositionModel>();
+            var query = new MyTelescopeContext().GetNoTrackingQuery<CelestialObjectPosition>();
 
-            double Func(CelestialObjectPositionModel x) => x.Declination;
-            Expression<Func<CelestialObjectPositionModel, object>> expression = x => x.Declination;
-            Expression<Func<CelestialObjectPositionModel, object>> memberSelector = ReflectionHelper.MemberSelector<CelestialObjectPositionModel>("Declination");
+            double Func(CelestialObjectPosition x) => x.Declination;
+            Expression<Func<CelestialObjectPosition, object>> expression = x => x.Declination;
+            Expression<Func<CelestialObjectPosition, object>> memberSelector = ReflectionHelper.MemberSelector<CelestialObjectPosition>("Declination");
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -70,12 +70,12 @@ namespace MyTelescope.Test.Integration
         [Fact]
         public void SortFunctionMemoryTest()
         {
-            var query = new MyTelescopeContext().GetNoTrackingQuery<CelestialObjectPositionModel>();
+            var query = new MyTelescopeContext().GetNoTrackingQuery<CelestialObjectPosition>();
 
-            double Func(CelestialObjectPositionModel x) => x.Declination;
-            Expression<Func<CelestialObjectPositionModel, object>> expressionObject = x => x.Declination;
-            Expression<Func<CelestialObjectPositionModel, double>> expressionTyped = x => x.Declination;
-            Expression<Func<CelestialObjectPositionModel, object>> memberSelector = ReflectionHelper.MemberSelector<CelestialObjectPositionModel>("Declination");
+            double Func(CelestialObjectPosition x) => x.Declination;
+            Expression<Func<CelestialObjectPosition, object>> expressionObject = x => x.Declination;
+            Expression<Func<CelestialObjectPosition, double>> expressionTyped = x => x.Declination;
+            Expression<Func<CelestialObjectPosition, object>> memberSelector = ReflectionHelper.MemberSelector<CelestialObjectPosition>("Declination");
 
             var stopwatch = new Stopwatch();
             stopwatch.Start();

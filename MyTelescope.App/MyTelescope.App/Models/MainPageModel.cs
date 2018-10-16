@@ -6,9 +6,9 @@
     using Pages.Content;
     using SolarSystem.Models.CelestialObject;
 
-    public class MainPageModel : TabbedPageModel<CelestialObjectModel>
+    public class MainPageModel : TabbedPageModel<CelestialObject>
     {
-        public MainPageModel(CelestialObjectModel model)
+        public MainPageModel(CelestialObject model)
             : base(model, NavigationServiceNameConstants.Main)
         {
         }

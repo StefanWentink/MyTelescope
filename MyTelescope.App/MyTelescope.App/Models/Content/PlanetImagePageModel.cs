@@ -5,7 +5,7 @@
     using System;
     using ViewModels.Models.Item;
 
-    public class PlanetImagePageModel : ImagePageModel<CelestialObjectViewModel, CelestialObjectModel>
+    public class PlanetImagePageModel : ImagePageModel<CelestialObjectViewModel, CelestialObject>
     {
         [Obsolete("Only for page generation.")]
         public PlanetImagePageModel()
@@ -13,7 +13,7 @@
         {
         }
 
-        public PlanetImagePageModel(CelestialObjectModel model)
+        public PlanetImagePageModel(CelestialObject model)
             : base(model)
         {
         }

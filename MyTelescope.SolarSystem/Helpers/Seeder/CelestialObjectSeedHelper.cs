@@ -12,10 +12,10 @@
 
     public static class CelestialObjectSeedHelper
     {
-        public static CelestialObjectModel GetSun()
+        public static CelestialObject GetSun()
         {
-            return new CelestialObjectModel(
-                CelestialObject.Sun.ToConstant(),
+            return new CelestialObject(
+                Celestial.Sun.ToConstant(),
                 true,
                 CelestialObjectTypeSeedHelper.GetCelestialObjectTypes().Single(x => x.Code == CelestialObjectTypeConstants.Star).Id,
                 null,
@@ -53,25 +53,25 @@
             };
         }
 
-        public static CelestialObjectPositionModel GetSunPosition()
+        public static CelestialObjectPosition GetSunPosition()
         {
             return GetSunPosition(DateTime.Today.Date.GetClosestUtcZeroTime());
         }
 
-        public static CelestialObjectPositionModel GetSunPosition(DateTimeOffset referenceDate)
+        public static CelestialObjectPosition GetSunPosition(DateTimeOffset referenceDate)
         {
-            return new CelestialObjectPositionModel(GetSun().Id, referenceDate, new LocationModel(0, 0, 0), 0, 0);
+            return new CelestialObjectPosition(GetSun().Id, referenceDate, new LocationModel(0, 0, 0), 0, 0);
         }
 
-        public static List<CelestialObjectModel> GetPlanets()
+        public static List<CelestialObject> GetPlanets()
         {
             var sunId = GetSun().Id;
             var planetTypeId = CelestialObjectTypeSeedHelper.GetCelestialObjectTypes().Single(x => x.Code == CelestialObjectTypeConstants.Planet).Id;
 
-            return new List<CelestialObjectModel>
+            return new List<CelestialObject>
             {
-                new CelestialObjectModel(
-                    CelestialObject.Mercury.ToConstant(),
+                new CelestialObject(
+                    Celestial.Mercury.ToConstant(),
                     true,
                     planetTypeId,
                     sunId,
@@ -105,8 +105,8 @@
                     4.5,
                     -1.9),
 
-                new CelestialObjectModel(
-                    CelestialObject.Venus.ToConstant(),
+                new CelestialObject(
+                    Celestial.Venus.ToConstant(),
                     true,
                     planetTypeId,
                     sunId,
@@ -139,8 +139,8 @@
                     66.0,
                     9.7,
                     -4.6),
-                new CelestialObjectModel(
-                    CelestialObject.Earth.ToConstant(),
+                new CelestialObject(
+                    Celestial.Earth.ToConstant(),
                     false,
                     planetTypeId,
                     sunId,
@@ -173,8 +173,8 @@
                     0,
                     0,
                     0),
-                new CelestialObjectModel(
-                    CelestialObject.Mars.ToConstant(),
+                new CelestialObject(
+                    Celestial.Mars.ToConstant(),
                     false,
                     planetTypeId,
                     sunId,
@@ -207,8 +207,8 @@
                     25.1,
                     3.5,
                     -2.91),
-                new CelestialObjectModel(
-                    CelestialObject.Jupiter.ToConstant(),
+                new CelestialObject(
+                    Celestial.Jupiter.ToConstant(),
                     false,
                     planetTypeId,
                     sunId,
@@ -241,8 +241,8 @@
                     50.1,
                     29.8,
                     -2.94),
-                new CelestialObjectModel(
-                    CelestialObject.Saturn.ToConstant(),
+                new CelestialObject(
+                    Celestial.Saturn.ToConstant(),
                     false,
                     planetTypeId,
                     sunId,
@@ -275,8 +275,8 @@
                     20.1,
                     14.5,
                     0.43),
-                new CelestialObjectModel(
-                    CelestialObject.Uranus.ToConstant(),
+                new CelestialObject(
+                    Celestial.Uranus.ToConstant(),
                     false,
                     planetTypeId,
                     sunId,
@@ -309,8 +309,8 @@
                     4.1,
                     3.3,
                     5.32),
-                new CelestialObjectModel(
-                    CelestialObject.Neptune.ToConstant(),
+                new CelestialObject(
+                    Celestial.Neptune.ToConstant(),
                     false,
                     planetTypeId,
                     sunId,
@@ -343,8 +343,8 @@
                     2.4,
                     2.2,
                     7.78),
-                new CelestialObjectModel(
-                    CelestialObject.Pluto.ToConstant(),
+                new CelestialObject(
+                    Celestial.Pluto.ToConstant(),
                     false,
                     planetTypeId,
                     sunId,

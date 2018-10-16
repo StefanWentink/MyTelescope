@@ -7,7 +7,7 @@
     {
         internal static SortModel GetDefaultSort()
         {
-            return new SortModel(nameof(CelestialObjectModel.MaximumDistance), true);
+            return new SortModel(nameof(CelestialObject.MaximumDistance), true);
         }
     }
 }

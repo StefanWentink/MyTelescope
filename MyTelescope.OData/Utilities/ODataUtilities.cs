@@ -9,9 +9,9 @@
         {
             var builder = new ODataConventionModelBuilder();
 
-            builder.EntitySet<CelestialObjectTypeModel>(nameof(CelestialObjectTypeModel).Replace("Model", string.Empty));
-            builder.EntitySet<CelestialObjectModel>(nameof(CelestialObjectModel).Replace("Model", string.Empty));
-            builder.EntitySet<CelestialObjectPositionModel>(nameof(CelestialObjectPositionModel).Replace("Model", string.Empty));
+            builder.EntitySet<CelestialObjectType>(nameof(CelestialObjectType));
+            builder.EntitySet<CelestialObject>(nameof(CelestialObject));
+            builder.EntitySet<CelestialObjectPosition>(nameof(CelestialObjectPosition));
 
             return builder;
         }

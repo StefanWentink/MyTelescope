@@ -13,7 +13,7 @@ namespace MyTelescope.Test.SolarSystem.Helpers
         [Fact]
         public void SolarSystemObjectHelperListTest()
         {
-            var list = EnumHelper.GetValues<CelestialObject>();
+            var list = EnumHelper.GetValues<Celestial>();
             Assert.NotEmpty(list);
         }
 
@@ -27,45 +27,45 @@ namespace MyTelescope.Test.SolarSystem.Helpers
         [Fact]
         public void SolarSystemObjectHelperMoonTest()
         {
-            var list = CelestialObjectHelper.GetMainMoons(CelestialObject.Earth).ToList();
+            var list = CelestialObjectHelper.GetMainMoons(Celestial.Earth).ToList();
             Assert.Single(list);
 
-            list = CelestialObjectHelper.GetAllMoons(CelestialObject.Earth).ToList();
+            list = CelestialObjectHelper.GetAllMoons(Celestial.Earth).ToList();
             Assert.Single(list);
 
-            list = CelestialObjectHelper.GetMainMoons(CelestialObject.Jupiter).ToList();
+            list = CelestialObjectHelper.GetMainMoons(Celestial.Jupiter).ToList();
             Assert.Equal(4, list.Count);
 
-            list = CelestialObjectHelper.GetAllMoons(CelestialObject.Jupiter).ToList();
+            list = CelestialObjectHelper.GetAllMoons(Celestial.Jupiter).ToList();
             Assert.Equal(5, list.Count);
         }
 
         [Fact]
         public void SolarSystemObjectHelperMoonThrowsTest()
         {
-            Assert.Throws<ArgumentException>(() => CelestialObjectHelper.GetMainMoons(CelestialObject.Moon));
+            Assert.Throws<ArgumentException>(() => CelestialObjectHelper.GetMainMoons(Celestial.Moon));
 
-            Assert.Throws<ArgumentException>(() => CelestialObjectHelper.GetAllMoons(CelestialObject.Amalthea));
+            Assert.Throws<ArgumentException>(() => CelestialObjectHelper.GetAllMoons(Celestial.Amalthea));
         }
 
         [Fact]
         public void GetSolarSystemObjectType()
         {
-            var value = CelestialObject.Sun.GetSolarSystemObjectType();
-            Assert.Equal(CelestialObjectType.Star, value);
+            var value = Celestial.Sun.GetSolarSystemObjectType();
+            Assert.Equal(CelestialType.Star, value);
 
-            value = CelestialObject.Mercury.GetSolarSystemObjectType();
-            Assert.Equal(CelestialObjectType.Planet, value);
-            value = CelestialObject.Neptune.GetSolarSystemObjectType();
-            Assert.Equal(CelestialObjectType.Planet, value);
+            value = Celestial.Mercury.GetSolarSystemObjectType();
+            Assert.Equal(CelestialType.Planet, value);
+            value = Celestial.Neptune.GetSolarSystemObjectType();
+            Assert.Equal(CelestialType.Planet, value);
 
-            value = CelestialObject.Moon.GetSolarSystemObjectType();
-            Assert.Equal(CelestialObjectType.MajorMoon, value);
-            value = CelestialObject.Io.GetSolarSystemObjectType();
-            Assert.Equal(CelestialObjectType.MajorMoon, value);
+            value = Celestial.Moon.GetSolarSystemObjectType();
+            Assert.Equal(CelestialType.MajorMoon, value);
+            value = Celestial.Io.GetSolarSystemObjectType();
+            Assert.Equal(CelestialType.MajorMoon, value);
 
-            value = CelestialObject.Amalthea.GetSolarSystemObjectType();
-            Assert.Equal(CelestialObjectType.MinorMoon, value);
+            value = Celestial.Amalthea.GetSolarSystemObjectType();
+            Assert.Equal(CelestialType.MinorMoon, value);
         }
     }
 }

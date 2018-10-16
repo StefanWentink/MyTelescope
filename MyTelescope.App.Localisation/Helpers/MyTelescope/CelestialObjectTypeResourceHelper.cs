@@ -6,48 +6,48 @@
 
     public static class PlanetResourceHelper
     {
-        public static string GetResource(this CelestialObject celestialObject)
+        public static string GetResource(this Celestial celestialObject)
         {
             switch (celestialObject)
             {
-                case CelestialObject.Sun:
+                case Celestial.Sun:
                     return TextResource.Sun;
-                case CelestialObject.Mercury:
+                case Celestial.Mercury:
                     return TextResource.Mercury;
-                case CelestialObject.Venus:
+                case Celestial.Venus:
                     return TextResource.Venus;
-                case CelestialObject.Earth:
+                case Celestial.Earth:
                     return TextResource.Earth;
-                case CelestialObject.Moon:
+                case Celestial.Moon:
                     return TextResource.Moon;
-                case CelestialObject.Mars:
+                case Celestial.Mars:
                     return TextResource.Mars;
-                case CelestialObject.Phobos:
+                case Celestial.Phobos:
                     return TextResource.Phobos;
-                case CelestialObject.Deimos:
+                case Celestial.Deimos:
                     return TextResource.Deimos;
-                case CelestialObject.Jupiter:
+                case Celestial.Jupiter:
                     return TextResource.Jupiter;
-                case CelestialObject.Ganymede:
+                case Celestial.Ganymede:
                     return TextResource.Ganymede;
-                case CelestialObject.Callisto:
+                case Celestial.Callisto:
                     return TextResource.Callisto;
-                case CelestialObject.Io:
+                case Celestial.Io:
                     return TextResource.Io;
-                case CelestialObject.Europa:
+                case Celestial.Europa:
                     return TextResource.Europa;
-                case CelestialObject.Amalthea:
+                case Celestial.Amalthea:
                     return TextResource.Amalthea;
-                case CelestialObject.Saturn:
+                case Celestial.Saturn:
                     return TextResource.Saturn;
-                case CelestialObject.Uranus:
+                case Celestial.Uranus:
                     return TextResource.Uranus;
-                case CelestialObject.Neptune:
+                case Celestial.Neptune:
                     return TextResource.Neptune;
-                case CelestialObject.Pluto:
+                case Celestial.Pluto:
                     return TextResource.Pluto;
                 default:
-                    throw new EnumArgumentException<CelestialObjectType>((int)celestialObject);
+                    throw new EnumArgumentException<CelestialType>((int)celestialObject);
             }
         }
     }

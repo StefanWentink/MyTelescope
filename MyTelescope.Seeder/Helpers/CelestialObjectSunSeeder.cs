@@ -8,33 +8,33 @@
     using System.Linq.Expressions;
     using Utilities.Interfaces.Connector;
 
-    public class CelestialObjectSunSeeder : BaseSeeder<CelestialObjectModel, string>
+    public class CelestialObjectSunSeeder : BaseSeeder<CelestialObject, string>
     {
         public CelestialObjectSunSeeder(
-            IContextConnector<CelestialObjectModel> connector)
+            IContextConnector<CelestialObject> connector)
             : base(connector)
         {
         }
 
-        private static List<CelestialObjectModel> GetList()
+        private static List<CelestialObject> GetList()
         {
-            return new List<CelestialObjectModel>
+            return new List<CelestialObject>
             {
                 CelestialObjectSeedHelper.GetSun()
             };
         }
 
-        protected override List<Expression<Func<CelestialObjectModel, bool>>> GetBatchExpression()
+        protected override List<Expression<Func<CelestialObject, bool>>> GetBatchExpression()
         {
-            return new List<Expression<Func<CelestialObjectModel, bool>>> { x => true };
+            return new List<Expression<Func<CelestialObject, bool>>> { x => true };
         }
 
-        protected override List<CelestialObjectModel> SeedList(Expression<Func<CelestialObjectModel, bool>> batchExpression)
+        protected override List<CelestialObject> SeedList(Expression<Func<CelestialObject, bool>> batchExpression)
         {
             return GetList().Where(batchExpression.Compile()).ToList();
         }
 
-        protected override Func<CelestialObjectModel, string> DuplicateCheckFunction
+        protected override Func<CelestialObject, string> DuplicateCheckFunction
         {
             get { return x => x.Code; }
         }

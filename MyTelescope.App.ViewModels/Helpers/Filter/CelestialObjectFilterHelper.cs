@@ -9,16 +9,16 @@
 
     public static class CelestialObjectFilterHelper
     {
-        public static List<FilterItemModel> GetDefaultMoonFilterList(CelestialObjectType celestialObjectType, Guid celestialObjectId)
+        public static List<FilterItemModel> GetDefaultMoonFilterList(CelestialType celestialObjectType, Guid celestialObjectId)
         {
             return new List<FilterItemModel>
             {
-                GetCelestialObjectTypeFilter(CelestialObjectType.MajorMoon),
+                GetCelestialObjectTypeFilter(CelestialType.MajorMoon),
                 GetParentCelestialObjectFilter(celestialObjectId)
             };
         }
 
-        public static List<FilterItemModel> GetDefaultFilterList(CelestialObjectType celestialObjectType)
+        public static List<FilterItemModel> GetDefaultFilterList(CelestialType celestialObjectType)
         {
             return new List<FilterItemModel>
             {
@@ -26,10 +26,10 @@
             };
         }
 
-        public static FilterItemModel GetCelestialObjectTypeFilter(CelestialObjectType celestialObjectType)
+        public static FilterItemModel GetCelestialObjectTypeFilter(CelestialType celestialObjectType)
         {
             return new FilterItemModel(
-                nameof(CelestialObjectModel.CelestialObjectType),
+                nameof(CelestialObject.CelestialObjectType),
                 ColumnType.IntColumn,
                 FilterType.Equal,
                 (int)celestialObjectType);
@@ -38,7 +38,7 @@
         public static FilterItemModel GetParentCelestialObjectFilter(Guid celestialObjectId)
         {
             return new FilterItemModel(
-                nameof(CelestialObjectModel.CelestialObjectId),
+                nameof(CelestialObject.CelestialObjectId),
                 ColumnType.GuidColumn,
                 FilterType.Equal,
                 celestialObjectId);

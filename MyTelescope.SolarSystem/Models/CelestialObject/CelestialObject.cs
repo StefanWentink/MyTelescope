@@ -10,15 +10,15 @@
     using Utilities.Interfaces;
 
     [DebuggerDisplay("{" + nameof(Code) + "}")]
-    public class CelestialObjectModel : IKey, ICodeModel, ICelestialObjectTypeReferenceModel, ICalculatableRadius
+    public class CelestialObject : IKey, ICodeModel, ICelestialObjectTypeReferenceModel, ICalculatableRadius
     {
         [Obsolete("For serialisation")]
-        public CelestialObjectModel()
+        public CelestialObject()
         {
             InitCollections();
         }
 
-        public CelestialObjectModel(
+        public CelestialObject(
             string code,
             Guid celestialObjectTypeId,
             string colorCode,
@@ -50,10 +50,10 @@
 
         private void InitCollections()
         {
-            CelestialObjectPositions = new HashSet<CelestialObjectPositionModel>();
+            CelestialObjectPositions = new HashSet<CelestialObjectPosition>();
         }
 
-        public CelestialObjectModel(
+        public CelestialObject(
             string code,
             bool inferiorOrbit,
             Guid celestialObjectTypeId,
@@ -134,7 +134,7 @@
         public Guid Id { get; set; }
 
         [ForeignKey(nameof(CelestialObjectId))]
-        public CelestialObjectModel CelestialObject { get; set; }
+        public CelestialObject MainCelestialObject { get; set; }
 
         public Guid? CelestialObjectId { get; set; }
 
@@ -143,7 +143,7 @@
 
         [Required]
         [ForeignKey(nameof(CelestialObjectTypeId))]
-        public CelestialObjectTypeModel CelestialObjectType { get; set; }
+        public CelestialObjectType CelestialObjectType { get; set; }
 
         [Required]
         public string Code { get; set; }
@@ -154,7 +154,7 @@
         [Required]
         public string ImageUrl { get; set; }
 
-        public virtual ICollection<CelestialObjectPositionModel> CelestialObjectPositions { get; set; }
+        public virtual ICollection<CelestialObjectPosition> CelestialObjectPositions { get; set; }
 
         /// <summary>
         /// Inferior orbit

@@ -18,11 +18,11 @@
             {
                 var filterItem = filter.FilterItems[index];
 
-                if (filterItem.Column.Equals(nameof(CelestialObjectType)))
+                if (filterItem.Column.Equals(nameof(CelestialType)))
                 {
                     if (filterItem.Filter != FilterType.Equal)
                     {
-                        throw new ArgumentException($"{nameof(CelestialObjectType)}-filter only supports {nameof(FilterType)} {FilterType.Equal}.");
+                        throw new ArgumentException($"{nameof(CelestialType)}-filter only supports {nameof(FilterType)} {FilterType.Equal}.");
                     }
 
                     if (IntHelper.IntIsNullOrEmpty(filterItem.Value))
@@ -30,7 +30,7 @@
                         throw new ArgumentException($"{filterItem.Value} is not a valid value.");
                     }
 
-                    var celestialObjectType = (CelestialObjectType)IntHelper.ToInt(filterItem.Value);
+                    var celestialObjectType = (CelestialType)IntHelper.ToInt(filterItem.Value);
 
                     var model = CelestialObjectTypeFactory.Instance.GetSingleByEnum(celestialObjectType);
 

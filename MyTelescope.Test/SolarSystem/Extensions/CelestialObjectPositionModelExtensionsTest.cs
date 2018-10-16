@@ -13,14 +13,14 @@
 
     public class CelestialObjectPositionModelExtensionsTest : IClassFixture<CustomFixture>
     {
-        private static readonly CelestialObjectPositionModel EarthPosition = new CelestialObjectPositionModel(
+        private static readonly CelestialObjectPosition EarthPosition = new CelestialObjectPosition(
             Guid.Empty,
             new DateTimeOffset(2017, 2, 2, 0, 0, 0, TimeSpan.FromHours(1)))
         {
             MeanAnomaly = 357.009
         };
 
-        private static readonly CelestialObjectPositionModel JupiterPosition = new CelestialObjectPositionModel(
+        private static readonly CelestialObjectPosition JupiterPosition = new CelestialObjectPosition(
             Guid.Empty,
             new DateTimeOffset(2017, 2, 2, 0, 0, 0, TimeSpan.FromHours(1)))
         {

@@ -10,14 +10,14 @@
     using Utilities.Models;
 
     [DebuggerDisplay("{ReferenceDate.ToString()}")]
-    public class CelestialObjectPositionModel : IKey, ICelestialObjectReferenceModel
+    public class CelestialObjectPosition : IKey, ICelestialObjectReferenceModel
     {
         [Obsolete("For serialisation")]
-        public CelestialObjectPositionModel()
+        public CelestialObjectPosition()
         {
         }
 
-        public CelestialObjectPositionModel(
+        public CelestialObjectPosition(
             Guid celestialObjectId,
             DateTimeOffset referenceDate,
             DateTimeOffset referenceEndDate)
@@ -27,7 +27,7 @@
         }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="CelestialObjectPositionModel"/> class.
+        /// Initializes a new instance of the <see cref="CelestialObjectPosition"/> class.
         /// For Earth
         /// </summary>
         /// <param name="celestialObjectId"></param>
@@ -35,7 +35,7 @@
         /// <param name="location"></param>
         /// <param name="averageCentricDistance"></param>
         /// <param name="centricDistance"></param>
-        public CelestialObjectPositionModel(
+        public CelestialObjectPosition(
             Guid celestialObjectId,
             DateTimeOffset referenceDate,
             LocationModel location,
@@ -58,7 +58,7 @@
         {
         }
 
-        public CelestialObjectPositionModel(
+        public CelestialObjectPosition(
             Guid celestialObjectId,
             DateTimeOffset referenceDate,
             LocationModel location,
@@ -91,7 +91,7 @@
         {
         }
 
-        public CelestialObjectPositionModel(
+        public CelestialObjectPosition(
             Guid celestialObjectId,
             DateTimeOffset referenceDate,
             double x,
@@ -129,7 +129,7 @@
             MeanAnomaly = meanAnomaly;
         }
 
-        public CelestialObjectPositionModel(
+        public CelestialObjectPosition(
             Guid celestialObjectId,
             DateTimeOffset referenceDate,
             KeplerianCalculationModel calculationModel)
@@ -153,7 +153,7 @@
             ReferenceDate = referenceDate;
         }
 
-        public CelestialObjectPositionModel(Guid celestialObjectId, DateTimeOffset referenceDate)
+        public CelestialObjectPosition(Guid celestialObjectId, DateTimeOffset referenceDate)
             : this(
                 celestialObjectId,
                 referenceDate,
@@ -184,7 +184,7 @@
 
         [Required]
         [ForeignKey(nameof(CelestialObjectId))]
-        public CelestialObjectModel CelestialObject { get; set; }
+        public CelestialObject CelestialObject { get; set; }
 
         [Required]
         public DateTimeOffset ReferenceDate { get; set; }

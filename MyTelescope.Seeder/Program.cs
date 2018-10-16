@@ -27,9 +27,9 @@
             var serviceProvider = new ServiceCollection()
                 .AddLogging()
                     .AddSingleton<IContextContainer, MyTelescopeContextContainer>()
-                    .AddSingleton<IContextConnector<CelestialObjectTypeModel>, CelestialObjectTypeConnector>()
-                    .AddSingleton<IContextConnector<CelestialObjectModel>, CelestialObjectConnector>()
-                    .AddSingleton<IContextConnector<CelestialObjectPositionModel>, CelestialObjectPositionConnector>()
+                    .AddSingleton<IContextConnector<CelestialObjectType>, CelestialObjectTypeConnector>()
+                    .AddSingleton<IContextConnector<CelestialObject>, CelestialObjectConnector>()
+                    .AddSingleton<IContextConnector<CelestialObjectPosition>, CelestialObjectPositionConnector>()
                     .BuildServiceProvider();
 
             ServiceProvider = serviceProvider;
@@ -54,14 +54,14 @@
 
         private static void ProcessInput(int input)
         {
-            var celestialObjectConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectModel>>();
-            List<CelestialObjectModel> celestialObjectSunResult = null;
-            List<CelestialObjectModel> celestialObjectPlanetResult = null;
-            List<CelestialObjectTypeModel> celestialObjectTypeResult = null;
+            var celestialObjectConnector = ServiceProvider.GetService<IContextConnector<CelestialObject>>();
+            List<CelestialObject> celestialObjectSunResult = null;
+            List<CelestialObject> celestialObjectPlanetResult = null;
+            List<CelestialObjectType> celestialObjectTypeResult = null;
 
             if (input.In(1, 9))
             {
-                var celestialObjectTypeConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectTypeModel>>();
+                var celestialObjectTypeConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectType>>();
                 celestialObjectTypeResult = new CelestialObjectTypeSeeder(celestialObjectTypeConnector).Seed();
 
                 if (celestialObjectTypeResult == null || celestialObjectTypeResult.Count == 0)
@@ -75,7 +75,7 @@
                 {
                     var filter = new FilterModel(
                         new FilterItemModel(
-                            nameof(CelestialObjectModel.CelestialObjectTypeId),
+                            nameof(CelestialObject.CelestialObjectTypeId),
                             ColumnType.GuidColumn,
                             FilterType.Equal,
                             celestialObjectTypeResult.Single(x => x.Code == CelestialObjectTypeConstants.Star).Id));
@@ -94,7 +94,7 @@
             {
                 if (celestialObjectTypeResult == null || celestialObjectTypeResult.Count == 0)
                 {
-                    var celestialObjectTypeConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectTypeModel>>();
+                    var celestialObjectTypeConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectType>>();
                     celestialObjectTypeResult = celestialObjectTypeConnector.Read(new FilterModel());
                 }
 
@@ -103,7 +103,7 @@
                 {
                     var filter = new FilterModel(
                         new FilterItemModel(
-                            nameof(CelestialObjectModel.CelestialObjectTypeId),
+                            nameof(CelestialObject.CelestialObjectTypeId),
                             ColumnType.GuidColumn,
                             FilterType.Equal,
                         celestialObjectTypeResult.Single(x => x.Code == CelestialObjectTypeConstants.Planet).Id));
@@ -115,7 +115,7 @@
                 {
                     var filter = new FilterModel(
                         new FilterItemModel(
-                            nameof(CelestialObjectModel.CelestialObjectTypeId),
+                            nameof(CelestialObject.CelestialObjectTypeId),
                             ColumnType.GuidColumn,
                             FilterType.Equal,
                         celestialObjectTypeResult.Single(x => x.Code == CelestialObjectTypeConstants.Planet).Id));
@@ -123,7 +123,7 @@
                     celestialObjectPlanetResult = celestialObjectConnector.Read(filter);
                 }
 
-                var celestialObjectPositionConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectPositionModel>>();
+                var celestialObjectPositionConnector = ServiceProvider.GetService<IContextConnector<CelestialObjectPosition>>();
                 new CelestialObjectPositionSeeder(celestialObjectPositionConnector, celestialObjectPlanetResult).Seed();
             }
         }

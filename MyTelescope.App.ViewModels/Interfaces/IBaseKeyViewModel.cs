@@ -2,8 +2,6 @@
 {
     using SWE.Model.Interfaces;
 
-    using SWE.Model.Interfaces;
-
     using System;
 
     public interface IBaseKeyViewModel<TModel> : IBaseViewModel

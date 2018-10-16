@@ -32,23 +32,23 @@
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // CelestialObjectType
-            modelBuilder.Entity<CelestialObjectTypeModel>().HasKey(x => new { x.Id });
-            modelBuilder.Entity<CelestialObjectTypeModel>().HasMany(x => x.CelestialObjects).WithOne(x => x.CelestialObjectType).HasForeignKey(x => x.CelestialObjectTypeId);
+            modelBuilder.Entity<CelestialObjectType>().HasKey(x => new { x.Id });
+            modelBuilder.Entity<CelestialObjectType>().HasMany(x => x.CelestialObjects).WithOne(x => x.CelestialObjectType).HasForeignKey(x => x.CelestialObjectTypeId);
             modelBuilder
-                .Entity<CelestialObjectTypeModel>()
+                .Entity<CelestialObjectType>()
                 .HasIndex(x => new { x.Code }).IsUnique();
 
             // CelestialObjectType
-            modelBuilder.Entity<CelestialObjectModel>().HasKey(x => new { x.Id });
+            modelBuilder.Entity<CelestialObject>().HasKey(x => new { x.Id });
             modelBuilder
-                .Entity<CelestialObjectModel>()
+                .Entity<CelestialObject>()
                 .HasIndex(x => new { x.Code }).IsUnique();
-            modelBuilder.Entity<CelestialObjectModel>().HasMany(x => x.CelestialObjectPositions).WithOne(x => x.CelestialObject).HasForeignKey(x => x.CelestialObjectId);
+            modelBuilder.Entity<CelestialObject>().HasMany(x => x.CelestialObjectPositions).WithOne(x => x.CelestialObject).HasForeignKey(x => x.CelestialObjectId);
 
             // CelestialObjectType
-            modelBuilder.Entity<CelestialObjectPositionModel>().HasKey(x => new { x.Id });
+            modelBuilder.Entity<CelestialObjectPosition>().HasKey(x => new { x.Id });
             modelBuilder
-                .Entity<CelestialObjectPositionModel>()
+                .Entity<CelestialObjectPosition>()
                 .HasIndex(x => new { x.CelestialObjectId, x.ReferenceDate }).IsUnique();
 
             foreach (var relation in modelBuilder.Model.GetEntityTypes().SelectMany(x => x.GetForeignKeys()))
@@ -57,10 +57,10 @@
             }
         }
 
-        public DbSet<CelestialObjectTypeModel> CelestialObjectType { get; set; }
+        public DbSet<CelestialObjectType> CelestialObjectType { get; set; }
 
-        public DbSet<CelestialObjectModel> CelestialObject { get; set; }
+        public DbSet<CelestialObject> CelestialObject { get; set; }
 
-        public DbSet<CelestialObjectPositionModel> CelestialObjectPosition { get; set; }
+        public DbSet<CelestialObjectPosition> CelestialObjectPosition { get; set; }
     }
 }

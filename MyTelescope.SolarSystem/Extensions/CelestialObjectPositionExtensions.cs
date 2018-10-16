@@ -17,11 +17,11 @@
         private static KeplerianOrbitValueModel _earthKeplerianOrbitValue;
 
         private static KeplerianOrbitValueModel EarthKeplerianOrbitValue =>
-            _earthKeplerianOrbitValue ?? (_earthKeplerianOrbitValue = CelestialObject.Earth.GetOrbitValues());
+            _earthKeplerianOrbitValue ?? (_earthKeplerianOrbitValue = Celestial.Earth.GetOrbitValues());
 
         public static double GetSiderealTime(
-            this CelestialObjectPositionModel celestialObjectPosition,
-            CelestialObjectModel celestialObject,
+            this CelestialObjectPosition celestialObjectPosition,
+            CelestialObject celestialObject,
             KeplerianOrbitValueModel keplerianOrbitValue,
             DateTimeOffset referenceDate)
         {
@@ -29,8 +29,8 @@
         }
 
         public static double GetCelestialObjectSiderealTime(
-            this CelestialObjectPositionModel celestialObjectPosition,
-            CelestialObjectModel celestialObject,
+            this CelestialObjectPosition celestialObjectPosition,
+            CelestialObject celestialObject,
             KeplerianOrbitValueModel keplerianOrbitValue,
             int minute,
             int minuteOffset)
@@ -39,7 +39,7 @@
         }
 
         public static double GetEarthSiderealTimeMidnight(
-            this CelestialObjectPositionModel celestialObjectPosition)
+            this CelestialObjectPosition celestialObjectPosition)
         {
             return GetEarthSiderealTimeMidnight(celestialObjectPosition.MeanAnomaly, celestialObjectPosition.ReferenceDate);
         }
@@ -53,7 +53,7 @@
         }
 
         public static IEnumerable<SideRealTimeModel> GetEarthSiderealTimePerDay(
-            this CelestialObjectPositionModel celestialObjectPosition,
+            this CelestialObjectPosition celestialObjectPosition,
             Interval interval,
             int hourRange)
         {
@@ -91,8 +91,8 @@
         /// <param name="utcMinutes"></param>
         /// <returns></returns>
         private static double GetCelestialObjectSiderealTime(
-            this CelestialObjectPositionModel celestialObjectPosition,
-            CelestialObjectModel celestialObject,
+            this CelestialObjectPosition celestialObjectPosition,
+            CelestialObject celestialObject,
             KeplerianOrbitValueModel keplerianOrbitValue,
             int utcMinutes)
         {
@@ -111,7 +111,7 @@
         /// <param name="utcMinutes"></param>
         /// <returns></returns>
         private static double GetSiderealTime(
-            this CelestialObjectPositionModel celestialObjectPosition,
+            this CelestialObjectPosition celestialObjectPosition,
             double minuteConstant,
             KeplerianOrbitValueModel keplerianOrbitValue,
             int utcMinutes)
@@ -137,8 +137,8 @@
         }
 
         public static TimeSpan GetTransitTimeSpan(
-            this CelestialObjectPositionModel celestialObjectPosition,
-            CelestialObjectPositionModel earthPosition,
+            this CelestialObjectPosition celestialObjectPosition,
+            CelestialObjectPosition earthPosition,
             double longitudeDegrees)
         {
             var degrees = celestialObjectPosition.GetTransitDegrees(
@@ -149,8 +149,8 @@
         }
 
         public static double GetTransitDegrees(
-            this CelestialObjectPositionModel celestialObjectPosition,
-            CelestialObjectPositionModel earthPosition,
+            this CelestialObjectPosition celestialObjectPosition,
+            CelestialObjectPosition earthPosition,
             double longitudeDegrees)
         {
             return GetTransitDegrees(
@@ -171,8 +171,8 @@
         }
 
         public static RiseTransitSetModel GetRiseTransitSet(
-            this CelestialObjectPositionModel celestialObjectPosition,
-            CelestialObjectPositionModel earthPosition,
+            this CelestialObjectPosition celestialObjectPosition,
+            CelestialObjectPosition earthPosition,
             double longitudeDegrees,
             double latitudeDegrees)
         {
@@ -197,7 +197,7 @@
         }
 
         private static double GetHourHorizon(
-            this CelestialObjectPositionModel celestialObjectPosition,
+            this CelestialObjectPosition celestialObjectPosition,
             double latitudeDegrees,
             double h0)
         {
@@ -215,7 +215,7 @@
         }
 
         public static IEnumerable<SkyPositionModel> GetSkyPositions(
-            this CelestialObjectPositionModel celestialObjectPosition,
+            this CelestialObjectPosition celestialObjectPosition,
             double latitude,
             List<SideRealTimeModel> siderealTimes,
             RiseTransitSetModel transitModel)
@@ -228,7 +228,7 @@
         }
 
         public static SkyPositionModel GetSkyPosition(
-            this CelestialObjectPositionModel celestialObjectPosition,
+            this CelestialObjectPosition celestialObjectPosition,
             double latitude,
             SideRealTimeModel siderealTime)
         {

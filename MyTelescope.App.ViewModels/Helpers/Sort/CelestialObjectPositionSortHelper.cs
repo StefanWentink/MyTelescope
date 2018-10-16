@@ -7,7 +7,7 @@
     {
         internal static SortModel GetDefaultSort()
         {
-            return new SortModel(nameof(CelestialObjectPositionModel.AverageCentricDistance), true);
+            return new SortModel(nameof(CelestialObjectPosition.AverageCentricDistance), true);
         }
     }
 }

@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>Full</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.OData.Client" Version="7.5.1" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\SoftWareEssentials\SWE.Builder\SWE.Builder.csproj" />
+    <ProjectReference Include="..\..\SoftWareEssentials\SWE.Http\SWE.Http.csproj" />
+    <ProjectReference Include="..\..\SoftWareEssentials\SWE.OData\SWE.OData.csproj" />
+    <ProjectReference Include="..\..\SoftWareEssentials\SWE.Polly\SWE.Polly.csproj" />
+    <ProjectReference Include="..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj" />
+    <ProjectReference Include="..\MyTelescope.App.ViewModels\MyTelescope.App.ViewModels.csproj" />
+    <ProjectReference Include="..\MyTelescope.Core.Utilities\MyTelescope.Core.Utilities.csproj" />
+    <ProjectReference Include="..\MyTelescope.SolarSystem\MyTelescope.SolarSystem.csproj" />
+    <ProjectReference Include="..\MyTelescope.Utilities\MyTelescope.Utilities.csproj" />
+  </ItemGroup>
+</Project>

@@ -11,10 +11,10 @@
     using ViewModels.Models.Item;
 
     public abstract class CelestialComparePageModel :
-        CanvasPageModel<CelestialObjectViewModel, CelestialObjectModel>,
+        CanvasPageModel<CelestialObjectViewModel, CelestialObject>,
         IDrawablePageModel
     {
-        protected CelestialComparePageModel(IHttpDataLoader<CelestialObjectViewModel, CelestialObjectModel> dataLoader)
+        protected CelestialComparePageModel(IHttpDataLoader<CelestialObjectViewModel, CelestialObject> dataLoader)
             : base(dataLoader)
         {
         }

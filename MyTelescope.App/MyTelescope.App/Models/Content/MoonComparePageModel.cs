@@ -10,7 +10,7 @@
     {
         public override string CanvasViewKey => ModelHelper.GetName(GetType().Name);
 
-        public MoonComparePageModel(IHttpDataLoader<CelestialObjectViewModel, CelestialObjectModel> dataLoader)
+        public MoonComparePageModel(IHttpDataLoader<CelestialObjectViewModel, CelestialObject> dataLoader)
             : base(dataLoader)
         {
         }

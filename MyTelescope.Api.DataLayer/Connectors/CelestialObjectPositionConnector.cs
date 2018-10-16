@@ -7,14 +7,14 @@
     using System.Linq.Expressions;
     using Utilities.Models.Filter;
 
-    public class CelestialObjectPositionConnector : ContextConnector<CelestialObjectPositionModel>
+    public class CelestialObjectPositionConnector : ContextConnector<CelestialObjectPosition>
     {
         public CelestialObjectPositionConnector(IContextContainer contextContainer) :
             base(contextContainer)
         {
         }
 
-        protected override Expression<Func<CelestialObjectPositionModel, bool>> GetCustomExpression(FilterModel filter)
+        protected override Expression<Func<CelestialObjectPosition, bool>> GetCustomExpression(FilterModel filter)
         {
             return null;
         }

@@ -5,16 +5,16 @@
     using SolarSystem.Models.CelestialObject;
     using ViewModels.Models.Item;
 
-    public class CelestialObjectTypeDataLoader : HttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectTypeModel>
+    public class CelestialObjectTypeDataLoader : HttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectType>
     {
-        public CelestialObjectTypeDataLoader(IConnector<CelestialObjectTypeModel> connector)
+        public CelestialObjectTypeDataLoader(IConnector<CelestialObjectType> connector)
             : base(connector)
         {
         }
 
         protected override SortModel GetSort()
         {
-            return new SortModel(nameof(CelestialObjectTypeModel.Code), true);
+            return new SortModel(nameof(CelestialObjectType.Code), true);
         }
     }
 }

@@ -2,13 +2,13 @@
 {
     using SolarSystem.Models.CelestialObject;
 
-    public class CelestialObjectPositionViewModel : BaseKeyViewModel<CelestialObjectPositionModel>
+    public class CelestialObjectPositionViewModel : BaseKeyViewModel<CelestialObjectPosition>
     {
         public CelestialObjectPositionViewModel()
         {
         }
 
-        public CelestialObjectPositionViewModel(CelestialObjectPositionModel model)
+        public CelestialObjectPositionViewModel(CelestialObjectPosition model)
             : base(model)
         {
         }

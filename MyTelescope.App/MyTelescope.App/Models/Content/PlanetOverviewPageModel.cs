@@ -10,11 +10,11 @@
     using ViewModels.Models.Item;
     using Xamarin.Forms;
 
-    public class PlanetOverviewPageModel : OverviewPageModel<CelestialObjectViewModel, CelestialObjectModel>
+    public class PlanetOverviewPageModel : OverviewPageModel<CelestialObjectViewModel, CelestialObject>
     {
         protected override bool AddToCollection { get; set; } = false;
 
-        public PlanetOverviewPageModel(IHttpDataLoader<CelestialObjectViewModel, CelestialObjectModel> dataLoader)
+        public PlanetOverviewPageModel(IHttpDataLoader<CelestialObjectViewModel, CelestialObject> dataLoader)
             : base(dataLoader)
         {
         }

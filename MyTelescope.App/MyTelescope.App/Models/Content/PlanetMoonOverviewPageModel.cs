@@ -10,9 +10,9 @@
     using ViewModels.Models.Item;
     using Xamarin.Forms;
 
-    public class PlanetMoonOverviewPageModel : OverviewPageModel<CelestialObjectViewModel, CelestialObjectModel>
+    public class PlanetMoonOverviewPageModel : OverviewPageModel<CelestialObjectViewModel, CelestialObject>
     {
-        public PlanetMoonOverviewPageModel(IHttpDataLoader<CelestialObjectViewModel, CelestialObjectModel> dataLoader)
+        public PlanetMoonOverviewPageModel(IHttpDataLoader<CelestialObjectViewModel, CelestialObject> dataLoader)
             : base(dataLoader)
         {
         }

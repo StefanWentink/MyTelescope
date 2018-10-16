@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.SolarSystem.Enums
 {
-    public enum CelestialObject
+    public enum Celestial
     {
         Sun = 0,
         Mercury = 100,

@@ -3,9 +3,9 @@
     using SolarSystem.Models.CelestialObject;
     using Utilities.Interfaces.Connector;
 
-    public class CelestialObjectPositionController : DataController<CelestialObjectPositionModel>
+    public class CelestialObjectPositionController : DataController<CelestialObjectPosition>
     {
-        public CelestialObjectPositionController(IContextConnector<CelestialObjectPositionModel> connector)
+        public CelestialObjectPositionController(IContextConnector<CelestialObjectPosition> connector)
             : base(connector)
         {
         }

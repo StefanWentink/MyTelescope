@@ -24,13 +24,13 @@
     using Xamarin.Forms;
     using SWE.BasicType.Utilities;
 
-    public class SolarSystemPageModel : CanvasPageModel<CelestialObjectPositionViewModel, CelestialObjectPositionModel>
+    public class SolarSystemPageModel : CanvasPageModel<CelestialObjectPositionViewModel, CelestialObjectPosition>
     {
         public override string CanvasViewKey => ModelHelper.GetName(GetType().Name);
 
         public SolarSystemPageModel(
-            IHttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPositionModel> dataLoader,
-            IHttpDataLoader<CelestialObjectViewModel, CelestialObjectModel> celestialObjectDataLoader)
+            IHttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPosition> dataLoader,
+            IHttpDataLoader<CelestialObjectViewModel, CelestialObject> celestialObjectDataLoader)
             : base(dataLoader)
         {
             CelestialObjectDataLoader = celestialObjectDataLoader;
@@ -39,7 +39,7 @@
             CelestialObjectDataLoader.LoadAsync(DataLoading.Refresh, SolarSystem.Helpers.Seeder.CelestialObjectSeedHelper.GetSun());
         }
 
-        public override void SetModel(CelestialObjectPositionModel model)
+        public override void SetModel(CelestialObjectPosition model)
         {
             if (!GuidHelper.GuidIsNullOrEmpty(model?.Id) && model != Model)
             {
@@ -151,7 +151,7 @@
             }
         }
 
-        protected IDataLoader<CelestialObjectViewModel, CelestialObjectModel> CelestialObjectDataLoader { get; }
+        protected IDataLoader<CelestialObjectViewModel, CelestialObject> CelestialObjectDataLoader { get; }
 
         private static readonly object _celestialObjectCollectionLock = new object();
 

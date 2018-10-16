@@ -5,9 +5,9 @@
     using SolarSystem.Models.CelestialObject;
     using ViewModels.Models.Item;
 
-    public class MoonDetailPageModel : DetailOverViewPageModel<MoonDetailViewModel, CelestialObjectModel>
+    public class MoonDetailPageModel : DetailOverViewPageModel<MoonDetailViewModel, CelestialObject>
     {
-        public MoonDetailPageModel(IStaticDataLoader<MoonDetailViewModel, CelestialObjectModel> dataLoader)
+        public MoonDetailPageModel(IStaticDataLoader<MoonDetailViewModel, CelestialObject> dataLoader)
             : base(dataLoader)
         {
         }

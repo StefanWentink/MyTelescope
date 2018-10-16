@@ -7,7 +7,7 @@
     using SolarSystem.Models.CelestialObject;
     using System;
 
-    public class PlanetNavigationPageModel : TabbedPageModel<CelestialObjectModel>
+    public class PlanetNavigationPageModel : TabbedPageModel<CelestialObject>
     {
         [Obsolete("Only for page generation.")]
         public PlanetNavigationPageModel()
@@ -15,7 +15,7 @@
         {
         }
 
-        public PlanetNavigationPageModel(CelestialObjectModel model)
+        public PlanetNavigationPageModel(CelestialObject model)
             : base(model, NavigationServiceNameConstants.Planet)
         {
         }

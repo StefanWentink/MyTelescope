@@ -10,12 +10,12 @@
 
     public class MoonViewModel : CelestialObjectDetailViewModel
     {
-        public MoonViewModel(CelestialObjectModel model)
+        public MoonViewModel(CelestialObject model)
             : base(model)
         {
         }
 
-        public override CelestialObjectType CelestialObjectType => CelestialObjectType.MajorMoon;
+        public override CelestialType CelestialObjectType => CelestialType.MajorMoon;
 
         public override List<IDetailViewModel> GetDetails()
         {

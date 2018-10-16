@@ -15,20 +15,20 @@
         {
             serviceCollection.AddSingleton<IContextContainer, MyTelescopeContextContainer>();
 
-            serviceCollection.AddSingleton<IConnector<CelestialObjectTypeModel>, CelestialObjectTypeConnector>();
-            serviceCollection.AddSingleton<IConnector<CelestialObjectModel>, CelestialObjectConnector>();
-            serviceCollection.AddSingleton<IConnector<CelestialObjectPositionModel>, CelestialObjectPositionConnector>();
+            serviceCollection.AddSingleton<IConnector<CelestialObjectType>, CelestialObjectTypeConnector>();
+            serviceCollection.AddSingleton<IConnector<CelestialObject>, CelestialObjectConnector>();
+            serviceCollection.AddSingleton<IConnector<CelestialObjectPosition>, CelestialObjectPositionConnector>();
 
-            serviceCollection.AddSingleton<IContextConnector<CelestialObjectTypeModel>, CelestialObjectTypeConnector>();
-            serviceCollection.AddSingleton<IContextConnector<CelestialObjectModel>, CelestialObjectConnector>();
-            serviceCollection.AddSingleton<IContextConnector<CelestialObjectPositionModel>, CelestialObjectPositionConnector>();
+            serviceCollection.AddSingleton<IContextConnector<CelestialObjectType>, CelestialObjectTypeConnector>();
+            serviceCollection.AddSingleton<IContextConnector<CelestialObject>, CelestialObjectConnector>();
+            serviceCollection.AddSingleton<IContextConnector<CelestialObjectPosition>, CelestialObjectPositionConnector>();
 
-            serviceCollection.AddSingleton<ISingletonFactory<CelestialObjectTypeModel>, CelestialObjectTypeFactory>();
+            serviceCollection.AddSingleton<ISingletonFactory<CelestialObjectType>, CelestialObjectTypeFactory>();
 
             // Build the intermediate service provider
             var serviceProvider = serviceCollection.BuildServiceProvider();
 
-            serviceProvider.GetRequiredService<ISingletonFactory<CelestialObjectTypeModel>>();
+            serviceProvider.GetRequiredService<ISingletonFactory<CelestialObjectType>>();
         }
     }
 }

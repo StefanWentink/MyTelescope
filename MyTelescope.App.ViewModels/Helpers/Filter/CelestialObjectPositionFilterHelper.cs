@@ -38,7 +38,7 @@
         public static FilterItemModel GetParentCelestialObjectIdFilter(Guid parentCelestialObjectId)
         {
             return new FilterItemModel(
-                $"{nameof(CelestialObjectPositionModel.CelestialObject)}.{nameof(CelestialObjectModel.CelestialObjectId)}",
+                $"{nameof(CelestialObjectPosition.CelestialObject)}.{nameof(CelestialObject.CelestialObjectId)}",
                 ColumnType.GuidColumn,
                 FilterType.Equal,
                 parentCelestialObjectId);
@@ -47,7 +47,7 @@
         public static FilterItemModel GetReferenceDateFilter(DateTimeOffset referenceDate)
         {
             return new FilterItemModel(
-                nameof(CelestialObjectPositionModel.ReferenceDate),
+                nameof(CelestialObjectPosition.ReferenceDate),
                 ColumnType.DateTimeOffsetColumn,
                 FilterType.Equal,
                 referenceDate.GetUtcReferenceDate());
@@ -56,7 +56,7 @@
         public static FilterItemModel GetReferenceDateGreaterOrEqualFilter(DateTimeOffset referenceDate)
         {
             return new FilterItemModel(
-                nameof(CelestialObjectPositionModel.ReferenceDate),
+                nameof(CelestialObjectPosition.ReferenceDate),
                 ColumnType.DateTimeOffsetColumn,
                 FilterType.GreaterOrEqual,
                 referenceDate.GetUtcReferenceDate());
@@ -65,7 +65,7 @@
         public static FilterItemModel GetReferenceDateLessOrEqualFilter(DateTimeOffset referenceDate)
         {
             return new FilterItemModel(
-                nameof(CelestialObjectPositionModel.ReferenceDate),
+                nameof(CelestialObjectPosition.ReferenceDate),
                 ColumnType.DateTimeOffsetColumn,
                 FilterType.LessOrEqual,
                 referenceDate.GetUtcReferenceDate());
