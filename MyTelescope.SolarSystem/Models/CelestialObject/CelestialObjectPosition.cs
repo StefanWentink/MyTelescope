@@ -187,6 +187,7 @@
         public CelestialObject CelestialObject { get; set; }
 
         [Required]
+        //[Column(TypeName = "date")]
         public DateTimeOffset ReferenceDate { get; set; }
 
         [NotMapped]

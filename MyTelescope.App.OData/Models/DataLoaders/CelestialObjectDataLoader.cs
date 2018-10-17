@@ -4,7 +4,7 @@
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
     using SolarSystem.Models.CelestialObject;
-    using SWE.Http.Interfacess;
+    using SWE.Http.Interfaces;
     using SWE.OData.Enums;
     using SWE.OData.Interfaces;
     using SWE.OData.Models;
@@ -15,7 +15,7 @@
 
     public class CelestialObjectDataLoader : HttpDataLoader<CelestialObjectViewModel, CelestialObject>
     {
-        public CelestialObjectDataLoader(IRepository repository)
+        public CelestialObjectDataLoader(IRepository<CelestialObject> repository)
             : base(repository)
         {
         }
@@ -25,11 +25,11 @@
             return new SortModel(nameof(CelestialObject.SemiMajorAxis), true);
         }
 
-        protected override IODataFilters<CelestialObject> GetModelFilters(CelestialObject model)
+        protected override List<IODataFilter> GetModelFilters(CelestialObject model)
         {
             return model == null
                 ? base.GetModelFilters(null)
-                : new ODataFilters<CelestialObject>(new ODataFilter<CelestialObject, Guid?>(x => x.CelestialObjectId, FilterOperator.Equal, model.Id));
+                : new List<IODataFilter> { new ODataFilterSelector<CelestialObject, Guid?>(x => x.CelestialObjectId, FilterOperator.Equal, model.Id) };
         }
     }
 }

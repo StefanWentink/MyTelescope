@@ -11,6 +11,7 @@
     using Microsoft.Extensions.Logging;
     using Microsoft.OData.Edm;
     using MyTelescope.Api.DataLayer.Helpers.Di;
+    using MyTelescope.Core.Utilities.Helpers;
     using MyTelescope.OData.Utilities;
     using MyTelescope.SolarSystem.Models.CelestialObject;
     using Swashbuckle.AspNetCore.Swagger;
@@ -21,6 +22,7 @@
     {
         public Startup(IConfiguration configuration)
         {
+            StartupHelper.Initialize();
             Configuration = configuration;
         }
 

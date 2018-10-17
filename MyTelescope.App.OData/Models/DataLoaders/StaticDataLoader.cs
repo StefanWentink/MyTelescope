@@ -9,6 +9,7 @@
     using SWE.OData.Interfaces;
     using System;
     using System.Threading;
+    using SWE.Http.Interfaces;
 
     public abstract class StaticDataLoader<TView, T> :
         BaseDataLoader<TView, T>,
@@ -16,7 +17,11 @@
         where TView : class, IBaseViewModel
         where T : class, IKey, new()
     {
-        protected override async Task<List<TView>> GetTask(T model, CancellationToken cancellationToken, IODataBuilder<T, Guid> filter)
+        protected override async Task<List<TView>> GetTask(
+            T model,
+            CancellationToken cancellationToken,
+            ISecurityToken securityToken,
+            IODataBuilder<T, Guid> filter)
         {
             var filterKey = filter.BuilderKey();
             GetCollectionsLoadContainer(filterKey).SetEndOfCollection();

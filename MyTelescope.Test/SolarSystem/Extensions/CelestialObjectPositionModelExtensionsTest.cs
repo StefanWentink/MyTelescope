@@ -86,7 +86,7 @@
 
             Assert.Equal(actual.DateTimeOffset, siderealTime.DateTimeOffset);
             Assert.True(CompareUtilities.EqualsWithinTolerance(19.495, actual.Heigth, 3));
-            Assert.True(CompareUtilities.EqualsWithinTolerance((-73.383), actual.Azimuth, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(-73.383, actual.Azimuth, 3));
         }
     }
 }

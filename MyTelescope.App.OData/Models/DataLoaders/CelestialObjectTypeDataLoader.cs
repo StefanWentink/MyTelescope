@@ -3,12 +3,12 @@
     using MyTelescope.Utilities.Interfaces.Connector;
     using MyTelescope.Utilities.Models.Sort;
     using SolarSystem.Models.CelestialObject;
-    using SWE.Http.Interfacess;
+    using SWE.Http.Interfaces;
     using ViewModels.Models.Item;
 
     public class CelestialObjectTypeDataLoader : HttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectType>
     {
-        public CelestialObjectTypeDataLoader(IRepository repository)
+        public CelestialObjectTypeDataLoader(IRepository<CelestialObjectType> repository)
             : base(repository)
         {
         }

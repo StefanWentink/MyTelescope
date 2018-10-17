@@ -1,21 +1,18 @@
 ﻿namespace MyTelescope.App.OData.Models.DataLoader
 {
-    using MyTelescope.Utilities.Interfaces.Connector;
-    using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
     using SolarSystem.Models.CelestialObject;
-    using SWE.Http.Interfacess;
+    using SWE.Http.Interfaces;
     using SWE.OData.Enums;
     using SWE.OData.Interfaces;
     using SWE.OData.Models;
     using System;
     using System.Collections.Generic;
-    using ViewModels.Helpers.Filter;
     using ViewModels.Models.Item;
 
     public class CelestialObjectPositionDataLoader : HttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPosition>
     {
-        public CelestialObjectPositionDataLoader(IRepository repository)
+        public CelestialObjectPositionDataLoader(IRepository<CelestialObjectPosition> repository)
             : base(repository)
         {
         }
@@ -30,28 +27,27 @@
                 });
         }
 
-        protected override IODataFilters<CelestialObjectPosition> GetModelFilters(CelestialObjectPosition model)
+        protected override List<IODataFilter> GetModelFilters(CelestialObjectPosition model)
         {
             return model == null
                 ? base.GetModelFilters(null)
                 : GetReferenceFilterItems(model);
         }
 
-        private IODataFilters<CelestialObjectPosition> GetReferenceFilterItems(CelestialObjectPosition model)
+        private List<IODataFilter> GetReferenceFilterItems(CelestialObjectPosition model)
         {
-            return model.ReferenceEndDate.HasValue
-                ? new ODataFilters<CelestialObjectPosition>(
-                    QueryOperator.And,
-                    new ODataFilter<CelestialObjectPosition, Guid>(x => x.CelestialObjectId, FilterOperator.Equal, model.CelestialObjectId),
-                    new ODataFilters<CelestialObjectPosition>(
-                        QueryOperator.And,
-                        new ODataFilter<CelestialObjectPosition, DateTimeOffset>(x => x.ReferenceDate, FilterOperator.GreaterOrEquals, model.ReferenceDate),
-                        new ODataFilter<CelestialObjectPosition, DateTimeOffset?>(x => x.ReferenceEndDate, FilterOperator.LessOrEquals, model.ReferenceEndDate)))
+            var result = new List<IODataFilter>
+            {
+                new ODataFilterSelector<CelestialObjectPosition, Guid>(x => x.CelestialObjectId, FilterOperator.Equal, model.CelestialObjectId),
+                new ODataFilterSelector<CelestialObjectPosition, DateTimeOffset>(x => x.ReferenceDate, FilterOperator.GreaterOrEquals, model.ReferenceDate)
+            };
 
-                : new ODataFilters<CelestialObjectPosition>(
-                    QueryOperator.And,
-                    new ODataFilter<CelestialObjectPosition, Guid>(x => x.CelestialObjectId, FilterOperator.Equal, model.CelestialObjectId),
-                    new ODataFilter<CelestialObjectPosition, DateTimeOffset>(x => x.ReferenceDate, FilterOperator.GreaterOrEquals, model.ReferenceDate));
+            if (model.ReferenceEndDate.HasValue)
+            {
+                result.Add(new ODataFilterSelector<CelestialObjectPosition, DateTimeOffset?>(x => x.ReferenceDate, FilterOperator.LessOrEquals, model.ReferenceEndDate));
+            }
+
+            return result;
         }
     }
 }

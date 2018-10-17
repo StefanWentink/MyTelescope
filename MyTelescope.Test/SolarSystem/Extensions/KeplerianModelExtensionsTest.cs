@@ -45,7 +45,7 @@ namespace MyTelescope.Test.SolarSystem.Extensions
             var jupiterMeanAnomaly = jupiterDateModel.Values.GetMeanAnomalyAroundZero();
             var earthMeanAnomaly = earthDateModel.Values.GetMeanAnomalyAroundZero();
 
-            Assert.True(CompareUtilities.EqualsWithinTolerance((-38.9482), jupiterMeanAnomaly.Degrees, 3));
+            Assert.True(CompareUtilities.EqualsWithinTolerance(-38.9482, jupiterMeanAnomaly.Degrees, 3));
             Assert.True(CompareUtilities.EqualsWithinTolerance(177.5098, earthMeanAnomaly.Degrees, 3));
         }
 

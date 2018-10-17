@@ -20,6 +20,7 @@
     using SWE.OData.Models;
     using SWE.OData.Enums;
     using System.Threading;
+    using SWE.Http.Interfaces;
 
     public abstract class BaseDataLoader<TView, T> : IDataLoader<TView, T>
         where TView : class, IBaseViewModel
@@ -30,6 +31,8 @@
         private CollectionsLoadContainer<TView> _collectionsLoadContainer;
 
         protected virtual string EntityName { get; set; }
+
+        public virtual ISecurityToken SecurityToken { protected get; set; }
 
         public CollectionLoadContainer<TView> GetCollectionsLoadContainer(string key)
         {
@@ -44,34 +47,36 @@
             _collectionsLoadContainer = new CollectionsLoadContainer<TView>();
         }
 
-        protected virtual IODataFilters<T> DefaultFilters => null;
+        protected virtual List<IODataFilter> DefaultFilters => null;
 
         /// <summary>
         /// Provide filters based on <see cref="T"/>
         /// </summary>
         /// <param name="model"></param>
         /// <returns></returns>
-        protected virtual IODataFilters<T> GetModelFilters(T model)
+        protected virtual List<IODataFilter> GetModelFilters(T model)
         {
             return null;
         }
 
-        private IODataFilters<T> GetFilters(T model)
+        private IODataFilters GetFilters(T model)
         {
             var defaultFilters = DefaultFilters;
             var modelFilters = GetModelFilters(model);
 
             if (defaultFilters != null)
             {
+                var result = new ODataFilters(defaultFilters);
+
                 if (modelFilters != null)
                 {
-                    return new ODataFilters<T>(QueryOperator.And, defaultFilters, modelFilters);
+                    result.AddFilter(modelFilters);
                 }
 
-                return defaultFilters;
+                return result;
             }
 
-            return modelFilters;
+            return new ODataFilters(modelFilters);
         }
 
         internal IODataBuilder<T, Guid> GetFilter(T model)
@@ -85,9 +90,9 @@
                 result.SetFilter(filters);
             }
 
-            if (sort.SortItems.Any())
+            if (sort.SortItems.Count > 0)
             {
-                var sortItem = sort.SortItems.First();
+                var sortItem = sort.SortItems[0];
                 result = result.SetOrder(sortItem.Column)
                     .SetDescending(!sortItem.Ascending);
             }
@@ -207,7 +212,7 @@
                     lock (_filterLock)
                     {
                         filter.SetSkip(batch.Skip).SetTop(batch.Take);
-                        tasks.Add(GetTask(model, cancelationToken, filter));
+                        tasks.Add(GetTask(model, cancelationToken, SecurityToken, filter));
                         GetCollectionsLoadContainer(filterKey).AddRunningTask();
                     }
                 }
@@ -225,6 +230,7 @@
         protected abstract Task<List<TView>> GetTask(
             T model,
             CancellationToken cancellationToken,
+            ISecurityToken securityToken,
             IODataBuilder<T, Guid> filter);
 
         protected virtual IEnumerable<SortModel> GetSortModels(DataLoading dataLoading, int recordRequestNumber)

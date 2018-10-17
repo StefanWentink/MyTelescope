@@ -9,7 +9,7 @@
     using ViewModels.Interfaces;
     using SWE.OData.Interfaces;
     using System;
-    using SWE.Http.Interfacess;
+    using SWE.Http.Interfaces;
     using System.Threading;
 
     public abstract class HttpDataLoader<TView, T> :
@@ -18,9 +18,9 @@
         where TView : class, IBaseKeyViewModel<T>, new()
         where T : class, IKey, new()
     {
-        protected IRepository Repository { get; set; }
+        protected IRepository<T> Repository { get; set; }
 
-        protected HttpDataLoader(IRepository repository)
+        protected HttpDataLoader(IRepository<T> repository)
         {
             Repository = repository;
         }
@@ -28,9 +28,10 @@
         protected override async Task<List<TView>> GetTask(
             T model,
             CancellationToken cancellationToken,
+            ISecurityToken securityToken,
             IODataBuilder<T, Guid> filter)
         {
-            var collection = await Repository.ReadAsync<T>(cancellationToken, filter.Build()).ConfigureAwait(false);
+            var collection = await Repository.ReadAsync(cancellationToken, securityToken, filter.Build()).ConfigureAwait(false);
             return collection.Select(x => new TView { Model = x }).ToList();
         }
 
