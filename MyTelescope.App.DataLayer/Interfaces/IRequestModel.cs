@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.App.DataLayer.Interfaces
 {
-    using Enums;
+    using SWE.Http.Enums;
 
     public interface IRequestModel
     {

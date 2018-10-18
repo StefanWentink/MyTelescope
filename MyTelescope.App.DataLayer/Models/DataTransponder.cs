@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.App.DataLayer.Models
 {
-    using Enums;
+    using SWE.Http.Enums;
     using Http;
     using Interfaces;
     using MyTelescope.Utilities.Helpers;

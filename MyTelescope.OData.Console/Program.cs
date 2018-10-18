@@ -7,11 +7,7 @@
     using MyTelescope.Utilities.Helpers;
     using SWE.Http.Interfaces;
 
-    using SWE.Http.Interfaces;
-
-    using SWE.Http.Models;
     using SWE.OData.Builders;
-    using SWE.Polly.Interfaces.Policies;
     using SWE.Polly.Models;
     using System;
     using Newtonsoft.Json;

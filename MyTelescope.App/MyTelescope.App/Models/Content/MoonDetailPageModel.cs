@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.App.Pages.Content
 {
-    using DataLayer.Interfaces;
+    using MyTelescope.Data.Loader.Interfaces;
     using Models.Base;
     using SolarSystem.Models.CelestialObject;
     using ViewModels.Models.Item;

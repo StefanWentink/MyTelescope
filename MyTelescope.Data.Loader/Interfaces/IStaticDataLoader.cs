@@ -1,7 +1,7 @@
-﻿namespace MyTelescope.App.OData.Interfaces
+﻿namespace MyTelescope.Data.Loader.Interfaces
 {
+    using MyTelescope.App.ViewModels.Interfaces;
     using SWE.Model.Interfaces;
-    using ViewModels.Interfaces;
 
     public interface IStaticDataLoader<TViewModel, in TModel> : IDataLoader<TViewModel, TModel>
         where TViewModel : class, IBaseViewModel

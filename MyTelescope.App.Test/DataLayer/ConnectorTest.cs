@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.App.Test.DataLayer
 {
-    using App.DataLayer.Interfaces;
+    using MyTelescope.Data.Loader.Interfaces;
     using Base;
     using Data;
     using Moq;
@@ -10,6 +10,9 @@
     using Newtonsoft.Json;
     using System.Threading.Tasks;
     using Xunit;
+    using SWE.Http.Interfaces;
+    using System.Threading;
+    using SWE.Http.Models.Policies;
 
     public class ConnectorTest : IClassFixture<CustomFixture>
     {
@@ -19,15 +22,23 @@
             var planetContent = ResponseConstants.GetCelestialObjectPlanetContentString();
             var emptyContent = ResponseConstants.GetCelestialObjectEmptyContentString();
 
-            var dataExchanger = new Mock<ICrudDataExchanger<IRequestModel>>();
+            var exchanger = new Mock<IExchanger>();
 
-            dataExchanger.Setup(x => x.GetString(It.Is<IRequestModel>(c => JsonConvert.DeserializeObject<FilterModel>(c.Content).Sort.Skip <= 0))).Returns(
+            exchanger.Setup(x => x.GetString(
+                It.IsAny<CancellationToken>(),
+                null,
+                It.IsAny<TimeOutPolicy>(),
+                It.Is<IRequest>(c => JsonConvert.DeserializeObject<FilterModel>(c.Content).Sort.Skip <= 0))).Returns(
                 Task.Run(() => planetContent));
 
-            dataExchanger.Setup(x => x.GetString(It.Is<IRequestModel>(c => JsonConvert.DeserializeObject<FilterModel>(c.Content).Sort.Skip > 0))).Returns(
+            exchanger.Setup(x => x.GetString(
+                It.IsAny<CancellationToken>(),
+                null,
+                It.IsAny<TimeOutPolicy>(),
+                It.Is<IRequest>(c => JsonConvert.DeserializeObject<FilterModel>(c.Content).Sort.Skip > 0))).Returns(
                 Task.Run(() => emptyContent));
 
-            var connector = new App.DataLayer.Models.Connectors.CelestialObjectConnector(dataExchanger.Object);
+            var connector = new App.DataLayer.Connectors.CelestialObjectConnector(exchanger.Object);
 
             var filterPlanet = new FilterModel(
                 new SortModel(new SortItemModel("Id", true), 0, 10),

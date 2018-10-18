@@ -1,7 +1,5 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.DataLoader
 {
-    using Enums;
-    using Interfaces;
     using MyTelescope.Utilities.Helpers;
     using SWE.Model.Interfaces;
     using MyTelescope.Utilities.Models.Filter;
@@ -9,12 +7,14 @@
     using SolarSystem.Models.CelestialObject;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using Utilities.EventArgs;
     using Utilities.Helpers;
     using Utilities.Models;
     using ViewModels.Interfaces;
+    using SWE.Http.Enums;
+    using MyTelescope.Data.Loader.Interfaces;
+    using SWE.Http.Interfaces;
 
     public abstract class BaseDataLoader<TViewModel, TModel> : IDataLoader<TViewModel, TModel>
         where TViewModel : class, IBaseViewModel
@@ -23,6 +23,8 @@
         private readonly object _filterLock = new object();
 
         private CollectionsLoadContainer<TViewModel> _collectionsLoadContainer;
+
+        public virtual ISecurityToken SecurityToken { protected get; set; }
 
         public CollectionLoadContainer<TViewModel> GetCollectionsLoadContainer(string key)
         {

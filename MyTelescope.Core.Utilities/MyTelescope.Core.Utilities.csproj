@@ -16,7 +16,6 @@
     <Folder Include="Extensions\" />
     <Folder Include="Constants\" />
     <Folder Include="Enums\" />
-    <Folder Include="Interfaces\" />
   </ItemGroup>
 
   <ItemGroup>

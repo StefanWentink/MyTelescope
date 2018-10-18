@@ -1,12 +1,11 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using DataLayer.Enums;
-    using DataLayer.Interfaces;
+    using SWE.Http.Enums;
+    using MyTelescope.Data.Loader.Interfaces;
     using Helpers;
     using SWE.Model.Interfaces;
     using System;
     using System.Collections.ObjectModel;
-    using System.Linq;
     using System.Threading.Tasks;
     using Utilities.EventArgs;
     using ViewModels.Interfaces;

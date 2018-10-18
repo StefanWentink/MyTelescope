@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using DataLayer.Interfaces;
     using Helpers;
+    using MyTelescope.Data.Loader.Interfaces;
     using SWE.Model.Interfaces;
     using System;
     using System.Collections.Generic;

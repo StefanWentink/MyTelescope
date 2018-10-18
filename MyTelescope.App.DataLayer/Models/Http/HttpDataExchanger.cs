@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.Http
 {
-    using Enums;
+    using SWE.Http.Enums;
     using Interfaces;
     using System;
     using System.IO;

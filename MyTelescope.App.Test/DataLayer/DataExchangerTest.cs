@@ -1,7 +1,5 @@
 ﻿namespace MyTelescope.App.Test.DataLayer
 {
-    using App.DataLayer.Interfaces;
-    using App.DataLayer.Models.Http;
     using Moq;
     using MyTelescope.Utilities.Enums;
     using MyTelescope.Utilities.Models.Filter;
@@ -12,6 +10,11 @@
     using System.Threading.Tasks;
     using Xunit;
     using CustomFixture = Base.CustomFixture;
+    using SWE.Http.Models;
+    using System.Threading;
+    using SWE.Http.Models.Policies;
+    using MyTelescope.App.DataLayer.Models;
+    using SWE.Http.Interfaces;
 
     public class DataExchangerTest : IClassFixture<CustomFixture>
     {
@@ -21,21 +24,27 @@
             const string expected = "Content";
 
             var httpContent = new StringContent(expected, Encoding.UTF8, "application/text");
-            var dataExchanger = new Mock<MyTelescopeDataExchanger>();
+            var exchanger = new Mock<Exchanger>();
 
-            dataExchanger.Setup(x => x.RequestContent(It.IsAny<IRequestModel>())).Returns(
-                Task.Run(() => new HttpResponseMessage(HttpStatusCode.OK)
-                {
-                    Content = httpContent
-                }));
+            exchanger.Setup(x => x.GetString(
+                It.IsAny<CancellationToken>(),
+                null,
+                It.IsAny<TimeOutPolicy>(),
+                It.IsAny<IRequest>())).Returns(
+                //Task.Run(() => new HttpResponseMessage(HttpStatusCode.OK)
+                //{
+                //    Content = httpContent
+                //})
+                Task.Run(() => expected)
+                );
 
             var filter = new FilterModel(
                 new SortModel(new SortItemModel("Id", true), 2, 5),
                 new FilterItemModel("Code", ColumnType.StringColumn, FilterType.Equal, "iets"));
 
-            var requestModel = new MyTelescopeRequestModel("{0}/{1}/{2}", "Actie", filter);
+            var requestModel = new MyTelescopeRequest("{0}/{1}/{2}", "Actie", filter);
 
-            var actual = dataExchanger.Object.GetString(requestModel).Result;
+            var actual = exchanger.Object.GetString(new CancellationToken(), null, new TimeOutPolicy(200), requestModel).Result;
 
             Assert.Equal(expected, actual);
         }

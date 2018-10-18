@@ -1,7 +1,5 @@
 ﻿namespace MyTelescope.App.OData.Models.DataLoader
 {
-    using MyTelescope.Utilities.Interfaces.Connector;
-    using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
     using SolarSystem.Models.CelestialObject;
     using SWE.Http.Interfaces;
@@ -10,7 +8,6 @@
     using SWE.OData.Models;
     using System;
     using System.Collections.Generic;
-    using ViewModels.Helpers.Filter;
     using ViewModels.Models.Item;
 
     public class CelestialObjectDataLoader : HttpDataLoader<CelestialObjectViewModel, CelestialObject>

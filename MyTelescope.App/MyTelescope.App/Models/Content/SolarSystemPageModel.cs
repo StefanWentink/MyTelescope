@@ -1,8 +1,8 @@
 ﻿namespace MyTelescope.App.Pages.Content
 {
     using Converter;
-    using DataLayer.Enums;
-    using DataLayer.Interfaces;
+    using SWE.Http.Enums;
+    using MyTelescope.Data.Loader.Interfaces;
     using Extensions;
     using Helpers;
     using Models.Base;

@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.App.Test.DataLayer
 {
-    using App.DataLayer.Enums;
+    using SWE.Http.Enums;
     using App.DataLayer.Models.DataLoader;
     using Base;
     using Moq;

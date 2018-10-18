@@ -16,16 +16,31 @@
     <Compile Remove="Adapters\**" />
     <Compile Remove="Factories\**" />
     <Compile Remove="Helpers\**" />
+    <Compile Remove="Models\Connectors\**" />
+    <Compile Remove="Models\Http\**" />
     <EmbeddedResource Remove="Adapters\**" />
     <EmbeddedResource Remove="Factories\**" />
     <EmbeddedResource Remove="Helpers\**" />
+    <EmbeddedResource Remove="Models\Connectors\**" />
+    <EmbeddedResource Remove="Models\Http\**" />
     <None Remove="Adapters\**" />
     <None Remove="Factories\**" />
     <None Remove="Helpers\**" />
+    <None Remove="Models\Connectors\**" />
+    <None Remove="Models\Http\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Interfaces\ICrudDataExchanger.cs" />
+    <Compile Remove="Interfaces\IDataExchanger.cs" />
+    <Compile Remove="Interfaces\IDataTransponder.cs" />
+    <Compile Remove="Interfaces\IRequestModel.cs" />
+    <Compile Remove="Models\DataTransponder.cs" />
   </ItemGroup>
   
   <ItemGroup>
-    <Folder Include="Models\PredictTheSky\" />
+    <Folder Include="Di\" />
+    <Folder Include="Interfaces\" />
   </ItemGroup>
   
   <ItemGroup>
@@ -33,9 +48,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SoftWareEssentials\SWE.Http\SWE.Http.csproj" />
     <ProjectReference Include="..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj" />
     <ProjectReference Include="..\MyTelescope.App.ViewModels\MyTelescope.App.ViewModels.csproj" />
     <ProjectReference Include="..\MyTelescope.Core.Utilities\MyTelescope.Core.Utilities.csproj" />
+    <ProjectReference Include="..\MyTelescope.Data.Loader\MyTelescope.Data.Loader.csproj" />
     <ProjectReference Include="..\MyTelescope.SolarSystem\MyTelescope.SolarSystem.csproj" />
     <ProjectReference Include="..\MyTelescope.Utilities\MyTelescope.Utilities.csproj" />
   </ItemGroup>

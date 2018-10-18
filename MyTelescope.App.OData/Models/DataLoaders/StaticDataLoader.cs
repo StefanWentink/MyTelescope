@@ -1,6 +1,5 @@
 ﻿namespace MyTelescope.App.OData.Models.DataLoader
 {
-    using Interfaces;
     using SWE.Model.Interfaces;
     using MyTelescope.Utilities.Models.Filter;
     using System.Collections.Generic;
@@ -10,6 +9,7 @@
     using System;
     using System.Threading;
     using SWE.Http.Interfaces;
+    using MyTelescope.Data.Loader.Interfaces;
 
     public abstract class StaticDataLoader<TView, T> :
         BaseDataLoader<TView, T>,

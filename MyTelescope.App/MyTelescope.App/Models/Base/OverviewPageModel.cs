@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.App.Models.Base
 {
-    using DataLayer.Interfaces;
+    using MyTelescope.Data.Loader.Interfaces;
     using SWE.Model.Interfaces;
     using ViewModels.Interfaces;
 

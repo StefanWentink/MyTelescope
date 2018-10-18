@@ -1,11 +1,11 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.DataLoader
 {
-    using Interfaces;
     using SWE.Model.Interfaces;
     using MyTelescope.Utilities.Models.Filter;
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using ViewModels.Interfaces;
+    using MyTelescope.Data.Loader.Interfaces;
 
     public abstract class StaticDataLoader<TViewModel, TModel> :
         BaseDataLoader<TViewModel, TModel>,

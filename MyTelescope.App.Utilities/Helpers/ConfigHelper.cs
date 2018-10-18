@@ -6,6 +6,7 @@
     using System;
     using System.Linq;
     using System.Threading.Tasks;
+    using Microsoft.Extensions.Logging;
 
     public static class ConfigHelper
     {
@@ -63,9 +64,7 @@
             try
             {
                 var configuration = JsonConvert.DeserializeObject<RootConfiguration>(configurationContent);
-                var platform = JsonConvert.DeserializeObject<PlatformConfiguration>(platformContent);
-
-                configuration.Platform = platform;
+                configuration.Platform = JsonConvert.DeserializeObject<PlatformConfiguration>(platformContent);
 
                 return configuration;
             }

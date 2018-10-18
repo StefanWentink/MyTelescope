@@ -1,11 +1,11 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  
+
   <PropertyGroup>
-	<ProjectGuid>{E614439B-28AE-465D-A917-210A8E85BE04}</ProjectGuid>
+    <ProjectGuid>{E614439B-28AE-465D-A917-210A8E85BE04}</ProjectGuid>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -24,9 +24,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="SWE.BasicType" Version="1.0.2" />
+    <PackageReference Include="SWE.BasicType" Version="1.0.3" />
     <PackageReference Include="SWE.Expression" Version="1.0.2" />
     <PackageReference Include="SWE.Model" Version="1.0.1" />
   </ItemGroup>
-
 </Project>

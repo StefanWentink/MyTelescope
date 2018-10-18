@@ -1,15 +1,12 @@
 ﻿namespace MyTelescope.App.OData.Models.DataLoader
 {
-    using Enums;
-    using Interfaces;
+    using SWE.Http.Enums;
     using MyTelescope.Utilities.Helpers;
     using SWE.Model.Interfaces;
-    using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
     using SolarSystem.Models.CelestialObject;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
     using Utilities.EventArgs;
     using Utilities.Helpers;
@@ -18,9 +15,9 @@
     using SWE.OData.Interfaces;
     using SWE.OData.Builders;
     using SWE.OData.Models;
-    using SWE.OData.Enums;
     using System.Threading;
     using SWE.Http.Interfaces;
+    using MyTelescope.Data.Loader.Interfaces;
 
     public abstract class BaseDataLoader<TView, T> : IDataLoader<TView, T>
         where TView : class, IBaseViewModel

@@ -25,7 +25,12 @@
     <ProjectReference Include="..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj" />
     <ProjectReference Include="..\MyTelescope.App.ViewModels\MyTelescope.App.ViewModels.csproj" />
     <ProjectReference Include="..\MyTelescope.Core.Utilities\MyTelescope.Core.Utilities.csproj" />
+    <ProjectReference Include="..\MyTelescope.Data.Loader\MyTelescope.Data.Loader.csproj" />
     <ProjectReference Include="..\MyTelescope.SolarSystem\MyTelescope.SolarSystem.csproj" />
     <ProjectReference Include="..\MyTelescope.Utilities\MyTelescope.Utilities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Policies\" />
   </ItemGroup>
 </Project>

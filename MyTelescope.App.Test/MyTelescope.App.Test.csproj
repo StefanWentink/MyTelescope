@@ -15,6 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DataLayer\ConnectorTest.cs" />
     <Compile Remove="Data\DummyBatchDataLoader.cs" />
     <Compile Remove="Data\DummyCelestialObjectDataLoader.cs" />
   </ItemGroup>
@@ -32,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\SoftWareEssentials\SWE.Http\SWE.Http.csproj" />
     <ProjectReference Include="..\MyTelescope.App.DataLayer\MyTelescope.App.DataLayer.csproj" />
     <ProjectReference Include="..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj" />
     <ProjectReference Include="..\MyTelescope.App.ViewModels\MyTelescope.App.ViewModels.csproj" />
