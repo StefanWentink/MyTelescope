@@ -1,6 +1,7 @@
 ﻿namespace MyTelescope.App.Models.Canvas
 {
     using Helpers;
+    using MyTelescope.Core.Utilities.Helpers;
     using SkiaSharp.Views.Forms;
     using System.Collections.ObjectModel;
     using System.Linq;

@@ -1,5 +1,6 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.DataLoader
 {
+    using MyTelescope.App.Utilities.Interfaces;
     using SolarSystem.Helpers.Seeder;
     using SolarSystem.Models.CelestialObject;
     using System.Collections.Generic;
@@ -9,6 +10,11 @@
 
     public class PlanetDataLoader : StaticDataLoader<CelestialObjectViewModel, CelestialObject>
     {
+        public PlanetDataLoader(IBatchContainer batchContainer)
+            : base(batchContainer)
+        {
+        }
+
         protected override Task<List<CelestialObjectViewModel>> GetData(CelestialObject model)
         {
             return Task.Run(() => CelestialObjectSeedHelper.GetPlanets().Select(x => new CelestialObjectViewModel(x)).ToList());

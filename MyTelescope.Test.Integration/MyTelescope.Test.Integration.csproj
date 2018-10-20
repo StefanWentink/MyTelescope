@@ -48,7 +48,6 @@
     <ProjectReference Include="..\MyTelescope.Api.DataLayer\MyTelescope.Api.DataLayer.csproj" />
     <ProjectReference Include="..\MyTelescope.Api.Test\MyTelescope.Api.Test.csproj" />
     <ProjectReference Include="..\MyTelescope.Api\MyTelescope.Api.csproj" />
-    <ProjectReference Include="..\MyTelescope.App.DataLayer\MyTelescope.App.DataLayer.csproj" />
     <ProjectReference Include="..\MyTelescope.App.Models\MyTelescope.App.Models.csproj" />
     <ProjectReference Include="..\MyTelescope.App.Test\MyTelescope.App.Test.csproj" />
     <ProjectReference Include="..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj" />

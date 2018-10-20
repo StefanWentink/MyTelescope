@@ -1,5 +1,6 @@
 ﻿namespace MyTelescope.App.Helpers
 {
+    using MyTelescope.Core.Utilities.Helpers;
     using Plugin.Geolocator;
     using Plugin.Geolocator.Abstractions;
     using System;

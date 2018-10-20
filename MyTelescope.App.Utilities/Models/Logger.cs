@@ -1,4 +1,4 @@
-﻿namespace MyTelescope.App.Models
+﻿namespace MyTelescope.App.Utilities.Models
 {
     using System;
     using Microsoft.Extensions.Logging;
@@ -10,6 +10,9 @@
 
     public class Logger : ILogger
     {
+        public Logger()
+        { }
+
         public IDisposable BeginScope<TState>(TState state)
         {
             return null;
@@ -22,28 +25,17 @@
 
         public void Log<TState>(LogLevel logLevel, EventId eventId, TState state, Exception exception, Func<TState, Exception, string> formatter)
         {
+            Console.WriteLine(state);
+
             switch (logLevel)
             {
                 case LogLevel.Critical:
-                    LogHelper.LogCritical(exception.Message);
-                    break;
-
                 case LogLevel.Debug:
-                    LogHelper.LogDebug(exception.Message);
-                    break;
-
                 case LogLevel.Error:
-                    LogHelper.LogError(exception.Message);
-                    break;
-
                 case LogLevel.Warning:
-                    LogHelper.LogWarning(exception.Message);
-                    break;
-
                 case LogLevel.Information:
                 case LogLevel.None:
                 case LogLevel.Trace:
-                    LogHelper.LogInformation(exception.Message);
                     break;
             }
         }

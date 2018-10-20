@@ -13,6 +13,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Helpers\LogHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Constants\" />
     <Folder Include="Converter\" />
   </ItemGroup>
 
@@ -23,6 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MyTelescope.Core.Utilities\MyTelescope.Core.Utilities.csproj" />
     <ProjectReference Include="..\MyTelescope.Utilities\MyTelescope.Utilities.csproj" />
   </ItemGroup>
 

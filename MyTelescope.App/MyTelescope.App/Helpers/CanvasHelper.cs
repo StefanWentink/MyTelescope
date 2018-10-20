@@ -1,5 +1,6 @@
 ﻿namespace MyTelescope.App.Helpers
 {
+    using MyTelescope.Core.Utilities.Helpers;
     using MyTelescope.Utilities.Helpers;
     using MyTelescope.Utilities.Models;
     using SkiaSharp;

@@ -54,7 +54,7 @@
     <PackageReference Include="SWE.BasicType" Version="1.0.3" />
     <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
     <PackageReference Include="Xam.Plugin.Geolocator" Version="4.5.0.6" />
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
     <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="2.1.1" />
   </ItemGroup>
 
@@ -89,10 +89,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\SoftWareEssentials\SWE.Http\SWE.Http.csproj" />
-    <ProjectReference Include="..\..\..\SoftWareEssentials\SWE.OData\SWE.OData.csproj" />
-    <ProjectReference Include="..\..\..\SoftWareEssentials\SWE.Polly\SWE.Polly.csproj" />
-    <ProjectReference Include="..\..\MyTelescope.App.DataLayer\MyTelescope.App.DataLayer.csproj" />
     <ProjectReference Include="..\..\MyTelescope.App.Localisation\MyTelescope.App.Localisation.csproj" />
     <ProjectReference Include="..\..\MyTelescope.App.Models\MyTelescope.App.Models.csproj" />
     <ProjectReference Include="..\..\MyTelescope.App.OData\MyTelescope.App.OData.csproj" />

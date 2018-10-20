@@ -11,12 +11,20 @@
     using SWE.Polly.Models;
     using System;
     using Newtonsoft.Json;
-    using MyTelescope.OData.Console.Models;
+    using MyTelescope.App.OData.Models;
     using System.Threading;
     using SWE.OData.Models;
     using SWE.OData.Enums;
     using SWE.OData.Interfaces;
     using System.Collections.Generic;
+    using MyTelescope.App.OData.Models.Policies;
+    using MyTelescope.App.ViewModels.Models.Item;
+    using MyTelescope.App.OData.Models.DataLoader;
+    using MyTelescope.Data.Loader.Interfaces;
+    using MyTelescope.SolarSystem.Helpers.Seeder;
+    using MyTelescope.App.Utilities.EventArgs;
+    using MyTelescope.App.Utilities.Models;
+    using MyTelescope.App.Utilities.Interfaces;
 
     internal class Program
     {
@@ -25,30 +33,28 @@
         private static void Main(string[] args)
         {
             // setup our DI
-            var serviceProvider = new ServiceCollection()
-                .AddLogging()
-                    .AddSingleton<IExchanger, PolicyExchanger>()
-                    .AddSingleton<IRepository<CelestialObjectType>, ODataTypedRepository<CelestialObjectType>>()
-                    .AddSingleton<IRepository<CelestialObject>, ODataTypedRepository<CelestialObject>>()
-                    .AddSingleton<IRepository<CelestialObjectPosition>, ODataTypedRepository<CelestialObjectPosition>>()
-                    .AddSingleton<ITimeOutPolicy<CelestialObjectType>, CelestialObjectTypePolicy>()
-                    .AddSingleton<ITimeOutPolicy<CelestialObject>, CelestialObjectPolicy>()
-                    .AddSingleton<ITimeOutPolicy<CelestialObjectPosition>, CelestialObjectPositionPolicy>()
-                    .AddSingleton<IActions, MyTelescopeActions>()
-                    .AddSingleton<IUriContainer, MyTelescopeUriContainer>()
-                    .BuildServiceProvider();
+            InternalServiceProvider = new ServiceCollection()
+                .AddSingleton<ILogger>(new Logger())
+                .AddSingleton<IExchanger, PolicyExchanger>()
+                .AddSingleton<IBatchContainer, BatchContainer>()
 
-            InternalServiceProvider = serviceProvider;
+                .AddSingleton<IRepository<CelestialObjectType>, ODataTypedRepository<CelestialObjectType>>()
+                .AddSingleton<IRepository<CelestialObject>, ODataTypedRepository<CelestialObject>>()
+                .AddSingleton<IRepository<CelestialObjectPosition>, ODataTypedRepository<CelestialObjectPosition>>()
 
-            // configure console logging
-            serviceProvider
-                .GetService<ILoggerFactory>()
-                .AddConsole(LogLevel.Debug);
+                .AddSingleton<ITimeOutPolicy<CelestialObjectType>, CelestialObjectTypePolicy>()
+                .AddSingleton<ITimeOutPolicy<CelestialObject>, CelestialObjectPolicy>()
+                .AddSingleton<ITimeOutPolicy<CelestialObjectPosition>, CelestialObjectPositionPolicy>()
 
-            var logger = serviceProvider.GetService<ILoggerFactory>()
-                .CreateLogger<Program>();
+                .AddSingleton<IHttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectType>, CelestialObjectTypeDataLoader>()
+                .AddSingleton<IHttpDataLoader<CelestialObjectViewModel, CelestialObject>, CelestialObjectDataLoader>()
+                .AddSingleton<IHttpDataLoader<CelestialObjectPositionViewModel, CelestialObjectPosition>, CelestialObjectPositionDataLoader>()
 
-            LogHelper.Init(logger);
+                .AddSingleton<IActions, MyTelescopeActions>()
+                .AddSingleton<IUriContainer, MyTelescopeUriContainer>()
+                .BuildServiceProvider();
+
+            LogHelper.Init(new Logger());
 
             var input = ReadInput();
 
@@ -135,8 +141,36 @@
 
                     var content = builder.Build();
                     LogHelper.LogInformation($"CALL => {content}");
-                    var objectTypes = repository.ReadAsync(cancellationToken, null, content).Result;
-                    result = JsonConvert.SerializeObject(objectTypes);
+                    var objectPositions = repository.ReadAsync(cancellationToken, null, content).Result;
+                    result = JsonConvert.SerializeObject(objectPositions);
+                }
+
+                if (input.In(8))
+                {
+                    var dataLoader = InternalServiceProvider.GetService<IHttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectType>>();
+
+                    dataLoader.CollectionFetchedEvent +=
+                        (object sender, CollectionFetchedEventArgs<CelestialObjectTypeViewModel> e) =>
+                        {
+                            var loadResult = JsonConvert.SerializeObject(e);
+                            Console.WriteLine(loadResult);
+                        };
+
+                    dataLoader.Load(SWE.Http.Enums.DataLoading.Load, CelestialObjectTypeSeedHelper.GetCelestialObjectTypes()[0]);
+                }
+
+                if (input.In(9))
+                {
+                    var dataLoader = InternalServiceProvider.GetService<IHttpDataLoader<CelestialObjectViewModel, CelestialObject>>();
+
+                    dataLoader.CollectionFetchedEvent +=
+                        (object sender, CollectionFetchedEventArgs<CelestialObjectViewModel> e) =>
+                        {
+                            var loadResult = JsonConvert.SerializeObject(e);
+                            Console.WriteLine(loadResult);
+                        };
+
+                    dataLoader.Load(SWE.Http.Enums.DataLoading.Load, null);
                 }
 
                 Console.WriteLine(result);
@@ -159,12 +193,14 @@
             LogHelper.LogInformation("5. Read celestial objects. With filters.");
             LogHelper.LogInformation("6. Read celestial positions. With filters.");
             LogHelper.LogInformation("7. Read celestial types. With expand filters and order.");
+            LogHelper.LogInformation("8. Data load celestial types.");
+            LogHelper.LogInformation("9. Data load celestial objects.");
             LogHelper.LogInformation("0. Exit.");
             LogHelper.LogInformation(string.Empty);
 
             var key = Console.ReadKey();
 
-            if (!key.KeyChar.In('0', '1', '2', '3', '4', '5', '6', '7', '9'))
+            if (!key.KeyChar.In('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'))
             {
                 LogHelper.LogInformation($"{key.KeyChar} input is invalid.");
                 LogHelper.LogInformation(string.Empty);

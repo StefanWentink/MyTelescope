@@ -71,7 +71,7 @@
                 referenceDate.GetUtcReferenceDate());
         }
 
-        private static DateTimeOffset GetUtcReferenceDate(this DateTimeOffset referenceDate)
+        public static DateTimeOffset GetUtcReferenceDate(this DateTimeOffset referenceDate)
         {
             return new DateTimeOffset(new DateTime(referenceDate.Year, referenceDate.Month, referenceDate.Day, 0, 0, 0), TimeSpan.Zero);
         }

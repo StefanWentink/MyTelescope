@@ -13,6 +13,8 @@
     public abstract class DataController<T> : ODataController
         where T : class, IKey
     {
+        protected bool IsDisposed { get; private set; }
+
         private IContextConnector<T> Connector { get; }
 
         protected DataController(IContextConnector<T> connector)
@@ -37,6 +39,35 @@
         {
             await Connector.CreateAsync(item).ConfigureAwait(false);
             return Created(item);
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~DataController()
+        {
+            // Finalizer calls Dispose(false)
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// Disposing class
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool isDisposing)
+        {
+            if (!IsDisposed)
+            {
+                IsDisposed = true;
+
+                if (isDisposing)
+                {
+                    Connector?.Dispose();
+                }
+            }
         }
     }
 }

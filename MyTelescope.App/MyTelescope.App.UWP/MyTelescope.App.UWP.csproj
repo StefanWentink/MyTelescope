@@ -164,7 +164,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.2.0.871581" />
+    <PackageReference Include="Xamarin.Forms" Version="3.3.0.912540" />
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform" Version="6.1.9" />
   </ItemGroup>
   <ItemGroup>
@@ -175,6 +175,10 @@
     <ProjectReference Include="..\..\MyTelescope.App.Utilities\MyTelescope.App.Utilities.csproj">
       <Project>{03EE1CEE-54F8-4BCD-B6B6-19DC35650713}</Project>
       <Name>MyTelescope.App.Utilities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\MyTelescope.Core.Utilities\MyTelescope.Core.Utilities.csproj">
+      <Project>{B08F5016-3C35-4CB4-B0C0-83A728E9FC34}</Project>
+      <Name>MyTelescope.Core.Utilities</Name>
     </ProjectReference>
     <ProjectReference Include="..\MyTelescope.App\MyTelescope.App.csproj">
       <Project>{9364B481-C58F-4CDC-B9A0-8837797AC276}</Project>

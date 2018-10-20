@@ -1,5 +1,6 @@
 ﻿namespace MyTelescope.App.DataLayer.Models.DataLoader
 {
+    using MyTelescope.App.Utilities.Interfaces;
     using MyTelescope.Utilities.Interfaces.Connector;
     using MyTelescope.Utilities.Models.Filter;
     using MyTelescope.Utilities.Models.Sort;
@@ -10,8 +11,8 @@
 
     public class CelestialObjectDataLoader : HttpDataLoader<CelestialObjectViewModel, CelestialObject>
     {
-        public CelestialObjectDataLoader(IConnector<CelestialObject> connector)
-            : base(connector)
+        public CelestialObjectDataLoader(IConnector<CelestialObject> connector, IBatchContainer batchContainer)
+            : base(connector, batchContainer)
         {
         }
 

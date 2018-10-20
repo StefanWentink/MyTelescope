@@ -12,6 +12,8 @@
     using SWE.OData.Models;
     using SWE.Polly.Models;
     using ViewModels.Models.Item;
+    using MyTelescope.App.Utilities.Models;
+    using MyTelescope.App.Utilities.Interfaces;
 
     public static class DataDiHelper
     {
@@ -42,6 +44,7 @@
         public static void ConfigureODataServices()
         {
             FreshIOC.Container.Register<IExchanger, PolicyExchanger>().AsMultiInstance();
+            FreshIOC.Container.Register<IBatchContainer, BatchContainer>();
             FreshIOC.Container.Register<IRepository<CelestialObjectType>, ODataTypedRepository<CelestialObjectType>>().AsMultiInstance();
             FreshIOC.Container.Register<IRepository<CelestialObject>, ODataTypedRepository<CelestialObject>>().AsMultiInstance();
             FreshIOC.Container.Register<IRepository<CelestialObjectPosition>, ODataTypedRepository<CelestialObjectPosition>>().AsMultiInstance();

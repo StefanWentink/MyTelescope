@@ -55,12 +55,12 @@
 
         public static CelestialObjectPosition GetSunPosition()
         {
-            return GetSunPosition(DateTime.Today.Date.GetClosestUtcZeroTime());
+            return GetSunPosition(DateTime.Today.Date);
         }
 
         public static CelestialObjectPosition GetSunPosition(DateTimeOffset referenceDate)
         {
-            return new CelestialObjectPosition(GetSun().Id, referenceDate, new LocationModel(0, 0, 0), 0, 0);
+            return new CelestialObjectPosition(GetSun().Id, referenceDate.Date.GetClosestUtcZeroTime(), new LocationModel(0, 0, 0), 0, 0);
         }
 
         public static List<CelestialObject> GetPlanets()

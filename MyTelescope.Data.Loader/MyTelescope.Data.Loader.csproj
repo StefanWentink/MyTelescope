@@ -6,10 +6,10 @@
 
   <ItemGroup>
     <PackageReference Include="SWE.Model" Version="1.0.1" />
+    <PackageReference Include="SWE.Http" Version="1.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\SoftWareEssentials\SWE.Http\SWE.Http.csproj" />
     <ProjectReference Include="..\MyTelescope.App.ViewModels\MyTelescope.App.ViewModels.csproj" />
   </ItemGroup>
 

@@ -7,9 +7,9 @@
     public class MyTelescopePolicy<T> : PollyRetryPolicy, ITimeOutPolicy<T>
     {
         public MyTelescopePolicy(
-            ILogger<MyTelescopePolicy<T>> logger,
+            ILogger logger,
             int timeOutMilliseconds)
-            : base(logger, timeOutMilliseconds, 100, 3, 1000)
+            : base(logger, timeOutMilliseconds, 10000, 10, 1000)
         {
         }
     }

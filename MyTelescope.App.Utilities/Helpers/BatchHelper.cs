@@ -1,17 +1,19 @@
 ﻿namespace MyTelescope.App.Utilities.Helpers
 {
-    using Constants;
+    using MyTelescope.App.Utilities.Interfaces;
     using MyTelescope.Utilities.Models.Sort;
     using System.Collections.Generic;
 
     public static class BatchHelper
     {
-        public static IEnumerable<SortModel> GetSortModels(int requestedRecordCount)
+        public static IEnumerable<SortModel> GetSortModels(this IBatchContainer batchContainer, int requestedRecordCount, bool batched)
         {
             var batchSize =
-                requestedRecordCount == default(int)
-                ? BatchConstants.InitialBatchSize
-                : BatchConstants.BatchSize;
+                batched
+                    ? requestedRecordCount == default(int)
+                        ? batchContainer.GetInitialBatchSize()
+                        : batchContainer.GetBatchSize()
+                    : batchContainer.MaxBatchSize;
 
             var toRequestedRecordCount = requestedRecordCount + batchSize;
 
@@ -19,16 +21,18 @@
 
             while (loopRequestedRecordCount < toRequestedRecordCount)
             {
-                var result = GetSortModel(loopRequestedRecordCount);
+                var result = batchContainer.GetSortModel(loopRequestedRecordCount, batched);
                 loopRequestedRecordCount = result.RecordRequestNumber;
                 yield return result;
             }
         }
 
-        public static SortModel GetSortModel(int requestedRecordCount)
+        public static SortModel GetSortModel(this IBatchContainer batchContainer, int requestedRecordCount, bool batched)
         {
             var skip = GetSkip(requestedRecordCount);
-            var take = GetTake(requestedRecordCount);
+            var take = batched
+                ? batchContainer.GetTake(requestedRecordCount)
+                : batchContainer.MaxBatchSize;
             return new SortModel(skip, take);
         }
 
@@ -42,14 +46,14 @@
             return skip;
         }
 
-        internal static int GetTake(int skip)
+        internal static int GetTake(this IBatchContainer batchContainer, int skip)
         {
             if (skip <= default(int))
             {
-                return BatchConstants.InitialStepSize;
+                return batchContainer.GetInitialStepSize();
             }
 
-            return BatchConstants.StepSize;
+            return batchContainer.GetStepSize();
         }
     }
 }

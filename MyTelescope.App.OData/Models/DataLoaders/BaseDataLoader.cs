@@ -18,12 +18,15 @@
     using System.Threading;
     using SWE.Http.Interfaces;
     using MyTelescope.Data.Loader.Interfaces;
+    using MyTelescope.App.Utilities.Interfaces;
 
     public abstract class BaseDataLoader<TView, T> : IDataLoader<TView, T>
         where TView : class, IBaseViewModel
         where T : class, IKey, new()
     {
         private readonly object _filterLock = new object();
+
+        private readonly IBatchContainer _batchContainer;
 
         private CollectionsLoadContainer<TView> _collectionsLoadContainer;
 
@@ -39,9 +42,10 @@
             }
         }
 
-        protected BaseDataLoader()
+        protected BaseDataLoader(IBatchContainer batchContainer)
         {
             _collectionsLoadContainer = new CollectionsLoadContainer<TView>();
+            _batchContainer = batchContainer;
         }
 
         protected virtual List<IODataFilter> DefaultFilters => null;
@@ -61,11 +65,11 @@
             var defaultFilters = DefaultFilters;
             var modelFilters = GetModelFilters(model);
 
-            if (defaultFilters != null)
+            if (defaultFilters?.Count > 0)
             {
                 var result = new ODataFilters(defaultFilters);
 
-                if (modelFilters != null)
+                if (modelFilters?.Count > 0)
                 {
                     result.AddFilter(modelFilters);
                 }
@@ -73,14 +77,19 @@
                 return result;
             }
 
-            return new ODataFilters(modelFilters);
+            if (modelFilters?.Count > 0)
+            {
+                return new ODataFilters(modelFilters);
+            }
+
+            return null;
         }
 
         internal IODataBuilder<T, Guid> GetFilter(T model)
         {
             var filters = GetFilters(model);
             var sort = GetSort();
-            IODataBuilder<T, Guid> result = new ODataBuilder<T, Guid>(EntityName);
+            IODataBuilder<T, Guid> result = new ODataBuilder<T, Guid>(EntityName ?? typeof(T).Name);
 
             if (filters != null)
             {
@@ -110,9 +119,6 @@
             {
                 case DataLoading.Load:
                 case DataLoading.BatchLoad:
-                    await LoadModels(model, filter, dataLoading).ConfigureAwait(false);
-                    break;
-
                 case DataLoading.Preload:
                     await LoadModels(model, filter, dataLoading).ConfigureAwait(false);
                     break;
@@ -144,6 +150,8 @@
 
         public void Load(DataLoading dataLoading, T model)
         {
+            // TODO - fix
+            //LoadAsync(dataLoading, model);
             Task.Run(() => LoadAsync(dataLoading, model).ConfigureAwait(false));
         }
 
@@ -159,7 +167,7 @@
 
         public event EventHandler<EndOfCollectionEventArgs> EndOfCollectionEvent;
 
-        protected void PopToList(string filterKey, List<TView> collection, DataLoading dataLoading, bool singleRequest)
+        protected void PopToList(string filterKey, List<TView> collection, DataLoading dataLoading, bool finalRequest)
         {
             if (collection.Count > 0)
             {
@@ -171,7 +179,7 @@
                 }
             }
 
-            if (singleRequest || collection.Count == 0)
+            if (finalRequest)
             {
                 GetCollectionsLoadContainer(filterKey).SetEndOfCollection();
             }
@@ -185,7 +193,7 @@
         protected async Task LoadModels(T model, IODataBuilder<T, Guid> filter, DataLoading dataLoading)
         {
             var filterKey = filter.BuilderKey();
-            var tasks = new List<Task<List<TView>>>();
+            var tasks = new List<Task<(int requestedCount, List<TView> items)>>();
             var recordRequestNumber = GetCollectionsLoadContainer(filterKey).GetRecordRequestNumber();
 
             if (recordRequestNumber == int.MaxValue
@@ -195,13 +203,13 @@
                 return;
             }
 
-            var singleRequest = false;
+            var finalRequest = false;
 
             var cancelationToken = new CancellationToken();
 
             foreach (var batch in GetSortModels(dataLoading, recordRequestNumber))
             {
-                singleRequest = batch.RecordRequestNumber == int.MaxValue;
+                finalRequest = batch.RecordRequestNumber == int.MaxValue;
 
                 if (batch.RecordRequestNumber > GetCollectionsLoadContainer(filterKey).GetRecordRequestNumber())
                 {
@@ -209,7 +217,7 @@
                     lock (_filterLock)
                     {
                         filter.SetSkip(batch.Skip).SetTop(batch.Take);
-                        tasks.Add(GetTask(model, cancelationToken, SecurityToken, filter));
+                        tasks.Add(GetTask(model, batch.Take, cancelationToken, SecurityToken, filter));
                         GetCollectionsLoadContainer(filterKey).AddRunningTask();
                     }
                 }
@@ -218,30 +226,36 @@
             while (tasks.Count > 0)
             {
                 var completedTask = await Task.WhenAny(tasks).ConfigureAwait(false);
-                GetCollectionsLoadContainer(filterKey).RemoveRunningTask();
-                PopToList(filterKey, completedTask.Result, dataLoading, singleRequest);
+
                 tasks.Remove(completedTask);
+
+                GetCollectionsLoadContainer(filterKey).RemoveRunningTask();
+
+                var result = completedTask.Result.items;
+
+                finalRequest = finalRequest || result.Count < completedTask.Result.requestedCount;
+
+                PopToList(filterKey, result, dataLoading, finalRequest);
+            }
+
+            if (!finalRequest && dataLoading.In(DataLoading.Load, DataLoading.Preload))
+            {
+                await LoadModels(model, filter, dataLoading).ConfigureAwait(false);
             }
         }
 
-        protected abstract Task<List<TView>> GetTask(
+        protected abstract Task<(int requestedCount, List<TView> items)> GetTask(
             T model,
+            int requestedCount,
             CancellationToken cancellationToken,
             ISecurityToken securityToken,
             IODataBuilder<T, Guid> filter);
 
         protected virtual IEnumerable<SortModel> GetSortModels(DataLoading dataLoading, int recordRequestNumber)
         {
-            if (dataLoading == DataLoading.BatchLoad)
+            foreach (var batch in _batchContainer.GetSortModels(recordRequestNumber, dataLoading == DataLoading.BatchLoad))
             {
-                foreach (var batch in BatchHelper.GetSortModels(recordRequestNumber))
-                {
-                    yield return batch;
-                }
-            }
-            else
-            {
-                yield return new SortModel(recordRequestNumber, int.MaxValue);
+                yield return batch;
             }
         }
 
@@ -253,10 +267,10 @@
             }
         }
 
-        protected virtual void OnEndOfCollection(string filterKey)
-        {
-            EndOfCollectionEvent?.Invoke(this, new EndOfCollectionEventArgs(GetCollectionsLoadContainer(filterKey).CollectionCount()));
-        }
+        //protected virtual void OnEndOfCollection(string filterKey)
+        //{
+        //    EndOfCollectionEvent?.Invoke(this, new EndOfCollectionEventArgs(GetCollectionsLoadContainer(filterKey).CollectionCount()));
+        //}
 
         ~BaseDataLoader()
         {

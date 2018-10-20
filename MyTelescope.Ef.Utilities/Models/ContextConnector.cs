@@ -20,12 +20,26 @@
     using System.Runtime.CompilerServices;
     using System.Threading.Tasks;
 
-    public abstract class ContextConnector<TModel> : Connector<TModel>, IContextConnector<TModel>
+    public abstract class ContextConnector<TModel>
+        : Connector<TModel>
+        , IContextConnector<TModel>
         where TModel : class
     {
         protected IContextContainer ContextContainer { get; }
 
-        public IQueryable<TModel> Queryable => ContextContainer.GetContext.GetNoTrackingQuery<TModel>();
+        protected bool IsDisposed { get; private set; }
+
+        private DbContext _context;
+
+        private DbContext Context
+        {
+            get
+            {
+                return _context ?? (_context = ContextContainer.GetContext);
+            }
+        }
+
+        public IQueryable<TModel> Queryable => Context.GetNoTrackingQuery<TModel>();
 
         public Task<IQueryable<TModel>> QueryableAsync => Task.FromResult(Queryable);
 
@@ -261,6 +275,36 @@
 
             LogHelper.LogError($"Something went wrong fetching the data");
             return new List<TModel>();
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        ~ContextConnector()
+        {
+            // Finalizer calls Dispose(false)
+            Dispose(false);
+        }
+
+        /// <summary>
+        /// Disposing class
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool isDisposing)
+        {
+            if (!IsDisposed)
+            {
+                IsDisposed = true;
+
+                if (isDisposing)
+                {
+                    _context?.CloseConnection();
+                    _context?.Dispose();
+                }
+            }
         }
     }
 }

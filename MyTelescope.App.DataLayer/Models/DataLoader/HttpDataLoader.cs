@@ -8,6 +8,7 @@
     using System.Threading.Tasks;
     using ViewModels.Interfaces;
     using MyTelescope.Data.Loader.Interfaces;
+    using MyTelescope.App.Utilities.Interfaces;
 
     public abstract class HttpDataLoader<TViewModel, TModel> :
         BaseDataLoader<TViewModel, TModel>,
@@ -17,7 +18,8 @@
     {
         protected IConnector<TModel> Connector { get; set; }
 
-        protected HttpDataLoader(IConnector<TModel> connector)
+        protected HttpDataLoader(IConnector<TModel> connector, IBatchContainer batchContainer)
+            : base(batchContainer)
         {
             Connector = connector;
         }

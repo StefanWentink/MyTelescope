@@ -13,7 +13,6 @@
     using SWE.Http.Models;
     using System.Threading;
     using SWE.Http.Models.Policies;
-    using MyTelescope.App.DataLayer.Models;
     using SWE.Http.Interfaces;
 
     public class DataExchangerTest : IClassFixture<CustomFixture>
@@ -31,10 +30,6 @@
                 null,
                 It.IsAny<TimeOutPolicy>(),
                 It.IsAny<IRequest>())).Returns(
-                //Task.Run(() => new HttpResponseMessage(HttpStatusCode.OK)
-                //{
-                //    Content = httpContent
-                //})
                 Task.Run(() => expected)
                 );
 

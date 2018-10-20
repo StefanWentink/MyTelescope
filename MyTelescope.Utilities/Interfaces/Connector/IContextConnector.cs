@@ -7,8 +7,8 @@
     using System.Linq.Expressions;
     using System.Threading.Tasks;
 
-    public interface IContextConnector<TModel> : IConnector<TModel>
-    where TModel : class
+    public interface IContextConnector<TModel> : IConnector<TModel>, IDisposable
+        where TModel : class
     {
         IQueryable<TModel> Queryable { get; }
 

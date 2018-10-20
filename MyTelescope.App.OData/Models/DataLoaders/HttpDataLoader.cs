@@ -10,6 +10,7 @@
     using SWE.Http.Interfaces;
     using System.Threading;
     using MyTelescope.Data.Loader.Interfaces;
+    using MyTelescope.App.Utilities.Interfaces;
 
     public abstract class HttpDataLoader<TView, T> :
         BaseDataLoader<TView, T>,
@@ -19,19 +20,21 @@
     {
         protected IRepository<T> Repository { get; set; }
 
-        protected HttpDataLoader(IRepository<T> repository)
+        protected HttpDataLoader(IBatchContainer batchContainer, IRepository<T> repository)
+            : base(batchContainer)
         {
             Repository = repository;
         }
 
-        protected override async Task<List<TView>> GetTask(
+        protected override async Task<(int requestedCount, List<TView> items)> GetTask(
             T model,
+            int requestedCount,
             CancellationToken cancellationToken,
             ISecurityToken securityToken,
             IODataBuilder<T, Guid> filter)
         {
             var collection = await Repository.ReadAsync(cancellationToken, securityToken, filter.Build()).ConfigureAwait(false);
-            return collection.Select(x => new TView { Model = x }).ToList();
+            return (requestedCount, collection.Select(x => new TView { Model = x }).ToList());
         }
 
         ~HttpDataLoader()

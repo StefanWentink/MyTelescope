@@ -1,6 +1,6 @@
 ﻿namespace MyTelescope.App.OData.Models.DataLoader
 {
-    using MyTelescope.Utilities.Interfaces.Connector;
+    using MyTelescope.App.Utilities.Interfaces;
     using MyTelescope.Utilities.Models.Sort;
     using SolarSystem.Models.CelestialObject;
     using SWE.Http.Interfaces;
@@ -8,8 +8,8 @@
 
     public class CelestialObjectTypeDataLoader : HttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectType>
     {
-        public CelestialObjectTypeDataLoader(IRepository<CelestialObjectType> repository)
-            : base(repository)
+        public CelestialObjectTypeDataLoader(IBatchContainer batchContainer, IRepository<CelestialObjectType> repository)
+            : base(batchContainer, repository)
         {
         }
 

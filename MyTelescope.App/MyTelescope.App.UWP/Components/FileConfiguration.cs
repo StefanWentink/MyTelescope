@@ -5,6 +5,7 @@ using Xamarin.Forms;
 
 namespace MyTelescope.App.UWP.Components
 {
+    using MyTelescope.Core.Utilities.Helpers;
     using System;
     using System.IO;
     using System.Text;

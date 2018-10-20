@@ -13,15 +13,15 @@
     {
         public static void ConfigureContextServices(IServiceCollection serviceCollection)
         {
-            serviceCollection.AddSingleton<IContextContainer, MyTelescopeContextContainer>();
+            serviceCollection.AddScoped<IContextContainer, MyTelescopeContextContainer>();
 
-            serviceCollection.AddSingleton<IConnector<CelestialObjectType>, CelestialObjectTypeConnector>();
-            serviceCollection.AddSingleton<IConnector<CelestialObject>, CelestialObjectConnector>();
-            serviceCollection.AddSingleton<IConnector<CelestialObjectPosition>, CelestialObjectPositionConnector>();
+            serviceCollection.AddScoped<IConnector<CelestialObjectType>, CelestialObjectTypeConnector>();
+            serviceCollection.AddScoped<IConnector<CelestialObject>, CelestialObjectConnector>();
+            serviceCollection.AddScoped<IConnector<CelestialObjectPosition>, CelestialObjectPositionConnector>();
 
-            serviceCollection.AddSingleton<IContextConnector<CelestialObjectType>, CelestialObjectTypeConnector>();
-            serviceCollection.AddSingleton<IContextConnector<CelestialObject>, CelestialObjectConnector>();
-            serviceCollection.AddSingleton<IContextConnector<CelestialObjectPosition>, CelestialObjectPositionConnector>();
+            serviceCollection.AddScoped<IContextConnector<CelestialObjectType>, CelestialObjectTypeConnector>();
+            serviceCollection.AddScoped<IContextConnector<CelestialObject>, CelestialObjectConnector>();
+            serviceCollection.AddScoped<IContextConnector<CelestialObjectPosition>, CelestialObjectPositionConnector>();
 
             serviceCollection.AddSingleton<ISingletonFactory<CelestialObjectType>, CelestialObjectTypeFactory>();
 

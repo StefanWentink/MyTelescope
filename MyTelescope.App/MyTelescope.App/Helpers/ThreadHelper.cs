@@ -1,5 +1,6 @@
 ﻿namespace MyTelescope.App.Helpers
 {
+    using MyTelescope.Core.Utilities.Helpers;
     using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;

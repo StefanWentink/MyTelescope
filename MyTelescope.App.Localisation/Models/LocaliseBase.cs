@@ -3,6 +3,7 @@
     using System.Globalization;
     using System.Threading;
     using Interfaces;
+    using MyTelescope.Core.Utilities.Helpers;
     using Utilities.Helpers;
 
     public abstract class LocaliseBase : ILocalise

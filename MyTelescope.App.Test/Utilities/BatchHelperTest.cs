@@ -1,7 +1,7 @@
 ﻿namespace MyTelescope.App.Test.Utilities
 {
-    using App.Utilities.Constants;
     using App.Utilities.Helpers;
+    using MyTelescope.App.Utilities.Models;
     using System.Linq;
     using Xunit;
     using CustomFixture = Base.CustomFixture;
@@ -9,11 +9,17 @@
     public class BatchHelperTest : IClassFixture<CustomFixture>
     {
         [Theory]
-        [InlineData(0, BatchConstants.InitialBatchSize, BatchConstants.InitialStepSize, BatchConstants.StepSize)]
-        [InlineData(1, BatchConstants.BatchSize, BatchConstants.StepSize, BatchConstants.StepSize)]
-        public void GetSortModelsTest(int value, int expectedBatchSize, int expectedFirstStepSize, int expectedNextStepSize)
+        [InlineData(0)]
+        [InlineData(1)]
+        public void GetSortModelsTest(int value)
         {
-            var actualList = BatchHelper.GetSortModels(value).ToList();
+            var batchContainer = new BatchContainer();
+
+            int expectedBatchSize = value == 0 ? batchContainer.GetInitialBatchSize() : batchContainer.GetBatchSize();
+            int expectedFirstStepSize = value == 0 ? batchContainer.GetInitialStepSize() : batchContainer.GetStepSize();
+            int expectedNextStepSize = batchContainer.GetStepSize();
+
+            var actualList = batchContainer.GetSortModels(value, true).ToList();
             Assert.Equal(2, actualList.Count);
             var actualBatchSize = actualList.Max(x => x.RecordRequestNumber) - actualList.Min(x => x.Skip);
             Assert.Equal(expectedBatchSize, actualBatchSize);
@@ -28,12 +34,16 @@
         }
 
         [Theory]
-        [InlineData(-10, 0, BatchConstants.InitialStepSize)]
-        [InlineData(0, 0, BatchConstants.InitialStepSize)]
-        [InlineData(10, 10, BatchConstants.StepSize)]
-        public void GetSortModel(int value, int expectedSkip, int expectedTake)
+        [InlineData(-10, 0, 20, true)]
+        [InlineData(0, 0, 20, true)]
+        [InlineData(10, 10, 10, true)]
+        [InlineData(-10, 0, 100, false)]
+        [InlineData(0, 0, 100, false)]
+        [InlineData(10, 10, 100, false)]
+        public void GetSortModel(int value, int expectedSkip, int expectedTake, bool batched)
         {
-            var actual = BatchHelper.GetSortModel(value);
+            var batchContainer = new BatchContainer();
+            var actual = batchContainer.GetSortModel(value, batched);
             Assert.Equal(expectedSkip, actual.Skip);
             Assert.Equal(expectedTake, actual.Take);
             Assert.Equal(expectedSkip + expectedTake, actual.RecordRequestNumber);

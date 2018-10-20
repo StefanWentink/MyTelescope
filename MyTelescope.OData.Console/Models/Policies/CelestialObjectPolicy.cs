@@ -5,7 +5,7 @@
 
     public class CelestialObjectPolicy : MyTelescopePolicy<CelestialObject>
     {
-        public CelestialObjectPolicy(ILogger<CelestialObjectPolicy> logger)
+        public CelestialObjectPolicy(ILogger logger)
             : base(logger, 2000)
         {
         }

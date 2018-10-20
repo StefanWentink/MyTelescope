@@ -11,6 +11,7 @@
     using System.Collections.Generic;
     using System.Threading.Tasks;
     using Xunit;
+    using MyTelescope.App.Utilities.Models;
 
     public class HttpDataLoaderTest : IClassFixture<CustomFixture>
     {
@@ -31,7 +32,7 @@
             var collectionFetchedCount = 0;
             var endOfCollectionCount = 0;
 
-            var dataLoader = new CelestialObjectDataLoader(connector.Object);
+            var dataLoader = new CelestialObjectDataLoader(connector.Object, new BatchContainer());
 
             dataLoader.CollectionFetchedEvent += (sender, args) => collectionFetchedCount++;
             dataLoader.EndOfCollectionEvent += (sender, args) => endOfCollectionCount++;

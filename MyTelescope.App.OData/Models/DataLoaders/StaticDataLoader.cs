@@ -10,6 +10,7 @@
     using System.Threading;
     using SWE.Http.Interfaces;
     using MyTelescope.Data.Loader.Interfaces;
+    using MyTelescope.App.Utilities.Interfaces;
 
     public abstract class StaticDataLoader<TView, T> :
         BaseDataLoader<TView, T>,
@@ -17,15 +18,21 @@
         where TView : class, IBaseViewModel
         where T : class, IKey, new()
     {
-        protected override async Task<List<TView>> GetTask(
+        protected StaticDataLoader(IBatchContainer batchContainer)
+            : base(batchContainer)
+        {
+        }
+
+        protected override async Task<(int requestedCount, List<TView> items)> GetTask(
             T model,
+            int requestedCount,
             CancellationToken cancellationToken,
             ISecurityToken securityToken,
             IODataBuilder<T, Guid> filter)
         {
             var filterKey = filter.BuilderKey();
             GetCollectionsLoadContainer(filterKey).SetEndOfCollection();
-            return await GetData(model).ConfigureAwait(false);
+            return (requestedCount, await GetData(model).ConfigureAwait(false));
         }
 
         protected abstract Task<List<TView>> GetData(T model);

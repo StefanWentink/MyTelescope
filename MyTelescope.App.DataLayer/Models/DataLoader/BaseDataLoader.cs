@@ -15,12 +15,15 @@
     using SWE.Http.Enums;
     using MyTelescope.Data.Loader.Interfaces;
     using SWE.Http.Interfaces;
+    using MyTelescope.App.Utilities.Interfaces;
 
     public abstract class BaseDataLoader<TViewModel, TModel> : IDataLoader<TViewModel, TModel>
         where TViewModel : class, IBaseViewModel
         where TModel : class, IKey, new()
     {
         private readonly object _filterLock = new object();
+
+        private readonly IBatchContainer _batchContainer;
 
         private CollectionsLoadContainer<TViewModel> _collectionsLoadContainer;
 
@@ -34,9 +37,10 @@
             }
         }
 
-        protected BaseDataLoader()
+        protected BaseDataLoader(IBatchContainer batchContainer)
         {
             _collectionsLoadContainer = new CollectionsLoadContainer<TViewModel>();
+            _batchContainer = batchContainer;
         }
 
         protected virtual List<FilterItemModel> DefaultFilterItems => new List<FilterItemModel>();
@@ -199,16 +203,9 @@
 
         protected virtual IEnumerable<SortModel> GetSortModels(DataLoading dataLoading, int recordRequestNumber)
         {
-            if (dataLoading == DataLoading.BatchLoad)
+            foreach (var batch in _batchContainer.GetSortModels(recordRequestNumber, dataLoading == DataLoading.BatchLoad))
             {
-                foreach (var batch in BatchHelper.GetSortModels(recordRequestNumber))
-                {
-                    yield return batch;
-                }
-            }
-            else
-            {
-                yield return new SortModel(recordRequestNumber, int.MaxValue);
+                yield return batch;
             }
         }
 
