@@ -69,7 +69,7 @@
         protected override void ModelFetchedHandler()
         {
             Collection.Clear();
-            DataLoader.Load(DataLoading.Load, Model);
+            DataLoader.Load(DataLoading.Refresh, Model);
         }
 
         protected virtual void CollectionFetchedHandler(object sender, CollectionFetchedEventArgs<TViewModel> args)
