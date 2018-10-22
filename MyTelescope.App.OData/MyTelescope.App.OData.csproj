@@ -15,7 +15,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.OData.Client" Version="7.5.1" />
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="SWE.Http" Version="1.0.1" />
+    <PackageReference Include="SWE.Http" Version="1.0.2" />
     <PackageReference Include="SWE.OData" Version="1.0.3" />
     <PackageReference Include="SWE.Polly" Version="1.0.1" />
     <PackageReference Include="SWE.Builder" Version="1.0.1" />

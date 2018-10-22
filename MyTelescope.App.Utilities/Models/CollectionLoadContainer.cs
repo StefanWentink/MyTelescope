@@ -7,9 +7,9 @@
 
         private readonly object _endOfCollectionLock = new object();
 
-        private bool _endOfCollectionThrown;
+        private bool _endOfCollectionCommunicated;
 
-        private readonly object _endOfCollectionThrownLock = new object();
+        private readonly object _endOfCollectionCommunicatedLock = new object();
 
         private int _recordRequestNumber;
 
@@ -28,7 +28,7 @@
         {
             ClearCollection();
             SetEndOfCollection(false);
-            SetEndOfCollectionThrown(false);
+            SetEndOfCollectionCommunicated(false);
             SetRecordRequestNumber(0);
         }
 
@@ -58,29 +58,29 @@
             return GetEndOfCollection() && NoRunningTask();
         }
 
-        public bool GetEndOfCollectionWithNoRunningTasksAndEndOfCollectionNotThrown()
+        public bool GetEndOfCollectionWithNoRunningTasksAndEndOfCollectionNotCommunicated()
         {
-            return GetEndOfCollectionWithNoRunningTasks() && !GetEndOfCollectionThrown();
+            return GetEndOfCollectionWithNoRunningTasks() && !GetEndOfCollectionCommunicated();
         }
 
-        protected void SetEndOfCollectionThrown(bool endOfCollectionThrown)
+        protected void SetEndOfCollectionCommunicated(bool endOfCollectionCommunicated)
         {
-            lock (_endOfCollectionThrownLock)
+            lock (_endOfCollectionCommunicatedLock)
             {
-                _endOfCollectionThrown = endOfCollectionThrown;
+                _endOfCollectionCommunicated = endOfCollectionCommunicated;
             }
         }
 
-        public void SetEndOfCollectionThrown()
+        public void SetEndOfCollectionCommunicated()
         {
-            SetEndOfCollectionThrown(true);
+            SetEndOfCollectionCommunicated(true);
         }
 
-        public bool GetEndOfCollectionThrown()
+        public bool GetEndOfCollectionCommunicated()
         {
-            lock (_endOfCollectionThrownLock)
+            lock (_endOfCollectionCommunicatedLock)
             {
-                return _endOfCollectionThrown;
+                return _endOfCollectionCommunicated;
             }
         }
 

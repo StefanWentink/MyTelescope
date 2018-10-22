@@ -20,6 +20,6 @@
 
         event EventHandler<CollectionFetchedEventArgs<TViewModel>> CollectionFetchedEvent;
 
-        event EventHandler<EndOfCollectionEventArgs> EndOfCollectionEvent;
+        //event EventHandler<EndOfCollectionEventArgs> EndOfCollectionEvent;
     }
 }

@@ -38,7 +38,6 @@
             if (DataLoader == null && dataLoader != null)
             {
                 DataLoader = dataLoader;
-                DataLoader.EndOfCollectionEvent += EndOfCollectionHandler;
                 DataLoader.CollectionFetchedEvent += CollectionFetchedHandler;
             }
         }
@@ -83,13 +82,9 @@
             Collection.PutOnApplicationThread(args.Models, _collectionWriteLock, RaisePropertyChanged, nameof(Collection), !AddToCollection, CollectionSet);
         }
 
-        protected virtual void EndOfCollectionHandler(object sender, EndOfCollectionEventArgs args)
-        {
-            RecordCount = args.Count;
-        }
-
         protected virtual void CollectionSet()
         {
+            RecordCount = Collection.Count;
         }
 
         public Command RefreshDataCommand
@@ -108,7 +103,6 @@
         {
             if (DataLoader != null)
             {
-                DataLoader.EndOfCollectionEvent -= EndOfCollectionHandler;
                 DataLoader.CollectionFetchedEvent -= CollectionFetchedHandler;
             }
 
@@ -119,7 +113,6 @@
         {
             if (DataLoader != null)
             {
-                DataLoader.EndOfCollectionEvent += EndOfCollectionHandler;
                 DataLoader.CollectionFetchedEvent += CollectionFetchedHandler;
             }
 
@@ -130,7 +123,6 @@
         {
             if (DataLoader != null)
             {
-                DataLoader.EndOfCollectionEvent -= EndOfCollectionHandler;
                 DataLoader.CollectionFetchedEvent -= CollectionFetchedHandler;
             }
 

@@ -1,10 +1,7 @@
 ﻿namespace MyTelescope.App.Helpers.Di
 {
     using FreshMvvm;
-    using Microsoft.Extensions.DependencyInjection;
-    using MyTelescope.Utilities.Interfaces.Connector;
     using Microsoft.Extensions.Logging;
-    using MyTelescope.App.Models;
     using MyTelescope.App.OData.Models.Policies;
     using MyTelescope.Data.Loader.Interfaces;
     using SolarSystem.Models.CelestialObject;
@@ -14,6 +11,7 @@
     using ViewModels.Models.Item;
     using MyTelescope.App.Utilities.Models;
     using MyTelescope.App.Utilities.Interfaces;
+    using MyTelescope.App.OData.Models;
 
     public static class DataDiHelper
     {
@@ -52,7 +50,6 @@
             FreshIOC.Container.Register<ITimeOutPolicy<CelestialObject>, CelestialObjectPolicy>();
             FreshIOC.Container.Register<ITimeOutPolicy<CelestialObjectPosition>, CelestialObjectPositionPolicy>();
             FreshIOC.Container.Register<IActions, OData.Models.MyTelescopeActions>();
-            FreshIOC.Container.Register<IUriContainer, OData.Models.MyTelescopeUriContainer>();
 
             FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectTypeViewModel, CelestialObjectType>, OData.Models.DataLoader.CelestialObjectTypeDataLoader>().AsMultiInstance();
             FreshIOC.Container.Register<IHttpDataLoader<CelestialObjectViewModel, CelestialObject>, OData.Models.DataLoader.CelestialObjectDataLoader>().AsMultiInstance();
@@ -62,6 +59,11 @@
 
             FreshIOC.Container.Register<IStaticDataLoader<PlanetDetailViewModel, CelestialObject>, OData.Models.DataLoader.PlanetDetailLoader>().AsMultiInstance();
             FreshIOC.Container.Register<IStaticDataLoader<MoonDetailViewModel, CelestialObject>, OData.Models.DataLoader.MoonDetailLoader>().AsMultiInstance();
+        }
+
+        public static void ConfigureUriServices(string uri)
+        {
+            FreshIOC.Container.Register<IUriContainer>(new MyTelescopeUriContainer(uri));
         }
     }
 }

@@ -30,11 +30,17 @@
             switch (logLevel)
             {
                 case LogLevel.Critical:
+                    break;
                 case LogLevel.Debug:
+                    break;
                 case LogLevel.Error:
+                    break;
                 case LogLevel.Warning:
+                    break;
                 case LogLevel.Information:
+                    break;
                 case LogLevel.None:
+                    break;
                 case LogLevel.Trace:
                     break;
             }

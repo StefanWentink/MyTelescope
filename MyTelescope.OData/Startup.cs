@@ -63,9 +63,8 @@
             else
             {
                 app.UseHsts();
+                app.UseHttpsRedirection();
             }
-
-            app.UseHttpsRedirection();
 
             loggerFactory.AddConsole(Configuration.GetSection("Logging")); //log levels set in your configuration
             loggerFactory.AddDebug(); //does all log levels

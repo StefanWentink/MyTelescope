@@ -132,8 +132,8 @@
                         var filters = new List<IODataFilter>
                         {
                             new ODataFilterSelector<CelestialObjectPosition, Guid>(x => x.CelestialObjectId, FilterOperator.Equal, new Guid("11A7011D-E239-420D-871A-0C1CC2ED0579")),
-                            new ODataFilterSelector<CelestialObjectPosition, DateTimeOffset>(x => x.ReferenceDate, FilterOperator.GreaterOrEquals, new DateTime(2018, 1, 1).ToLocalTime()),
-                            new ODataFilterSelector<CelestialObjectPosition, DateTimeOffset?>(x => x.ReferenceEndDate, FilterOperator.LessOrEquals, new DateTime(2018, 2, 1).ToLocalTime())
+                            new ODataFilterSelector<CelestialObjectPosition, DateTimeOffset>(x => x.ReferenceDate, FilterOperator.GreaterOrEquals, new DateTimeOffset(new DateTime(2018, 1, 1), TimeSpan.Zero)),
+                            new ODataFilterSelector<CelestialObjectPosition, DateTimeOffset?>(x => x.ReferenceDate, FilterOperator.LessOrEquals, new DateTimeOffset(new DateTime(2018, 2, 1), TimeSpan.Zero))
                         };
 
                         builder = builder.SetFilter(new ODataFilters(filters));

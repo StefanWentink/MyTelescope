@@ -9,9 +9,14 @@
     {
         public List<TModel> Models { get; }
 
-        public CollectionFetchedEventArgs(IEnumerable<TModel> models)
+        public int Count => Models?.Count ?? 0;
+
+        public bool EndOfList { get; }
+
+        public CollectionFetchedEventArgs(IEnumerable<TModel> models, bool endOfList)
         {
             Models = models.ToList();
+            EndOfList = endOfList;
         }
 
         public void InsertAt(int index, TModel item)

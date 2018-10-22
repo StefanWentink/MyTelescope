@@ -15,6 +15,8 @@
 
         private const string PlatformFileName = "platform.json";
 
+        public static IRootConfiguration RootConfiguration => _rootConfiguration;
+
         private static IRootConfiguration _rootConfiguration;
 
         public static bool Initialized => _rootConfiguration != null;

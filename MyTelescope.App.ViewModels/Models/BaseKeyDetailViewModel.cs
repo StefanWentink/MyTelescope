@@ -23,7 +23,7 @@
 
         public void LoadDetails()
         {
-            CollectionFetched?.Invoke(this, new CollectionFetchedEventArgs<IDetailViewModel>(GetDetails()));
+            CollectionFetched?.Invoke(this, new CollectionFetchedEventArgs<IDetailViewModel>(GetDetails(), true));
         }
 
         public abstract List<IDetailViewModel> GetDetails();

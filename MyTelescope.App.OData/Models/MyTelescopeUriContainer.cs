@@ -6,7 +6,12 @@
     public class MyTelescopeUriContainer : UriContainer
     {
         public MyTelescopeUriContainer()
-            : base("https://localhost:44375", "odata", ExchangerConstants.ContentType, "/")
+            : base("https://localhost:44375")
+        {
+        }
+
+        public MyTelescopeUriContainer(string uri)
+            : base(uri, "odata", ExchangerConstants.ContentType, "/")
         {
         }
     }

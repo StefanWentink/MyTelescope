@@ -35,7 +35,6 @@
         {
             CelestialObjectDataLoader = celestialObjectDataLoader;
             CelestialObjectDataLoader.CollectionFetchedEvent += CelestialObjectDataLoaderOnCollectionFetchedEvent;
-            CelestialObjectDataLoader.EndOfCollectionEvent += CelestialObjectDataLoaderOnEndOfCollectionEvent;
             CelestialObjectDataLoader.LoadAsync(DataLoading.Refresh, SolarSystem.Helpers.Seeder.CelestialObjectSeedHelper.GetSun());
         }
 
@@ -198,36 +197,30 @@
                 _celestialObjectCollectionLock,
                 RaisePropertyChanged,
                 nameof(CelestialObjectCollection),
-                null);
+                CelestialObjectSetCollection);
         }
 
-        private void CelestialObjectDataLoaderOnEndOfCollectionEvent(object sender, EndOfCollectionEventArgs endOfCollectionEventArgs)
+        private void CelestialObjectSetCollection()
         {
-            Task.Run(() => ProcessCelestialObjects(endOfCollectionEventArgs.Count)).ConfigureAwait(false);
-        }
-
-        private async Task ProcessCelestialObjects(int collectionCount)
-        {
-            while (CelestialObjectCollection.Count < collectionCount)
+            if (CelestialObjectCollection.Count > 0)
             {
-                await Task.Delay(10).ConfigureAwait(false);
+                AddObjectCollectionLayoutModel(SelectListConstants.ObjectCollectionLayoutDistance, 0);
+
+                if (ObjectCollectionOptions.Count <= 0)
+                {
+                    ObjectCollectionOptions.SetOnApplicationThread(
+                        new ObservableCollection<ObjectCollectionOptionModel>
+                        {
+                            SelectListConstants.ObjectCollectionOptionAll,
+                            SelectListConstants.ObjectCollectionOptionInner,
+                            SelectListConstants.ObjectCollectionOptionOuter
+                        },
+                        _objectCollectionOptionsLock,
+                        ObjectCollectionOptionsSet,
+                        nameof(ObjectCollectionOptions),
+                        null);
+                }
             }
-
-            AddObjectCollectionLayoutModel(SelectListConstants.ObjectCollectionLayoutDistance, 0);
-
-            var objectCollectionOptions = new ObservableCollection<ObjectCollectionOptionModel>
-            {
-                SelectListConstants.ObjectCollectionOptionAll,
-                SelectListConstants.ObjectCollectionOptionInner,
-                SelectListConstants.ObjectCollectionOptionOuter
-            };
-
-            ObjectCollectionOptions.SetOnApplicationThread(
-                objectCollectionOptions,
-                _objectCollectionOptionsLock,
-                ObjectCollectionOptionsSet,
-                nameof(ObjectCollectionOptions),
-                null);
         }
 
         private void ObjectCollectionOptionsSet(string propertyName)

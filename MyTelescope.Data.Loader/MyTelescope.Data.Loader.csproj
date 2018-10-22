@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="SWE.Model" Version="1.0.1" />
-    <PackageReference Include="SWE.Http" Version="1.0.1" />
+    <PackageReference Include="SWE.Http" Version="1.0.2" />
   </ItemGroup>
 
   <ItemGroup>

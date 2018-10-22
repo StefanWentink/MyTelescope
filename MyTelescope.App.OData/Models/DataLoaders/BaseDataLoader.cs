@@ -125,13 +125,12 @@
 
                 case DataLoading.Refresh:
                     var collection = GetCollectionsLoadContainer(filterKey).GetCollection();
-                    OnCollectionFetched(collection);
+                    var endOfCollection = GetCollectionsLoadContainer(filterKey).GetEndOfCollection();
+                    var endOfCollectionWithNoRunningTasks = GetCollectionsLoadContainer(filterKey).GetEndOfCollectionWithNoRunningTasks();
 
-                    if (GetCollectionsLoadContainer(filterKey).GetEndOfCollectionWithNoRunningTasks())
-                    {
-                        OnEndOfCollection(filterKey);
-                    }
-                    else if (!GetCollectionsLoadContainer(filterKey).GetEndOfCollection())
+                    OnCollectionFetched(collection, endOfCollectionWithNoRunningTasks);
+
+                    if (!endOfCollection)
                     {
                         await LoadModels(model, filter, dataLoading).ConfigureAwait(false);
                     }
@@ -165,28 +164,31 @@
 
         public event EventHandler<CollectionFetchedEventArgs<TView>> CollectionFetchedEvent;
 
-        public event EventHandler<EndOfCollectionEventArgs> EndOfCollectionEvent;
+        //public event EventHandler<EndOfCollectionEventArgs> EndOfCollectionEvent;
 
         protected void PopToList(string filterKey, List<TView> collection, DataLoading dataLoading, bool finalRequest)
         {
-            if (collection.Count > 0)
-            {
-                GetCollectionsLoadContainer(filterKey).AddCollection(collection);
-
-                if (!dataLoading.In(DataLoading.Preload))
-                {
-                    OnCollectionFetched(collection);
-                }
-            }
-
             if (finalRequest)
             {
                 GetCollectionsLoadContainer(filterKey).SetEndOfCollection();
             }
 
-            if (!dataLoading.In(DataLoading.Preload) && GetCollectionsLoadContainer(filterKey).GetEndOfCollectionWithNoRunningTasksAndEndOfCollectionNotThrown())
+            var communicateEndOfList = !dataLoading.In(DataLoading.Preload)
+                && GetCollectionsLoadContainer(filterKey).GetEndOfCollectionWithNoRunningTasksAndEndOfCollectionNotCommunicated();
+
+            if (communicateEndOfList)
             {
-                OnEndOfCollection(filterKey);
+                GetCollectionsLoadContainer(filterKey).SetEndOfCollectionCommunicated();
+            }
+
+            if (collection.Count > 0 || communicateEndOfList)
+            {
+                GetCollectionsLoadContainer(filterKey).AddCollection(collection);
+
+                if (!dataLoading.In(DataLoading.Preload))
+                {
+                    OnCollectionFetched(collection, communicateEndOfList);
+                }
             }
         }
 
@@ -259,12 +261,9 @@
             }
         }
 
-        protected virtual void OnCollectionFetched(List<TView> models)
+        protected virtual void OnCollectionFetched(List<TView> models, bool endOfList)
         {
-            if (models.Count > 0)
-            {
-                CollectionFetchedEvent?.Invoke(this, new CollectionFetchedEventArgs<TView>(models));
-            }
+            CollectionFetchedEvent?.Invoke(this, new CollectionFetchedEventArgs<TView>(models, endOfList));
         }
 
         //protected virtual void OnEndOfCollection(string filterKey)
@@ -284,10 +283,10 @@
                 CollectionFetchedEvent = null;
             }
 
-            if (EndOfCollectionEvent == null)
-            {
-                EndOfCollectionEvent = null;
-            }
+            //if (EndOfCollectionEvent == null)
+            //{
+            //    EndOfCollectionEvent = null;
+            //}
         }
     }
 }

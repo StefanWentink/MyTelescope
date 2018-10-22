@@ -39,6 +39,8 @@
                 result = ConfigHelper.Initialized;
             }
 
+            DataDiHelper.ConfigureUriServices(ConfigHelper.RootConfiguration.Infrastructure.MyTeleScopeApi);
+
             return result;
         }
     }
