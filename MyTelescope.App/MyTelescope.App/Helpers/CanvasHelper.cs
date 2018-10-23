@@ -10,12 +10,11 @@
     using System.Drawing;
     using System.Linq;
     using Utilities.Enums;
-    using Utilities.Helpers;
     using Utilities.Models;
 
     public static class CanvasHelper
     {
-        private const int SunRadius = 25;
+        private const int SunRadius = 20;
 
         public static void OnPaintSurface(this SKPaintSurfaceEventArgs args, string key)
         {
@@ -158,7 +157,7 @@
         private static void DrawBodies(this SKCanvas canvas, IEnumerable<CelestialDrawModel> bodies, DrawParameterModel drawParameters)
         {
             var orderedBodies = bodies.OrderByDescending(x => x.Radius).ToList();
-            var sizes = new[] { SunRadius, 20, 18, 16, 14, 8, 8, 6, 4, 4 };
+            var sizes = new[] { SunRadius, 14, 12, 11, 10, 6, 6, 4, 4, 4 };
 
             for (var index = 0; index < orderedBodies.Count; index++)
             {

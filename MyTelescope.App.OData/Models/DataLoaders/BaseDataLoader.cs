@@ -149,8 +149,6 @@
 
         public void Load(DataLoading dataLoading, T model)
         {
-            // TODO - fix
-            //LoadAsync(dataLoading, model);
             Task.Run(() => LoadAsync(dataLoading, model).ConfigureAwait(false));
         }
 
