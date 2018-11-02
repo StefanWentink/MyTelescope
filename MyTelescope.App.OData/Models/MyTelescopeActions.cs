@@ -6,6 +6,7 @@
     {
         public MyTelescopeActions()
         : base("Create", string.Empty, "Update", "Delete")
-        { }
+        {
+        }
     }
 }
