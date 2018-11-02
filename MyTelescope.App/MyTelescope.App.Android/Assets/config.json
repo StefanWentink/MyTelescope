@@ -1,6 +1,7 @@
 ﻿{
   "Infrastructure": {
     //"MyTeleScopeApi": "http://localhost:56823/", // Original API
-    "MyTeleScopeApi": "http://localhost:44375/" // OData API
+    //"MyTeleScopeApi": "https://localhost:44375/" // OData API
+    "MyTeleScopeApi": "http://localhost:58138/" // OData API
   }
 }
